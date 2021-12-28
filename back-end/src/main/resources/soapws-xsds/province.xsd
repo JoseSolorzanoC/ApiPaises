@@ -1,0 +1,35 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://province.interfaces.generated.soapws.apipaises.appdist.uteq" targetNamespace="http://province.interfaces.generated.soapws.apipaises.appdist.uteq" elementFormDefault="qualified">
+
+    <xs:complexType name="province">
+        <xs:sequence>
+            <xs:element name="provinceId" type="xs:int" />
+            <xs:element name="provinceName" type="xs:string" />
+            <xs:element name="provinceFlag" type="xs:string" />
+            <xs:element name="provinceCapital" type="xs:string" />
+            <xs:element name="provinceAlt" type="xs:float" />
+            <xs:element name="provinceLat" type="xs:float" />
+            <xs:element name="provinceState" type="xs:string" />
+            <xs:element name="provinceCallCode" type="xs:string" />
+            <xs:element name="countryId" type="xs:int" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="serviceStatus">
+        <xs:sequence>
+            <xs:element name="status" type="xs:string" />
+            <xs:element name="message" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="getProvinceRequest" />
+
+    <xs:element name="getProvinceResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="province" type="tns:province" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+</xs:schema>
