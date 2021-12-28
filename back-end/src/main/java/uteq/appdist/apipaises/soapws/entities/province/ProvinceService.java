@@ -1,6 +1,7 @@
 package uteq.appdist.apipaises.soapws.entities.province;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,11 @@ public class ProvinceService {
     //Get All Provinces
     public List<Province> getAllProvinces() {
         return provinceRepository.findAll();
+    }
+
+    //Get One Province
+    public Optional<Province> getProvinceById(int id) {
+        return provinceRepository.findById(id);
     }
 
     //Insert Province

@@ -7,14 +7,17 @@ import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
+import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import uteq.appdist.apipaises.soapws.generated.interfaces.province.Province;
 import uteq.appdist.apipaises.soapws.shared.DBResponse;
 import uteq.appdist.apipaises.soapws.generated.interfaces.country.ServiceStatus;
 import uteq.appdist.apipaises.soapws.generated.interfaces.province.AddProvinceResponse;
+import uteq.appdist.apipaises.soapws.generated.interfaces.province.GetProvinceByIdRequest;
 import uteq.appdist.apipaises.soapws.generated.interfaces.province.GetProvinceResponse;
 import uteq.appdist.apipaises.soapws.generated.interfaces.province.GetProvincesResponse;
 
@@ -43,6 +46,23 @@ public class ProvinceEndpoint {
 
         return response;
     }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getProvinceByIdRequest")
+    @ResponsePayload
+    public GetProvinceResponse getProvinceById(@RequestPayload GetProvinceByIdRequest request) {
+        GetProvinceResponse response = new GetProvinceResponse();
+
+        Province target= new Province();
+
+        if(provinceService.getProvinceById(request.getProvinceId()).isPresent()){
+
+            BeanUtils.copyProperties(provinceService.getProvinceById(request.getProvinceId()).get(), target);
+  
+        }
+
+        return response;
+    }
+
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "addProvinceRequest")
     @ResponsePayload
