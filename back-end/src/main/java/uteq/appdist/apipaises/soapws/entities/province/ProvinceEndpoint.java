@@ -69,8 +69,7 @@ public class ProvinceEndpoint {
     public DBResponse addProvinceRequest(uteq.appdist.apipaises.soapws.entities.province.Province province) {
         DBResponse response = new DBResponse();
 
-        response=provinceService.addProvince(province);
-
+        response = provinceService.addProvince(province);
 
         return response;
     }
@@ -80,20 +79,17 @@ public class ProvinceEndpoint {
     public DBResponse editProvinceRequest(uteq.appdist.apipaises.soapws.entities.province.Province province) {
         DBResponse response = new DBResponse();
 
-        response=provinceService.editProvince(province);
-
+        response = provinceService.editProvince(province);
 
         return response;
     }
-
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "delProvinceRequest")
     @ResponsePayload
     public DBResponse addProvinceRequest(int provinceId) {
         DBResponse response = new DBResponse();
 
-        response=provinceService.delProvince(provinceId);
-
+        response = provinceService.delProvince(provinceId);
 
         return response;
     }
