@@ -21,15 +21,18 @@ public class ProvinceService {
 
     //Get One Province
     public Optional<Province> getProvinceById(int id) {
-        return provinceRepository.findById(id);
+        return provinceRepository.getProvinceById(id);
     }
 
-    //Insert Province
-    public DBResponse addProvince(Province province){
+    // //Insert Province
+    // public DBResponse addProvince(Province province){
 
-        return provinceRepository.addProvince(province);
+    //     return provinceRepository.saveProvince(province.provinceName,
+    //     province.provinceFlag,province.provinceCapital,province.provinceAlt,province.provinceLat,
+    //     province.provinceState,province.provinceCallCode, province.countryId);
 
-    }
+    // }
+
 
     //Update Province
     public DBResponse editProvince(Province province){

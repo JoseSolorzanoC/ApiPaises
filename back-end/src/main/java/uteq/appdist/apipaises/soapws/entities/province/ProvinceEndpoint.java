@@ -64,15 +64,15 @@ public class ProvinceEndpoint {
     }
 
 
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "addProvinceRequest")
-    @ResponsePayload
-    public DBResponse addProvinceRequest(uteq.appdist.apipaises.soapws.entities.province.Province province) {
-        DBResponse response = new DBResponse();
+    // @PayloadRoot(namespace = NAMESPACE_URI, localPart = "addProvinceRequest")
+    // @ResponsePayload
+    // public DBResponse addProvinceRequest(uteq.appdist.apipaises.soapws.entities.province.Province province) {
+    //     DBResponse response = new DBResponse();
 
-        response = provinceService.addProvince(province);
+    //     response = provinceService.addProvince(province);
 
-        return response;
-    }
+    //     return response;
+    // }
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "editProvinceRequest")
     @ResponsePayload
@@ -86,7 +86,7 @@ public class ProvinceEndpoint {
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "delProvinceRequest")
     @ResponsePayload
-    public DBResponse addProvinceRequest(int provinceId) {
+    public DBResponse delProvinceRequest(int provinceId) {
         DBResponse response = new DBResponse();
 
         response = provinceService.delProvince(provinceId);
