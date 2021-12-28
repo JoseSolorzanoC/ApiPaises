@@ -38,10 +38,10 @@ public class Country {
     String countryCapital;
 
     @Column(name = "coordinate_alt_country")
-    float countryAlt;
+    float countryAlt = 0f;
 
     @Column(name = "coordinate_lat_country")
-    float countryLat;
+    float countryLat = 0f;
 
     @Column(name = "state_country")
     String countryState;

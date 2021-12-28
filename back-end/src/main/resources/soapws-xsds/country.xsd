@@ -1,12 +1,12 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://country.interfaces.generated.soapws.apipaises.appdist.uteq" targetNamespace="http://country.interfaces.generated.soapws.apipaises.appdist.uteq" elementFormDefault="qualified">
     <xs:complexType name="country">
         <xs:sequence>
-            <xs:element name="countryId" type="xs:int" />
+            <xs:element name="countryId" type="xs:int" nillable="true" />
             <xs:element name="countryName" type="xs:string" />
             <xs:element name="countryFlag" type="xs:string" />
             <xs:element name="countryCapital" type="xs:string" />
-            <xs:element name="countryAlt" type="xs:float" />
-            <xs:element name="countryLat" type="xs:float" />
+            <xs:element name="countryAlt" type="xs:float" nillable="true" />
+            <xs:element name="countryLat" type="xs:float" nillable="true" />
             <xs:element name="countryState" type="xs:string" />
             <xs:element name="countryCallCode" type="xs:string" />
             <xs:element name="countryTld" type="xs:string" />
@@ -25,12 +25,77 @@
         </xs:sequence>
     </xs:complexType>
 
-    <xs:element name="getCountryRequest" />
+    <xs:element name="getAllCountriesRequest" />
+
+    <xs:element name="getCountriesResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="unbounded" name="country" type="tns:country" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 
     <xs:element name="getCountryResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element maxOccurs="unbounded" name="country" type="tns:country" />
+                <xs:element maxOccurs="1" name="country" type="tns:country" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCountryByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="countryId" type="xs:int" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addCountryRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="country" type="tns:country" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addCountryResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus" />
+                <xs:element name="country" type="tns:country" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateCountryRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="country" type="tns:country" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateCountryResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteCountryRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="countryId" type="xs:long" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteCountryResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>

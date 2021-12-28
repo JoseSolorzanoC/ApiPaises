@@ -10,23 +10,22 @@ import uteq.appdist.apipaises.soapws.generated.interfaces.province.ServiceStatus
 import uteq.appdist.apipaises.soapws.shared.DBResponse;
 
 @Repository
-public interface ProvinceRepository extends JpaRepository<Province, Integer> { 
-    
-    //Select All Provinces
+public interface ProvinceRepository extends JpaRepository<Province, Integer> {
+
+    // Select All Provinces
     @Procedure("fnselectprovinces")
     List<Province> getAllProvinces();
 
-    //Insert Province
+    // Insert Province
     @Procedure("fninsertprovince")
     DBResponse addProvince(Province province);
 
-    //Edit Province
+    // Edit Province
     @Procedure("fnupdateprovince")
-     DBResponse editProvince(Province province);
+    DBResponse editProvince(Province province);
 
-
-    //Delete Province
+    // Delete Province
     @Procedure("fndeleteprovince")
-     DBResponse delProvince(int id);
+    DBResponse delProvince(int id);
 
 }
