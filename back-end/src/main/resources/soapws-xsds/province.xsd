@@ -21,9 +21,9 @@
         </xs:sequence>
     </xs:complexType>
 
-    <xs:element name="getProvinceRequest" />
+    <xs:element name="getAllProvincesRequest" />
 
-    <xs:element name="getProvinceResponse">
+    <xs:element name="getProvincesResponse">
         <xs:complexType>
             <xs:sequence>
                 <xs:element maxOccurs="unbounded" name="province" type="tns:province" />
@@ -31,5 +31,68 @@
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="getProvinceResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="1" name="province" type="tns:province" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 
+    <xs:element name="getProvinceByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="provinceId" type="xs:int" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addProvinceRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="province" type="tns:province" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addProvinceResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus" />
+                <xs:element name="province" type="tns:province" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateProvinceRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="province" type="tns:province" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateProvinceResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteProvinceRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="provinceId" type="xs:long" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteProvinceResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 </xs:schema>

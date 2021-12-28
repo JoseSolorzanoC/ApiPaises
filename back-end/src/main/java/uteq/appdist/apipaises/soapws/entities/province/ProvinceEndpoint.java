@@ -12,7 +12,11 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import uteq.appdist.apipaises.soapws.generated.interfaces.province.Province;
+import uteq.appdist.apipaises.soapws.shared.DBResponse;
+import uteq.appdist.apipaises.soapws.generated.interfaces.country.ServiceStatus;
+import uteq.appdist.apipaises.soapws.generated.interfaces.province.AddProvinceResponse;
 import uteq.appdist.apipaises.soapws.generated.interfaces.province.GetProvinceResponse;
+import uteq.appdist.apipaises.soapws.generated.interfaces.province.GetProvincesResponse;
 
 @Endpoint
 public class ProvinceEndpoint {
@@ -25,10 +29,10 @@ public class ProvinceEndpoint {
         this.provinceService = provinceService;
     }
 
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getProvinceRequest")
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllProvincesRequest")
     @ResponsePayload
-    public GetProvinceResponse getAllProvinces() {
-        GetProvinceResponse response = new GetProvinceResponse();
+    public GetProvincesResponse getAllProvinces() {
+        GetProvincesResponse response = new GetProvincesResponse();
 
         for (uteq.appdist.apipaises.soapws.entities.province.Province source : provinceService.getAllProvinces()) {
             Province target = new Province();
@@ -36,6 +40,40 @@ public class ProvinceEndpoint {
 
             response.getProvince().add(target);
         }
+
+        return response;
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "addProvinceRequest")
+    @ResponsePayload
+    public DBResponse addProvinceRequest(uteq.appdist.apipaises.soapws.entities.province.Province province) {
+        DBResponse response = new DBResponse();
+
+        response=provinceService.addProvince(province);
+
+
+        return response;
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "editProvinceRequest")
+    @ResponsePayload
+    public DBResponse editProvinceRequest(uteq.appdist.apipaises.soapws.entities.province.Province province) {
+        DBResponse response = new DBResponse();
+
+        response=provinceService.editProvince(province);
+
+
+        return response;
+    }
+
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "delProvinceRequest")
+    @ResponsePayload
+    public DBResponse addProvinceRequest(int provinceId) {
+        DBResponse response = new DBResponse();
+
+        response=provinceService.delProvince(provinceId);
+
 
         return response;
     }

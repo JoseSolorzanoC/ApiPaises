@@ -48,7 +48,7 @@ public class Province {
     @Column(name = "callcode_province")
     String provinceCallCode;
 
-    @Column(name = "cstate_province")
+    @Column(name = "state_province")
     String provinceState;
 
     @Column(name = "tbcountries_countryid")
