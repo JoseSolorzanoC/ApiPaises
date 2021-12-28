@@ -172,7 +172,7 @@
 			"id": 207,
 			"name": "Antillas Holandesas",
 			"englishName":"Netherlands Antilles",
-			"flag": "https://res.cloudinary.com/bricex/image/upload/v1606779291/flags/jxyzdbk2tzo8xhyjfuxr.svg",
+			"flag": "https://firebasestorage.googleapis.com/v0/b/banderasapipaises.appspot.com/o/Banderas%2FFlag_of_the_Netherlands_Antilles_(1986%E2%80%932010).svg?alt=media&token=2389c25f-06d4-49fb-b780-cc100a37204c",
 			"capital": "Willemstead",
 			"coordinates": [
 				"12.226079",
@@ -907,8 +907,7 @@
 		{
 			"id": 164,
 			"name": "Comoras",
-			"englishName":"Comoros",
-			"englishName":"",
+			"englishName":"Comoros",			
 			"flag": "https://firebasestorage.googleapis.com/v0/b/banderasapipaises.appspot.com/o/Banderas%2Fkm.svg?alt=media&token=b47decea-ddfc-4d63-8078-2879667291ad",
 			"capital": "Moroni",
 			"coordinates": [
@@ -1119,7 +1118,7 @@
 			"id": 22,
 			"name": "Dinamarca",
 			"englishName":"Denmark",
-			"flag": "https://restcountries.eu/data/dnk.svg",
+			"flag": "https://firebasestorage.googleapis.com/v0/b/banderasapipaises.appspot.com/o/Banderas%2Fdk.svg?alt=media&token=521cdf2d-0585-4910-8944-f55011af9925",
 			"capital": "Copenhague",
 			"coordinates": [
 				"56.26392",
@@ -2632,7 +2631,7 @@
 			"id": 133,
 			"name": "Malí",
 			"englishName":"Mali",
-			"flag": "https://restcountries.eu/data/mli.svg",
+			"flag": "https://firebasestorage.googleapis.com/v0/b/banderasapipaises.appspot.com/o/Banderas%2Fml.svg?alt=media&token=854ba401-98f1-4934-a987-1e613b8eb005",
 			"capital": "Bamako",
 			"coordinates": [
 				"17.570692",
