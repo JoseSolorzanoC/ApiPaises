@@ -1,0 +1,189 @@
+-----------LISTAR PAISES POR ID O DEFAULT-----------------
+create or replace function fnselectcountry(select_id integer default null)
+returns TABLE(countryID bigint,
+			  name_country VARCHAR (70),
+			  flag_country VARCHAR (150), 
+     		  capital_country VARCHAR (70),
+			  coordinate_alt_country DECIMAL (8,5),
+			  coordinate_lat_country DECIMAL (8,5), 
+     	  	  state_country CHAR (1),
+			  callcode_country character(5),
+    		  tld_country character varying(3),
+    		  iso3_country character varying(3),
+    		  iso2_country character varying(3),
+    		  fips_country character varying(3),
+    		  ison_country character varying(4),
+    		  englishname_country character varying(70)
+			  ) 
+LANGUAGE 'plpgsql'
+AS $BODY$
+BEGIN
+	IF select_id isnull
+	THEN 
+	RETURN QUERY select * from tbcountries;
+	ELSE
+	RETURN QUERY select * from tbcountries where tbcountries.countryID = select_id;	
+	END IF;
+END
+$BODY$
+--Select * from fnselectcountry()
+--DROP FUNCTION fnselectcountry(integer)
+
+----------PAÍS POR NOMBRE O DEFAULT------------------------------
+create or replace function fnselectcountry_name( nm varchar (70) default null)
+returns TABLE(countryID bigint,
+			  name_country VARCHAR (70),
+			  flag_country VARCHAR (150), 
+     		  capital_country VARCHAR (70),
+			  coordinate_alt_country DECIMAL (8,5),
+			  coordinate_lat_country DECIMAL (8,5), 
+     	  	  state_country CHAR (1),
+			  callcode_country character(5),
+    		  tld_country character varying(3),
+    		  iso3_country character varying(3),
+    		  iso2_country character varying(3),
+    		  fips_country character varying(3),
+    		  ison_country character varying(4),
+    		  englishname_country character varying(70)
+			  ) 
+LANGUAGE 'plpgsql'
+AS $BODY$
+BEGIN
+	IF nm isnull
+	THEN 
+	RETURN QUERY select * from tbcountries;
+	ELSE
+	RETURN QUERY select * from tbcountries where tbcountries.name_country like '%'||nm||'%';	
+	END IF;
+END
+$BODY$
+
+
+-----------LISTAR PROVINCIAS POR ID O DEFAULT-----------------
+create or replace function fnselectprovinces(select_id integer default null)
+returns TABLE(provinceID BIGINT, 
+     name_province VARCHAR (150), 
+     flag_province VARCHAR (150), 
+     capital_province VARCHAR (70), 
+     coordinate_alt_province DECIMAL (8,5), 
+     coordinate_lat_province DECIMAL (8,5), 
+     callcode_province CHAR (5),
+     state_province CHAR (1),
+     tbcountries_countryID BIGINT)			 
+LANGUAGE 'plpgsql'
+AS $BODY$
+BEGIN
+	IF select_id isnull
+	THEN 
+	RETURN QUERY select * from tbprovinces;
+	ELSE
+	RETURN QUERY select * from tbprovinces where tbprovinces.provinceid = select_id;	
+	END IF;
+END
+$BODY$
+Select * from fnselectprovinces()
+----------- LISTAR PROVINCIAS POR NOMBRE O DEFAULT------------
+create or replace function fnselectprovinces_name(select_name varchar default null)
+returns TABLE(provinceID BIGINT, 
+     name_province VARCHAR (150), 
+     flag_province VARCHAR (150), 
+     capital_province VARCHAR (70), 
+     coordinate_alt_province DECIMAL (8,5), 
+     coordinate_lat_province DECIMAL (8,5), 
+     callcode_province CHAR (5),
+     state_province CHAR (1),
+     tbcountries_countryID BIGINT)			 
+LANGUAGE 'plpgsql'
+AS $BODY$
+BEGIN
+	IF select_name isnull
+	THEN 
+	RETURN QUERY select * from tbprovinces;
+	ELSE
+	RETURN QUERY select * from tbprovinces where tbprovinces.name_province like '%'||select_name||'%';	
+	END IF;
+END
+$BODY$
+
+
+----------LISTAR CIUDADES POR NOMBRE O DEFAULT----------------
+create or replace function fnselectcity_name(select_name varchar(70) default null)
+returns TABLE(cityID BIGINT, 
+     name_city VARCHAR (70), 
+     flag_city VARCHAR (150), 
+     cabecera_city VARCHAR (70), 
+     coordinate_alt_city DECIMAL (8,5), 
+     coordinate_lat_city DECIMAL (8,5), 
+     codereg_city CHAR (5),
+     state_city CHAR (1),
+     tbprovinces_provinceID BIGINT) 
+LANGUAGE 'plpgsql'
+AS $BODY$
+BEGIN
+IF select_name isnull
+	THEN 
+	RETURN QUERY select * from tbcity;
+	ELSE
+	RETURN QUERY select * from tbcity where tbcity.name_city like '%'||select_name||'%';	
+	END IF;
+END
+$BODY$
+----------LISTAR CIUDADES POR ID O DEFAULT----------------
+create or replace function fnselectcity_id(select_id integer default null)
+returns TABLE(cityID BIGINT, 
+     name_city VARCHAR (70), 
+     flag_city VARCHAR (150), 
+     cabecera_city VARCHAR (70), 
+     coordinate_alt_city DECIMAL (8,5), 
+     coordinate_lat_city DECIMAL (8,5), 
+     codereg_city CHAR (5),
+     state_city CHAR (1),
+     tbprovinces_provinceID BIGINT) 
+LANGUAGE 'plpgsql'
+AS $BODY$
+BEGIN
+IF select_id isnull
+	THEN 
+	RETURN QUERY select * from tbcity;
+	ELSE
+	RETURN QUERY select * from tbcity where tbcity.cityid = select_id;	
+	END IF;
+END
+$BODY$
+
+--CONSULTAS DE PAISES POR CODIGO--------------
+create or replace function fnselectcountry_codes(tld varchar(3)default null,
+												iso3 varchar(3)default null,
+												iso2 varchar(3)default null,
+												fips varchar(3)default null,
+												ison varchar(4)default null)
+returns TABLE(countryID bigint,
+			  name_country VARCHAR (70),
+			  flag_country VARCHAR (150), 
+     		  capital_country VARCHAR (70),
+			  coordinate_alt_country DECIMAL (8,5),
+			  coordinate_lat_country DECIMAL (8,5), 
+     	  	  state_country CHAR (1),
+			  callcode_country character(5),
+    		  tld_country character varying(3),
+    		  iso3_country character varying(3),
+    		  iso2_country character varying(3),
+    		  fips_country character varying(3),
+    		  ison_country character varying(4),
+    		  englishname_country character varying(70)
+			  ) 
+LANGUAGE 'plpgsql'
+AS $BODY$
+BEGIN
+RETURN QUERY 
+Select * from tbcountries where 
+tbcountries.tld_country like '%'||tld||'%'
+AND tbcountries.iso3_country like '%'||iso3||'%'
+AND tbcountries.iso2_country like '%'||iso2||'%'
+AND tbcountries.fips_country like '%'||fips||'%'
+AND tbcountries.ison_country like '%'||ison||'%';
+EXCEPTION WHEN OTHERS THEN
+raise notice '% %', SQLERRM, SQLSTATE;
+END
+$BODY$
+select * from fnselectcountry_codes('','c','','','')

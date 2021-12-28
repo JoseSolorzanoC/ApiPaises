@@ -1,0 +1,56 @@
+/*Delete country*/
+create or replace function fndeletecountry(select_id integer)
+RETURNS varchar
+AS $BODY$
+DECLARE 
+MSG varchar:='Borrado correctamente.';
+BEGIN	
+	IF EXISTS (select * from tbcountries where tbcountries.countryID=  select_id)	
+	THEN
+	update tbcountries
+	set state_country= '0' 
+	where tbcountries.countryID = select_id;
+	RETURN MSG;		
+	ELSE
+	raise exception 'No existe el registro.';	
+	END IF;
+END
+$BODY$
+LANGUAGE 'plpgsql';
+
+/*Delete province*/
+create or replace function fndeleteprovince(select_id integer)
+RETURNS varchar
+AS $BODY$
+DECLARE 
+MSG varchar:='Borrado correctamente.';
+BEGIN	
+	IF EXISTS (select * from tbprovinces where tbpronvinces.provinceid=select_id)	
+	THEN
+	delete from tbprovinces where tbpronvinces.provinceid = select_id;
+	RETURN MSG;		
+	ELSE
+	raise exception 'No existe el registro.';	
+	END IF;
+END
+$BODY$
+LANGUAGE 'plpgsql';
+
+
+/*Delete city*/
+create or replace function fndeletecity(select_id integer)
+RETURNS varchar
+AS $BODY$
+DECLARE 
+MSG varchar:='Borrado correctamente.';
+BEGIN	
+	IF EXISTS (select * from tbcity where tbcity.cityid=  select_id)	
+	THEN
+	delete from tbcity where tbcity.cityid = select_id;
+	RETURN MSG;		
+	ELSE
+	raise exception 'No existe el registro.';	
+	END IF;
+END
+$BODY$
+LANGUAGE 'plpgsql';
