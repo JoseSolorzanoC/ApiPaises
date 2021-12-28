@@ -13,13 +13,13 @@ public class ProvinceService {
 
     @Autowired
     private ProvinceRepository provinceRepository;
-    
-    //Get All Provinces
+
+    // Get All Provinces
     public List<Province> getAllProvinces() {
         return provinceRepository.findAll();
     }
 
-    //Get One Province
+    // Get One Province
     public Optional<Province> getProvinceById(int id) {
         return provinceRepository.getProvinceById(id);
     }
@@ -27,26 +27,24 @@ public class ProvinceService {
     // //Insert Province
     // public DBResponse addProvince(Province province){
 
-    //     return provinceRepository.saveProvince(province.provinceName,
-    //     province.provinceFlag,province.provinceCapital,province.provinceAlt,province.provinceLat,
-    //     province.provinceState,province.provinceCallCode, province.countryId);
+    // return provinceRepository.saveProvince(province.provinceName,
+    // province.provinceFlag,province.provinceCapital,province.provinceAlt,province.provinceLat,
+    // province.provinceState,province.provinceCallCode, province.countryId);
 
     // }
 
-
-    //Update Province
-    public DBResponse editProvince(Province province){
+    // Update Province
+    public DBResponse editProvince(Province province) {
 
         return provinceRepository.editProvince(province);
 
     }
 
-    //Delete Province
-    public DBResponse delProvince(int provinceId){
+    // Delete Province
+    public DBResponse delProvince(int provinceId) {
 
         return provinceRepository.delProvince(provinceId);
 
     }
-
 
 }

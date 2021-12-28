@@ -37,10 +37,10 @@ public class Country {
     @Column(name = "capital_country")
     String countryCapital;
 
-    @Column(name = "coordinate_alt_country")
+    @Column(name = "coordinate_alt_country", columnDefinition = "numeric")
     float countryAlt = 0f;
 
-    @Column(name = "coordinate_lat_country")
+    @Column(name = "coordinate_lat_country", columnDefinition = "numeric")
     float countryLat = 0f;
 
     @Column(name = "state_country")
