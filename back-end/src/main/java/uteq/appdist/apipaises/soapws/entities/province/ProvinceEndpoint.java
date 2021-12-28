@@ -52,46 +52,49 @@ public class ProvinceEndpoint {
     public GetProvinceResponse getProvinceById(@RequestPayload GetProvinceByIdRequest request) {
         GetProvinceResponse response = new GetProvinceResponse();
 
-        Province target= new Province();
+        Province target = new Province();
 
-        if(provinceService.getProvinceById(request.getProvinceId()).isPresent()){
+        if (provinceService.getProvinceById(request.getProvinceId()).isPresent()) {
 
             BeanUtils.copyProperties(provinceService.getProvinceById(request.getProvinceId()).get(), target);
-  
+
         }
 
         return response;
     }
 
-
     // @PayloadRoot(namespace = NAMESPACE_URI, localPart = "addProvinceRequest")
     // @ResponsePayload
-    // public DBResponse addProvinceRequest(uteq.appdist.apipaises.soapws.entities.province.Province province) {
-    //     DBResponse response = new DBResponse();
+    // public DBResponse
+    // addProvinceRequest(uteq.appdist.apipaises.soapws.entities.province.Province
+    // province) {
+    // DBResponse response = new DBResponse();
 
-    //     response = provinceService.addProvince(province);
+    // response = provinceService.addProvince(province);
 
-    //     return response;
+    // return response;
     // }
 
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "editProvinceRequest")
-    @ResponsePayload
-    public DBResponse editProvinceRequest(uteq.appdist.apipaises.soapws.entities.province.Province province) {
-        DBResponse response = new DBResponse();
+    // @PayloadRoot(namespace = NAMESPACE_URI, localPart = "editProvinceRequest")
+    // @ResponsePayload
+    // public DBResponse
+    // editProvinceRequest(uteq.appdist.apipaises.soapws.entities.province.Province
+    // province) {
+    // DBResponse response = new DBResponse();
 
-        response = provinceService.editProvince(province);
+    // response = provinceService.editProvince(province);
 
-        return response;
-    }
+    // return response;
+    // }
 
-    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "delProvinceRequest")
-    @ResponsePayload
-    public DBResponse delProvinceRequest(int provinceId) {
-        DBResponse response = new DBResponse();
+    // @PayloadRoot(namespace = NAMESPACE_URI, localPart = "delProvinceRequest")
+    // @ResponsePayload
+    // public DBResponse delProvinceRequest(int provinceId) {
+    // DBResponse response = new DBResponse();
 
-        response = provinceService.delProvince(provinceId);
+    // response = provinceService.delProvince(provinceId);
 
-        return response;
-    }
+    // return response;
+    // }
 
 }

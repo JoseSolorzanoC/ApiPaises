@@ -84,6 +84,7 @@ public class CountryEndpoint {
             } else {
                 serviceStatus.setStatus("CORRECTO");
                 serviceStatus.setMessage("REGISTRO INSERTADO SATISFACTORIAMENTE");
+                countryLocalModel.setCountryId(dbResponse.getIdentif());
                 BeanUtils.copyProperties(countryLocalModel, target);
             }
         } catch (Exception e) {

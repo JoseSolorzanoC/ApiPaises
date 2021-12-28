@@ -6,14 +6,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
-@ToString
-public class DBResponse {
+public interface DBResponse {
 
-    int status;
-    int identif;
+    int getStatus();
+
+    int getIdentif();
 
 }
