@@ -1,0 +1,40 @@
+<country>
+	<countryid></countryid>
+	<name_country></name_country>
+	<flag_country></flag_country>
+	<capital_country></capital_country>
+	<coordinates_country>
+		<latitude_country></latitude_country>
+		<altitude_country></altitude_country>
+	</coordinates_country>
+	<state_country></state_country>
+	<codereg_country></codereg_country>
+</country>
+
+<province>
+	<provinceid></provinceid>
+	<name_province></name_province>
+	<flag_province></flag_province>
+	<capital_province></capital_province>
+	<coordinates_province>
+		<latitude_province></latitude_province>
+		<altitude_province></altitude_province>
+	</coordinates_province>
+	<state_province></state_province>
+	<codereg_province></codereg_province>
+	<countryid></countryid>
+</province> 	
+
+<city>
+	<cityid></cityid>
+	<name_city></name_city>
+	<flag_city></flag_city>
+	<capital_city></capital_city>
+	<coordinates_city>
+		<latitude_city></latitude_city>
+		<altitude_city></altitude_city>
+	</coordinates_city>
+	<state_city></state_city>
+	<codereg_city></codereg_city>
+	<provinceid></provinceid>
+</city>
