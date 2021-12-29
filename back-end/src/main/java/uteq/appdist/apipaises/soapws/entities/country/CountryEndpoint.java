@@ -9,12 +9,14 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import uteq.appdist.apipaises.soapws.generated.interfaces.country.AddCountryRequest;
 import uteq.appdist.apipaises.soapws.generated.interfaces.country.AddCountryResponse;
+import uteq.appdist.apipaises.soapws.generated.interfaces.country.Countries;
 import uteq.appdist.apipaises.soapws.generated.interfaces.country.Country;
-import uteq.appdist.apipaises.soapws.generated.interfaces.country.GetCountriesResponse;
+import uteq.appdist.apipaises.soapws.generated.interfaces.country.GetAllCountriesResponse;
 import uteq.appdist.apipaises.soapws.generated.interfaces.country.GetCountryByIdRequest;
-import uteq.appdist.apipaises.soapws.generated.interfaces.country.GetCountryResponse;
+import uteq.appdist.apipaises.soapws.generated.interfaces.country.GetCountryByIdResponse;
 import uteq.appdist.apipaises.soapws.generated.interfaces.country.ServiceStatus;
-import uteq.appdist.apipaises.soapws.shared.DBResponse;
+
+import uteq.appdist.apipaises.soapws.shared.ServiceResponse;
 
 @Endpoint
 public class CountryEndpoint {
@@ -29,14 +31,15 @@ public class CountryEndpoint {
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllCountriesRequest")
     @ResponsePayload
-    public GetCountriesResponse getAllCountries() {
-        GetCountriesResponse response = new GetCountriesResponse();
+    public GetAllCountriesResponse getAllCountries() {
+        GetAllCountriesResponse response = new GetAllCountriesResponse();
+        response.setCountries(new Countries());
 
         for (uteq.appdist.apipaises.soapws.entities.country.Country source : countryService.getAllCountries()) {
             Country target = new Country();
             BeanUtils.copyProperties(source, target);
 
-            response.getCountry().add(target);
+            response.getCountries().getCountry().add(target);
         }
 
         return response;
@@ -44,8 +47,8 @@ public class CountryEndpoint {
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getCountryByIdRequest")
     @ResponsePayload
-    public GetCountryResponse getCountryById(@RequestPayload GetCountryByIdRequest request) {
-        GetCountryResponse response = new GetCountryResponse();
+    public GetCountryByIdResponse getCountryById(@RequestPayload GetCountryByIdRequest request) {
+        GetCountryByIdResponse response = new GetCountryByIdResponse();
 
         Country target = new Country();
 
@@ -64,39 +67,31 @@ public class CountryEndpoint {
     @ResponsePayload
     public AddCountryResponse saveCountry(@RequestPayload AddCountryRequest request) {
         AddCountryResponse response = new AddCountryResponse();
+        ServiceResponse serviceResponse;
         request.getCountry().setCountryId(0);
 
         Country target = new Country();
         ServiceStatus serviceStatus = new ServiceStatus();
 
-        try {
-            uteq.appdist.apipaises.soapws.entities.country.Country countryLocalModel = new uteq.appdist.apipaises.soapws.entities.country.Country();
-            BeanUtils.copyProperties(request.getCountry(), countryLocalModel);
+        uteq.appdist.apipaises.soapws.entities.country.Country countryLocalModel = new uteq.appdist.apipaises.soapws.entities.country.Country();
+        BeanUtils.copyProperties(request.getCountry(), countryLocalModel);
 
-            DBResponse dbResponse;
+        serviceResponse = countryService.saveCountry(countryLocalModel);
 
-            dbResponse = countryService.saveCountry(countryLocalModel);
-
-            if (dbResponse.getStatus() == 4) {
-                serviceStatus.setStatus("INCORRECTO");
-                serviceStatus.setMessage("ERROR AL INSERTAR EL REGISTRO");
-                target = null;
-            } else {
-                serviceStatus.setStatus("CORRECTO");
-                serviceStatus.setMessage("REGISTRO INSERTADO SATISFACTORIAMENTE");
-                countryLocalModel.setCountryId(dbResponse.getIdentif());
-                BeanUtils.copyProperties(countryLocalModel, target);
-            }
-        } catch (Exception e) {
-            serviceStatus.setStatus("INCORRECTO");
-            serviceStatus.setMessage("ERROR AL INSERTAR EL REGISTRO");
+        if (serviceResponse.getStatus() == -1) {
+            serviceStatus.setStatus("ERROR");
             target = null;
+        } else {
+            serviceStatus.setStatus("SUCCESS");
+            countryLocalModel.setCountryId(serviceResponse.getIdentif());
+            BeanUtils.copyProperties(countryLocalModel, target);
         }
+
+        serviceStatus.setMessage(serviceResponse.getAdditionalMessage());
 
         response.setCountry(target);
         response.setServiceStatus(serviceStatus);
 
         return response;
     }
-
 }
