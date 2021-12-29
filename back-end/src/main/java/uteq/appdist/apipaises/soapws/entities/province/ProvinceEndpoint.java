@@ -5,6 +5,8 @@ import java.lang.annotation.Target;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.core.sym.Name;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -15,7 +17,8 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import uteq.appdist.apipaises.soapws.generated.interfaces.province.Province;
 import uteq.appdist.apipaises.soapws.shared.DBResponse;
-import uteq.appdist.apipaises.soapws.generated.interfaces.country.ServiceStatus;
+import uteq.appdist.apipaises.soapws.generated.interfaces.province.ServiceStatus;
+import uteq.appdist.apipaises.soapws.generated.interfaces.province.AddProvinceRequest;
 import uteq.appdist.apipaises.soapws.generated.interfaces.province.AddProvinceResponse;
 import uteq.appdist.apipaises.soapws.generated.interfaces.province.GetProvinceByIdRequest;
 import uteq.appdist.apipaises.soapws.generated.interfaces.province.GetProvinceResponse;
@@ -62,6 +65,46 @@ public class ProvinceEndpoint {
 
         return response;
     }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "addProvinceRequest")
+    @ResponsePayload
+    public AddProvinceResponse saveCountry(@RequestPayload AddProvinceRequest request) {
+        AddProvinceResponse response = new AddProvinceResponse();
+        request.getProvince().setProvinceId(0);
+
+        Province target = new Province();
+        ServiceStatus serviceStatus = new ServiceStatus();
+
+        try {
+            uteq.appdist.apipaises.soapws.entities.province.Province provinceLocalModel = new uteq.appdist.apipaises.soapws.entities.province.Province();
+            BeanUtils.copyProperties(request.getProvince(), provinceLocalModel);
+
+            DBResponse dbResponse;
+
+            dbResponse = provinceService.saveProvince(provinceLocalModel,"");
+
+            if (dbResponse.getStatus() == 4) {
+                serviceStatus.setStatus("INCORRECTO");
+                serviceStatus.setMessage("ERROR AL INSERTAR EL REGISTRO");
+                target = null;
+            } else {
+                serviceStatus.setStatus("CORRECTO");
+                serviceStatus.setMessage("REGISTRO INSERTADO SATISFACTORIAMENTE");
+                provinceLocalModel.setProvinceId(dbResponse.getIdentif());
+                BeanUtils.copyProperties(provinceLocalModel, target);
+            }
+        } catch (Exception e) {
+            serviceStatus.setStatus("INCORRECTO");
+            serviceStatus.setMessage("ERROR AL INSERTAR EL REGISTRO");
+            target = null;
+        }
+
+        response.setProvince(target);
+        response.setServiceStatus(serviceStatus);
+
+        return response;
+    }
+
 
     // @PayloadRoot(namespace = NAMESPACE_URI, localPart = "addProvinceRequest")
     // @ResponsePayload

@@ -23,17 +23,18 @@ public interface ProvinceRepository extends JpaRepository<Province, Integer> {
     @Query(value = "select * from fnselectprovinces(:select_id)", nativeQuery = true)
     public Optional<Province> getProvinceById(int select_id);
 
-//     // Insert Province
-//     @Query()
-//     public DBResponse saveProvince(
-//             @Param("nam") String provinceName,
-//             @Param("flg") String provinceFlag,
-//             @Param("cap") String provinceCapital,
-//             @Param("calt") Float provinceAlt,
-//             @Param("clat") Float provinceLat,
-//             @Param("stt") String provinceState,
-//             @Param("ccd") String provinceCallCode,
-//             @Param("ctr") int countryId);
+    // Insert Province
+    @Query(value = "select * from fninsertcountry(:nam, :flg,:cap,cast(:calt as numeric),cast(:clat as numeric),:stt,:ccd,:ctr)", nativeQuery = true)
+    public DBResponse saveProvince(
+            @Param("nam") String provinceName,
+            @Param("flg") String provinceFlag,
+            @Param("cap") String provinceCapital,
+            @Param("calt") Float provinceAlt,
+            @Param("clat") Float provinceLat,
+            @Param("stt") String provinceState,
+            @Param("ccd") String provinceCallCode,
+            @Param("ctr") String countryId);
+
 
 
     // Edit Province
