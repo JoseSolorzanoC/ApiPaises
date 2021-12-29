@@ -27,26 +27,32 @@
 
     <xs:element name="getAllCountriesRequest" />
 
-    <xs:element name="getCountriesResponse">
+    <xs:element name="getAllCountriesResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element maxOccurs="unbounded" name="country" type="tns:country" />
+                <xs:element name="countries" type="tns:countries" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="getCountryResponse">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element maxOccurs="1" name="country" type="tns:country" />
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
+    <xs:complexType name="countries">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="country" type="tns:country" />
+        </xs:sequence>
+    </xs:complexType>
 
     <xs:element name="getCountryByIdRequest">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="countryId" type="xs:int" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCountryByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="1" name="country" type="tns:country" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
