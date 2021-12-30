@@ -33,6 +33,14 @@ public class ProvinceService {
 
     // }
 
+    public DBResponse saveProvince(Province province,String nameCountry) {
+        return provinceRepository.saveProvince(province.provinceName,
+                province.provinceFlag, province.provinceCapital, province.provinceAlt, province.provinceLat,
+                province.provinceState, province.provinceCallCode,
+                nameCountry);
+    }
+
+
     // Update Province
     public DBResponse editProvince(Province province) {
 
