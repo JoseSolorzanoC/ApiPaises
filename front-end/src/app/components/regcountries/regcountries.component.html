@@ -1,0 +1,75 @@
+<div class="direction">
+  <div>
+    <div class="title">
+      <h1>Register a country</h1>
+    </div>
+    <div class="div-general">
+      <form [formGroup]="form" (submit)="send()">
+        <fieldset>
+          <legend>Country</legend>
+          <div class="container-sm">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="countryname" placeholder="Italia">
+              <label for="floatingInput">Country name</label>
+            </div>
+            <div class="form-floating space">
+              <input type="text" class="form-control" id="englishname" placeholder="Italy">
+              <label for="floatingInput">English name</label>
+            </div>
+            <div class="form-floating space">
+              <input type="text" class="form-control" id="flag" placeholder="URL">
+              <label for="floatingInput">Flag (URL)</label>
+            </div>
+            <div class="form-floating space">
+              <input type="text" class="form-control" id="capital" placeholder="Roma">
+              <label for="floatingInput">Capital</label>
+            </div>
+          </div>
+        </fieldset>
+        <br>
+        <fieldset>
+          <legend>Coordinates</legend>
+          <div class="container-sm">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="latitude" placeholder="Italia">
+              <label for="floatingInput">Latitude</label>
+            </div>
+            <div class="form-floating space">
+              <input type="text" class="form-control" id="longitude" placeholder="Italy">
+              <label for="floatingInput">Longitude</label>
+            </div>
+          </div>
+        </fieldset>
+        <br>
+        <fieldset>
+          <legend>Country codes</legend>
+          <div class="container-sm">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="tld" placeholder="Italia">
+              <label for="floatingInput">TLD</label>
+            </div>
+            <div class="form-floating space">
+              <input type="text" class="form-control" id="iso3" placeholder="Italy">
+              <label for="floatingInput">ISO 3</label>
+            </div>
+            <div class="form-floating space">
+              <input type="text" class="form-control" id="iso2" placeholder="Italy">
+              <label for="floatingInput">ISO 2</label>
+            </div>
+            <div class="form-floating space">
+              <input type="text" class="form-control" id="fips" placeholder="Italy">
+              <label for="floatingInput">fips</label>
+            </div>
+            <div class="form-floating space">
+              <input type="text" class="form-control" id="ison" placeholder="Italy">
+              <label for="floatingInput">isoN</label>
+            </div>
+          </div>
+        </fieldset>
+        <div class="d-grid gap-1 d-md-block btn-position">
+          <input class="btn btn-success" value="Register" id="btn-register" />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

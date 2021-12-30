@@ -1,0 +1,200 @@
+$border: 1px solid #FFFFFF
+$widthmat-form-inp: 50%
+
+@mixin contents()
+    display: flex
+    justify-content: center
+    align-items: center
+    box-sizing: border-box
+
+@mixin labels()
+    color: #FFFFFF
+    width: 100%
+    font-weight: 400
+    text-align: left
+    float: left
+    font-size: 14px
+    color: #c9d1d9
+
+@mixin links()
+    float: right
+    text-decoration: none
+    font-size: 12px
+    color: #58a6ff
+    background-color: transparent
+    &:hover, &:active
+      outline-width: 0
+
+
+body
+  .gradient
+    position: fixed
+    width: 100%
+    height: 100vh
+    //background-image: linear-gradient(#CCFF33, #9EF01A, #70E000, #38B000, #008000, #007200, #006400, #004B23)
+    background-image: linear-gradient(45deg, #0D47A1, #90CAF9)
+    opacity: 0.7
+
+
+
+.div-general
+  height: 100vh
+  position: relative
+
+
+.div-general
+
+  .div-logo
+    @include contents()
+    height: 75px
+
+
+  span
+    border: $border
+    width: 45px
+    height: 45px
+    border-radius: 50%
+    background-color: #168AAD
+    border: 0 solid #168AAD
+    @include contents()
+
+  .div-name
+    @include contents()
+    height: 75px
+
+  .div-cont-form
+    @include contents()
+    text-align: center
+    width: 100%
+
+
+
+.div-logo .icon
+  width: 100%
+  height: 100%
+
+.div-name h1
+  font-size: 24px
+  font-weight: 300
+  letter-spacing: -0.5px
+  color: #000000
+  font-weight: 500
+
+
+
+.sig-in
+  background-color: #168AAD
+  border-color: rgba(240,246,252, .1)
+  color: #FFFFFF
+  width: 275px
+  margin-top: 15px
+  &:hover
+    background-color: #1A759F
+
+
+.card
+  width: auto
+  //background-color: #161b22
+  background-color: transparent
+  border: 0 solid #21262d
+  padding-bottom: 30px
+
+.width
+  width: $widthmat-form-inp
+
+
+.div-inputs
+  width: auto
+  box-sizing: border-box
+  height: auto
+
+
+
+.cont-user, .cont-pass
+  width: 275px
+  height: auto
+
+
+
+.cont-user
+  .user
+    @include labels()
+    color: #000000
+    font-weight: 500
+
+  .usermail
+    margin-top: 5px
+    margin-bottom: 15px
+    width: 250px
+    border-radius: 6px
+    font-size: 14px
+    line-height: 20px
+    vertical-align: middle
+    background-repeat: no-repeat
+    background-position: right 8px center
+    outline: none
+    height: 19px
+    color: #000000
+    padding: 5px 12px
+    border: 1px solid #c9d1d9
+    background-color: #c9d1d9
+
+
+.lbl-forgot
+  @include labels()
+
+
+
+.lbl-forgot
+  a
+    @include links()
+    color: #1E6091
+    font-weight: 500
+
+  .passw
+    margin-top: 5px
+    margin-bottom: 15px
+    width: 250px
+    border-radius: 6px
+    font-size: 14px
+    line-height: 20px
+    vertical-align: middle
+    background-repeat: no-repeat
+    background-position: right 8px center
+    outline: none
+    height: 19px
+    color: #000000
+    padding: 5px 12px
+    border: 1px solid #c9d1d9
+    background-color: #c9d1d9
+
+  .pass
+    font-weight: 500
+    color: #000000
+
+.div-create
+  width: 100%
+  height: 100px
+  margin-top: 15px
+  @include contents()
+
+.cont-account
+  width: 300px
+  height: 55px
+  //border: 1px solid #30363d
+  border-radius: 6px
+  color: #c9d1d9
+  @include contents()
+
+.cont-account
+  a
+    @include links()
+    color: #184E77
+    font-weight: 500
+
+  li
+    list-style: none
+    color: #000000
+    font-weight: 500
+
+

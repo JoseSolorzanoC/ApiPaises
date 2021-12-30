@@ -1,0 +1,42 @@
+@mixin contents()
+    display: flex
+    justify-content: center
+    align-items: center
+    box-sizing: border-box
+
+
+.direction
+  display: flex
+
+.routings
+  width: 100%
+  height: auto
+
+.nav-vertical
+  width: 300px
+  height: auto
+
+.title-api
+  width: 300px
+  height: 55px
+  border: 1px solid #c9d1d9
+  background-color: #2196F3
+  @include contents()
+
+.title-api
+  h1
+    font-size: 24px
+    color: #FFFFFF
+
+
+.accordion-body
+  .accordion-body
+    &:hover
+      cursor: pointer
+      background-color: #BBDEFB
+
+.accordion-body
+  .accordion-body
+    a
+      text-decoration: none
+      color: #000000

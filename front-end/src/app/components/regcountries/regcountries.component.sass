@@ -1,0 +1,51 @@
+@mixin display()
+  display: flex
+  align-items: center
+  justify-content: center
+  box-sizing: border-box
+
+
+
+.direction
+  display: flex
+
+.title
+  @include display()
+  width: 100%
+  height: auto
+  margin-top: 25px
+
+.title
+  h1
+
+
+.div-general
+  margin-top: 100px
+  margin-left: 15%
+  width: 70%
+  //@include display()
+
+
+.container-sm
+  display: flex
+
+
+
+.space
+  margin-left: 20px
+
+
+.btn-position
+  text-align: right
+  margin-top: 10px
+  margin-right: 10px
+
+
+
+@media screen and (max-width: 865px)
+  .container-sm
+    display: inline-block
+
+  .space
+    margin-left: auto
+    margin-top: 10px
