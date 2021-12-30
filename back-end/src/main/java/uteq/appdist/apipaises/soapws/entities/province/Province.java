@@ -8,11 +8,16 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ColumnDefault;
+import org.springframework.lang.Nullable;
+
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.Builder.Default;
 
 @Entity
 @Table(name = "tbprovinces")
@@ -40,10 +45,12 @@ public class Province {
     String provinceCapital;
 
     @Column(name = "coordinate_alt_province")
-    float provinceAlt;
+    @Nullable
+    Float provinceAlt;
 
     @Column(name = "coordinate_lat_province")
-    float provinceLat;
+    @Nullable
+    Float provinceLat;
 
     @Column(name = "callcode_province")
     String provinceCallCode;
@@ -51,7 +58,7 @@ public class Province {
     @Column(name = "state_province")
     String provinceState;
 
-    @Column(name = "tbcountries_countryid")
+    @Column(name = "countryid")
     int countryId;
 
 }

@@ -19,6 +19,9 @@ public interface CountryRepository extends JpaRepository<Country, Integer> {
     @Query(value = "select * from fnselectcountry_prueba(:select_id)", nativeQuery = true)
     public Optional<Country> getCountryById(int select_id);
 
+    @Query(value = "select * from tbcountries where iso2_country = :iso2", nativeQuery = true)
+    public Optional<Country> getCountryByIso2(String iso2);
+
     @Query(value = "select * from fninsertcountry(:nam, :flg,:cap,cast(:calt as numeric),cast(:clat as numeric),:stt,:ccd,:tld,:is3,:is2,:fps,:isn,:enm)", nativeQuery = true)
     public DBResponse saveCountry(
             @Param("nam") String countryName,

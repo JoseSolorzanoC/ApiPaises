@@ -1,8 +1,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://province.interfaces.generated.soapws.apipaises.appdist.uteq" targetNamespace="http://province.interfaces.generated.soapws.apipaises.appdist.uteq" elementFormDefault="qualified">
 
-    <xs:complexType name="province">
+    <xs:complexType name="provinceRequest">
         <xs:sequence>
-            <xs:element name="provinceId" type="xs:int" />
             <xs:element name="provinceName" type="xs:string" />
             <xs:element name="provinceFlag" type="xs:string" />
             <xs:element name="provinceCapital" type="xs:string" />
@@ -10,10 +9,27 @@
             <xs:element name="provinceLat" type="xs:float" />
             <xs:element name="provinceState" type="xs:string" />
             <xs:element name="provinceCallCode" type="xs:string" />
-            <xs:element name="countryId" type="xs:int" />
+            <xs:element name="iso2" type="xs:string" />
         </xs:sequence>
     </xs:complexType>
 
+
+    <xs:complexType name="provinceResponse">
+        <xs:sequence>
+            <xs:element name="provinceId" type="xs:int" nillable="true" />
+            <xs:element name="provinceName" type="xs:string" nillable="true" />
+            <xs:element name="provinceFlag" type="xs:string" nillable="true" />
+            <xs:element name="provinceCapital" type="xs:string" nillable="true"/>
+            <xs:element name="provinceAlt" type="xs:float" nillable="true"/>
+            <xs:element name="provinceLat" type="xs:float" nillable="true"/>
+            <xs:element name="provinceState" type="xs:string" nillable="true" />
+            <xs:element name="provinceCallCode" type="xs:string" nillable="true" />
+            <xs:element name="countryId" type="xs:int" nillable="true"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <!-- Service Status -->
     <xs:complexType name="serviceStatus">
         <xs:sequence>
             <xs:element name="status" type="xs:string" />
@@ -21,24 +37,26 @@
         </xs:sequence>
     </xs:complexType>
 
+    <!-- Request and Response -->
     <xs:element name="getAllProvincesRequest" />
 
-    <xs:element name="getProvincesResponse">
+    <xs:element name="getAllProvincesResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element maxOccurs="unbounded" name="province" type="tns:province" />
+                <xs:element  name="provinces" type="tns:provinces" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+    <!-- fin -->
 
-    <xs:element name="getProvinceResponse">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element maxOccurs="1" name="province" type="tns:province" />
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
+    <!-- Array de objetos -->
+    <xs:complexType name="provinces">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="province" type="tns:provinceResponse" />
+        </xs:sequence>
+    </xs:complexType>
 
+    <!-- Request para solicitar 1 provincia por el id -->
     <xs:element name="getProvinceByIdRequest">
         <xs:complexType>
             <xs:sequence>
@@ -47,39 +65,63 @@
         </xs:complexType>
     </xs:element>
 
-    <xs:element name="addProvinceRequest">
+    <!-- Response que obtiene 1 provincia -->
+    <xs:element name="getProvinceByIdResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="province" type="tns:province" />
+                <xs:element maxOccurs="1" name="province" type="tns:provinceResponse" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
+    <!-- Request para enviar un iso2 -->
+    <xs:element name="getCountryByIso2Request">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="countryIso2" type="xs:string" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Request para solicitar agregar una provincia -->
+    <xs:element name="addProvinceRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="province" type="tns:provinceRequest" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Response que devuelve si se agrego la provincia -->
     <xs:element name="addProvinceResponse">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="serviceStatus" type="tns:serviceStatus" />
-                <xs:element name="province" type="tns:province" />
+                <xs:element name="province" type="tns:provinceResponse" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
+    <!-- Request para solicitar actualizar una provincia -->
     <xs:element name="updateProvinceRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="province" type="tns:province" />
+                <xs:element name="province" type="tns:provinceRequest" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
+    <!-- Response que devuelve si se actualizó la provincia -->
     <xs:element name="updateProvinceResponse">
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="serviceStatus" type="tns:serviceStatus" />
+                <xs:element name="province" type="tns:provinceResponse" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
+    <!-- Request para solicitar eliminar una provincia -->
     <xs:element name="deleteProvinceRequest">
         <xs:complexType>
             <xs:sequence>
@@ -88,6 +130,7 @@
         </xs:complexType>
     </xs:element>
 
+    <!-- Response que devuelve si se eliminó la provincia -->
     <xs:element name="deleteProvinceResponse">
         <xs:complexType>
             <xs:sequence>

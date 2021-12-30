@@ -22,6 +22,10 @@ public class CountryService {
         return countryRepository.getCountryById(id);
     }
 
+    public Optional<Country> getCountryByIso2(String iso2) {
+        return countryRepository.getCountryByIso2(iso2);
+    }
+
     public ServiceResponse saveCountry(Country country) {
         ServiceResponse serviceResponse = new ServiceResponse();
         serviceResponse.setStatus(-1);
