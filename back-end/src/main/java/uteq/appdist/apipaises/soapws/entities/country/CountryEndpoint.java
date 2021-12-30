@@ -1,6 +1,11 @@
 package uteq.appdist.apipaises.soapws.entities.country;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.BeanWrapper;
+import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -15,7 +20,8 @@ import uteq.appdist.apipaises.soapws.generated.interfaces.country.GetAllCountrie
 import uteq.appdist.apipaises.soapws.generated.interfaces.country.GetCountryByIdRequest;
 import uteq.appdist.apipaises.soapws.generated.interfaces.country.GetCountryByIdResponse;
 import uteq.appdist.apipaises.soapws.generated.interfaces.country.ServiceStatus;
-
+import uteq.appdist.apipaises.soapws.generated.interfaces.country.UpdateCountryRequest;
+import uteq.appdist.apipaises.soapws.generated.interfaces.country.UpdateCountryResponse;
 import uteq.appdist.apipaises.soapws.shared.ServiceResponse;
 
 @Endpoint
@@ -93,5 +99,52 @@ public class CountryEndpoint {
         response.setServiceStatus(serviceStatus);
 
         return response;
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "updateCountryRequest")
+    @ResponsePayload
+    public UpdateCountryResponse saveCountry(@RequestPayload UpdateCountryRequest request) {
+        UpdateCountryResponse response = new UpdateCountryResponse();
+        ServiceResponse serviceResponse;
+
+        Country target = new Country();
+        ServiceStatus serviceStatus = new ServiceStatus();
+
+        uteq.appdist.apipaises.soapws.entities.country.Country countryLocalModel = new uteq.appdist.apipaises.soapws.entities.country.Country();
+        BeanUtils.copyProperties(request.getCountry(), countryLocalModel, getNullPropertyNames(request.getCountry()));
+
+        serviceResponse = countryService.updateCountry(countryLocalModel);
+
+        if (serviceResponse.getStatus() == -1) {
+            serviceStatus.setStatus("ERROR");
+            target = null;
+        } else {
+            serviceStatus.setStatus("SUCCESS");
+            countryLocalModel.setCountryId(serviceResponse.getIdentif());
+            BeanUtils.copyProperties(countryLocalModel, target, getNullPropertyNames(request.getCountry()));
+        }
+
+        serviceStatus.setMessage(serviceResponse.getAdditionalMessage());
+
+        response.setCountry(target);
+        response.setServiceStatus(serviceStatus);
+
+        return response;
+    }
+
+    // Para Copiar propiedades con valores nulos
+    public static String[] getNullPropertyNames(Object source) {
+        final BeanWrapper src = new BeanWrapperImpl(source);
+        java.beans.PropertyDescriptor[] pds = src.getPropertyDescriptors();
+
+        Set<String> emptyNames = new HashSet<String>();
+        for (java.beans.PropertyDescriptor pd : pds) {
+            Object srcValue = src.getPropertyValue(pd.getName());
+            if (srcValue == null)
+                emptyNames.add(pd.getName());
+        }
+
+        String[] result = new String[emptyNames.size()];
+        return emptyNames.toArray(result);
     }
 }

@@ -35,12 +35,29 @@ public interface CountryRepository extends JpaRepository<Country, Integer> {
             @Param("isn") String countryIson,
             @Param("enm") String countryEnglishName);
 
-    @Query(value = "select * from tbcountries where name_country = :name", nativeQuery = true)
-    public Optional<Country> getCountryByName(String name);
+    @Query(value = "select * from tbcountries where name_country = :name and (:cid = 0 or countryid != :cid)", nativeQuery = true)
+    public Optional<Country> getCountryByName(String name, int cid);
 
-    @Query(value = "select count(*) from tbcountries where tld_country = :tld or iso3_country = :iso3 or iso2_country = :iso2 or fips_country = :fips or ison_country = :ison", nativeQuery = true)
-    public int getCountryByCodes(String tld, String iso3, String iso2, String fips, String ison);
+    @Query(value = "select count(*) from tbcountries where tld_country = :tld or iso3_country = :iso3 or iso2_country = :iso2 or fips_country = :fips or ison_country = :ison and (:cid = 0 or countryid != :cid)", nativeQuery = true)
+    public int getCountryByCodes(String tld, String iso3, String iso2, String fips, String ison, int cid);
 
-    @Query(value = "select * from tbcountries where callcode_country = :callCode", nativeQuery = true)
-    public Optional<Country> getCountryByCallCode(String callCode);
+    @Query(value = "select * from tbcountries where callcode_country = :callCode and (:cid = 0 or countryid != :cid)", nativeQuery = true)
+    public Optional<Country> getCountryByCallCode(String callCode, int cid);
+
+    @Query(value = "select * from fnupdatecountry(:cid,:nam, :flg,:cap,cast(:calt as numeric),cast(:clat as numeric),:stt,:ccd,:tld,:is3,:is2,:fps,:isn,:enm)", nativeQuery = true)
+    public DBResponse updateCountry(
+            @Param("cid") int countryId,
+            @Param("nam") String countryName,
+            @Param("flg") String countryFlag,
+            @Param("cap") String countryCapital,
+            @Param("calt") float countryAlt,
+            @Param("clat") float countryLat,
+            @Param("stt") String countryState,
+            @Param("ccd") String countryCallCode,
+            @Param("tld") String countryTld,
+            @Param("is3") String countryIso3,
+            @Param("is2") String countryIso2,
+            @Param("fps") String countryFips,
+            @Param("isn") String countryIson,
+            @Param("enm") String countryEnglishName);
 }
