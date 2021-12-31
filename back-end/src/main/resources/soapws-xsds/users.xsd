@@ -1,0 +1,54 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://user.interfaces.generated.soapws.apipaises.appdist.uteq" targetNamespace="http://user.interfaces.generated.soapws.apipaises.appdist.uteq" elementFormDefault="qualified">
+
+    <xs:complexType name="userRequest">
+        <xs:sequence>
+            <xs:element name="firstName" type="xs:string" />
+            <xs:element name="secondName" type="xs:string" />
+            <xs:element name="email" type="xs:string" />
+            <xs:element name="phone" type="xs:string" />
+            <xs:element name="userName" type="xs:string" />
+            <xs:element name="password" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="userResponse">
+        <xs:sequence>
+            <xs:element name="firstName" type="xs:string" />
+            <xs:element name="secondName" type="xs:string" />
+            <xs:element name="email" type="xs:string" />
+            <xs:element name="phone" type="xs:string" />
+            <xs:element name="userName" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Request para registrar usuario -->
+    <xs:element name="registerUserRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="user" type="tns:userRequest" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Response para registrar usuario  -->
+    <xs:element name="registerUserResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus" />
+                <xs:element name="user" type="tns:userResponse" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Service Status -->
+    <xs:complexType name="serviceStatus">
+        <xs:sequence>
+            <xs:element name="status" type="xs:string" />
+            <xs:element name="message" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+
+
+
+
+</xs:schema>

@@ -43,7 +43,7 @@ public class ProvinceService {
         DBResponse dbResponse;
 
         // Validación de que no exista un una provincia con el mismo nombre a registrar
-        if (provinceRepository.getProvinceByName(province.getProvinceName(), country.get().getCountryId()).isPresent()) {
+        if (provinceRepository.getProvinceByName(province.getProvinceName(), country.get().getCountryId()).size()>0) {
             serviceResponse.setAdditionalMessage("Ya existe una Provincia con el nombre ingresado");
             return serviceResponse;
         }
@@ -80,43 +80,52 @@ public class ProvinceService {
         return serviceResponse;
     }
 
-    // public DBResponse saveProvince(Province province,String nameCountry) {
-    //     return provinceRepository.saveProvince(province.provinceName,
-    //             province.provinceFlag, province.provinceCapital, province.provinceAlt, province.provinceLat,
-    //             province.provinceState, province.provinceCallCode,
-    //             nameCountry);
-    // }
-
-
-    // // Get One Province
-    // public Optional<Province> getProvinceById(int id) {
-    //     return provinceRepository.getProvinceById(id);
-    // }
-
-    // // //Insert Province
-    // // public DBResponse addProvince(Province province){
-
-    // // return provinceRepository.saveProvince(province.provinceName,
-    // // province.provinceFlag,province.provinceCapital,province.provinceAlt,province.provinceLat,
-    // // province.provinceState,province.provinceCallCode, province.countryId);
-
-    // // }
+    public ServiceResponse updateProvince(Province province,String iso2) {
+        ServiceResponse serviceResponse = new ServiceResponse();
+        serviceResponse.setStatus(-1);
 
     
 
+        Optional<Country> country= countryRepository.getCountryByIso2(iso2);
 
-    // // Update Province
-    // public DBResponse editProvince(Province province) {
+        DBResponse dbResponse;
 
-    //     return provinceRepository.editProvince(province);
+        // Validación de que no exista un una provincia con el mismo nombre a registrar
+        if (provinceRepository.getProvinceByName(province.getProvinceName(), country.get().getCountryId()).size()>0) {
+            serviceResponse.setAdditionalMessage("Ya existe una Provincia con el nombre ingresado");
+            return serviceResponse;
+        }
 
-    // }
+        // Validación de que no exista una provincia con el código de llamada a registrar
+        if (provinceRepository.getProvinceByCallCode(province.getProvinceCallCode(), country.get().getCountryId()).size()>0) {
+            serviceResponse.setAdditionalMessage("Ya existe una provincia con el código de llamada ingresado");
+            return serviceResponse;
+        }
 
-    // // Delete Province
-    // public DBResponse delProvince(int provinceId) {
+        try {
+            dbResponse = provinceRepository.updateProvince(province.getProvinceId(),province.getProvinceName(),
+                    province.getProvinceFlag(), province.getProvinceCapital(), province.getProvinceAlt(),
+                    province.getProvinceLat(),province.getProvinceState(),province.getProvinceCallCode(),
+                    iso2);
+        } catch (Exception e) {
+            serviceResponse
+                    .setAdditionalMessage(
+                            String.format("Error al realizar el registro. Error Message => %s", e.getMessage()));
+            return serviceResponse;
+        }
 
-    //     return provinceRepository.delProvince(provinceId);
+        if (dbResponse.getStatus() != 2) {
+            serviceResponse
+                    .setAdditionalMessage(
+                            "Ocurrió un error inesperado al intentar registrar la provincia. Inténtelo nuevamente más tarde");
+            return serviceResponse;
+        }
 
-    // }
+        serviceResponse.setIdentif(dbResponse.getIdentif());
+        serviceResponse.setStatus(0);
+        serviceResponse.setAdditionalMessage("Actualización exitosa");
+
+        return serviceResponse;
+    }
 
 }

@@ -22,6 +22,8 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 import uteq.appdist.apipaises.soapws.shared.DBResponse;
 import uteq.appdist.apipaises.soapws.shared.ServiceResponse;
 import uteq.appdist.apipaises.soapws.generated.interfaces.province.ServiceStatus;
+import uteq.appdist.apipaises.soapws.generated.interfaces.province.UpdateProvinceRequest;
+import uteq.appdist.apipaises.soapws.generated.interfaces.province.UpdateProvinceResponse;
 import uteq.appdist.apipaises.soapws.generated.interfaces.province.AddProvinceRequest;
 import uteq.appdist.apipaises.soapws.generated.interfaces.province.AddProvinceResponse;
 import uteq.appdist.apipaises.soapws.generated.interfaces.province.GetAllProvincesResponse;
@@ -96,7 +98,7 @@ public class ProvinceEndpoint {
 
 @PayloadRoot(namespace = NAMESPACE_URI, localPart = "addProvinceRequest")
 @ResponsePayload
-public AddProvinceResponse saveCountry(@RequestPayload AddProvinceRequest request) {
+public AddProvinceResponse saveProvince(@RequestPayload AddProvinceRequest request) {
     AddProvinceResponse response = new AddProvinceResponse();
     ServiceResponse serviceResponse;
     request.getProvince();
@@ -126,110 +128,36 @@ public AddProvinceResponse saveCountry(@RequestPayload AddProvinceRequest reques
     return response;
 }
 
+@PayloadRoot(namespace = NAMESPACE_URI, localPart = "updateProvinceRequest")
+@ResponsePayload
+public UpdateProvinceResponse updateCountry(@RequestPayload UpdateProvinceRequest request) {
+    UpdateProvinceResponse response = new UpdateProvinceResponse();
+    ServiceResponse serviceResponse;
+    request.getProvince();
 
-    // @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllProvincesRequest")
-    // @ResponsePayload
-    // public GetProvincesResponse getAllProvinces() {
-    //     GetProvincesResponse response = new GetProvincesResponse();
+    ProvinceResponse target = new ProvinceResponse();
+    ServiceStatus serviceStatus = new ServiceStatus();
 
-    //     for (uteq.appdist.apipaises.soapws.entities.province.Province source : provinceService.getAllProvinces()) {
-    //         Province target = new Province();
-    //         BeanUtils.copyProperties(source, target);
+    uteq.appdist.apipaises.soapws.entities.province.Province provinceLocalModel = new uteq.appdist.apipaises.soapws.entities.province.Province();
+    BeanUtils.copyProperties(request.getProvince(), provinceLocalModel);
 
-    //         response.getProvince().add(target);
-    //     }
+    serviceResponse = provinceService.updateProvince(provinceLocalModel,request.getProvince().getIso2());
 
-    //     return response;
-    // }
+    if (serviceResponse.getStatus() == -1) {
+        serviceStatus.setStatus("ERROR");
+        target = null;
+    } else {
+        serviceStatus.setStatus("SUCCESS");
+        provinceLocalModel.setProvinceId(serviceResponse.getIdentif());
+        BeanUtils.copyProperties(provinceLocalModel, target);
+    }
 
-    // @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getProvinceByIdRequest")
-    // @ResponsePayload
-    // public GetProvinceResponse getProvinceById(@RequestPayload GetProvinceByIdRequest request) {
-    //     GetProvinceResponse response = new GetProvinceResponse();
+    serviceStatus.setMessage(serviceResponse.getAdditionalMessage());
 
-    //     Province target = new Province();
+    response.setProvince(target);
+    response.setServiceStatus(serviceStatus);
 
-    //     if (provinceService.getProvinceById(request.getProvinceId()).isPresent()) {
-
-    //         BeanUtils.copyProperties(provinceService.getProvinceById(request.getProvinceId()).get(), target);
-
-    //     }
-
-    //     return response;
-    // }
-
-    // @PayloadRoot(namespace = NAMESPACE_URI, localPart = "addProvinceRequest")
-    // @ResponsePayload
-    // public AddProvinceResponse saveProvince(@RequestPayload AddProvinceRequest request) {
-    //     AddProvinceResponse response = new AddProvinceResponse();
-    //     request.getProvince().setProvinceId(0);
-
-    //     Province target = new Province();
-    //     ServiceStatus serviceStatus = new ServiceStatus();
-
-    //     try {
-    //         uteq.appdist.apipaises.soapws.entities.province.Province provinceLocalModel = new uteq.appdist.apipaises.soapws.entities.province.Province();
-    //         BeanUtils.copyProperties(request.getProvince(), provinceLocalModel);
-
-    //         DBResponse dbResponse;
-
-    //         dbResponse = provinceService.saveProvince(provinceLocalModel,"");
-
-    //         if (dbResponse.getStatus() == 4) {
-    //             serviceStatus.setStatus("INCORRECTO");
-    //             serviceStatus.setMessage("ERROR AL INSERTAR EL REGISTRO");
-    //             target = null;
-    //         } else {
-    //             serviceStatus.setStatus("CORRECTO");
-    //             serviceStatus.setMessage("REGISTRO INSERTADO SATISFACTORIAMENTE");
-    //             provinceLocalModel.setProvinceId(dbResponse.getIdentif());
-    //             BeanUtils.copyProperties(provinceLocalModel, target);
-    //         }
-    //     } catch (Exception e) {
-    //         serviceStatus.setStatus("INCORRECTO");
-    //         serviceStatus.setMessage("ERROR AL INSERTAR EL REGISTRO");
-    //         target = null;
-    //     }
-
-    //     response.setProvince(target);
-    //     response.setServiceStatus(serviceStatus);
-
-    //     return response;
-    // }
-
-
-    // @PayloadRoot(namespace = NAMESPACE_URI, localPart = "addProvinceRequest")
-    // @ResponsePayload
-    // public DBResponse
-    // addProvinceRequest(uteq.appdist.apipaises.soapws.entities.province.Province
-    // province) {
-    // DBResponse response = new DBResponse();
-
-    // response = provinceService.addProvince(province);
-
-    // return response;
-    // }
-
-    // @PayloadRoot(namespace = NAMESPACE_URI, localPart = "editProvinceRequest")
-    // @ResponsePayload
-    // public DBResponse
-    // editProvinceRequest(uteq.appdist.apipaises.soapws.entities.province.Province
-    // province) {
-    // DBResponse response = new DBResponse();
-
-    // response = provinceService.editProvince(province);
-
-    // return response;
-    // }
-
-    // @PayloadRoot(namespace = NAMESPACE_URI, localPart = "delProvinceRequest")
-    // @ResponsePayload
-    // public DBResponse delProvinceRequest(int provinceId) {
-    // DBResponse response = new DBResponse();
-
-    // response = provinceService.delProvince(provinceId);
-
-    // return response;
-    // }
+    return response;
+}
 
 }

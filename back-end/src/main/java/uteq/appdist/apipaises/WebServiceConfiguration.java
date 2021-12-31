@@ -56,4 +56,23 @@ public class WebServiceConfiguration extends WsConfigurerAdapter {
     public XsdSchema provinceSchema() {
         return new SimpleXsdSchema(new ClassPathResource("./soapws-xsds/province.xsd"));
     }
+
+
+    //Usuarios
+    @Bean(name = "users")
+    public DefaultWsdl11Definition defaultUserWsdl11Definition(XsdSchema userSchema) {
+        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+        wsdl11Definition.setPortTypeName("usersPort");
+        wsdl11Definition.setLocationUri("/ws/user");
+        wsdl11Definition.setTargetNamespace("http://user.interfaces.generated.soapws.apipaises.appdist.uteq");
+        wsdl11Definition.setSchema(userSchema);
+        return wsdl11Definition;
+    }
+
+    @Bean
+    public XsdSchema userSchema() {
+        return new SimpleXsdSchema(new ClassPathResource("./soapws-xsds/users.xsd"));
+    }
+
+    
 }

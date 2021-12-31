@@ -95,6 +95,7 @@
 					<sources>
 						<source>${project.basedir}/src/main/resources/soapws-xsds/country.xsd</source>
 						<source>${project.basedir}/src/main/resources/soapws-xsds/province.xsd</source>
+						<source>${project.basedir}/src/main/resources/soapws-xsds/users.xsd</source>
 					</sources>
 				</configuration>
 			</plugin>

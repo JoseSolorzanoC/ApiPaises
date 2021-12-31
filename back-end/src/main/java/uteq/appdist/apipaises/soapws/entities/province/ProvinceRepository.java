@@ -25,7 +25,7 @@ public interface ProvinceRepository extends JpaRepository<Province, Integer> {
 
      //Select all Name by Province
      @Query(value = "select * from tbprovinces where name_province = :name and countryid = :cid", nativeQuery = true)
-    public Optional<Province> getProvinceByName(String name, int cid);
+    public List<Province> getProvinceByName(String name, int cid);
 
    //Select all Province by CallCode
     @Query(value = "select * from tbprovinces where callcode_province = :callCode and countryid = :cid", nativeQuery = true)
@@ -43,26 +43,20 @@ public interface ProvinceRepository extends JpaRepository<Province, Integer> {
             @Param("clat") Float provinceLat,
             @Param("stt") String provinceState,
             @Param("ccd") String provinceCallCode,
-            @Param("iso2") String countryId);
-
-
- 
+            @Param("iso2") String countryIso2);
 
 
 
-//     //Select One Province
-//     @Query(value = "select * from fnselectprovinces(:select_id)", nativeQuery = true)
-//     public Optional<Province> getProvinceById(int select_id);
-
-
-
-
-//     // Edit Province
-//     @Procedure("fnupdateprovince")
-//     DBResponse editProvince(Province province);
-
-//     // Delete Province
-//     @Procedure("fndeleteprovince")
-//     DBResponse delProvince(int id);
-
+    // Update Province
+    @Query(value = "select * from fnupdateprovince(:pid,:nam, :flg,:cap,cast(:calt as numeric),cast(:clat as numeric),:stt,:ccd,:iso2)", nativeQuery = true)
+    public DBResponse updateProvince(
+        @Param("pid") int provinceId,
+        @Param("nam") String provinceName,
+        @Param("flg") String provinceFlag,
+        @Param("cap") String provinceCapital,
+        @Param("calt") Float provinceAlt,
+        @Param("clat") Float provinceLat,
+        @Param("stt") String provinceState,
+        @Param("ccd") String provinceCallCode,
+        @Param("iso2") String countryIso2);
 }

@@ -13,6 +13,20 @@
         </xs:sequence>
     </xs:complexType>
 
+    <xs:complexType name="provinceUpdateRequest">
+        <xs:sequence>
+            <xs:element name="provinceId" type="xs:int" />
+            <xs:element name="provinceName" type="xs:string" />
+            <xs:element name="provinceFlag" type="xs:string" />
+            <xs:element name="provinceCapital" type="xs:string" />
+            <xs:element name="provinceAlt" type="xs:float" />
+            <xs:element name="provinceLat" type="xs:float" />
+            <xs:element name="provinceState" type="xs:string" />
+            <xs:element name="provinceCallCode" type="xs:string" />
+            <xs:element name="iso2" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+
 
     <xs:complexType name="provinceResponse">
         <xs:sequence>
@@ -106,7 +120,7 @@
     <xs:element name="updateProvinceRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="province" type="tns:provinceRequest" />
+                <xs:element name="province" type="tns:provinceUpdateRequest" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
