@@ -1,6 +1,11 @@
 package uteq.appdist.apipaises.restapi.entities.apis;
 
+import uteq.appdist.apipaises.restapi.entities.models.ProvincesModel;
+import uteq.appdist.apipaises.restapi.entities.models.countriesModel;
 import uteq.appdist.apipaises.restapi.entities.repository.*;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,10 +22,10 @@ public class ProvincesApi {
     ProvincesApi R ;
 
 
-    @GetMapping ("/listProvinces") 
-    public String NameProvinces( @RequestParam(value= "name", defaultValue = "usuario") String name) {
-            return R.findAll().toString();
-	}
+    /*@GetMapping ("/listProvinces") 
+    public List<ProvincesModel>Provinces( @RequestParam(value= "name", defaultValue = "usuario") String name) {
+            return R.;
+	}*/
 
     @GetMapping ("/capitalProvince") 
     public String province( @RequestParam(value= "Province", defaultValue = "usuario") String Province) {

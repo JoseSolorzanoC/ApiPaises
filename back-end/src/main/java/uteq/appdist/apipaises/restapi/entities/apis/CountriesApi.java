@@ -2,6 +2,7 @@ package uteq.appdist.apipaises.restapi.entities.apis;
 
 import java.util.List;
 
+import uteq.appdist.apipaises.restapi.entities.models.countriesModel;
 import uteq.appdist.apipaises.restapi.entities.services.*;
 
 
@@ -21,8 +22,8 @@ public class CountriesApi {
     @Autowired
     CountriesService Servi;
     @GetMapping ("/findAll") 
-    public ResponseEntity<List<CountriesApi>> findAll() {
-          List<CountriesApi> P=Servi.findAll();
+    public ResponseEntity<List<countriesModel>> findAll() {
+          List<countriesModel> P=Servi.findAll();
           if (P != null) {
             return ResponseEntity.ok(P);
         } else {
