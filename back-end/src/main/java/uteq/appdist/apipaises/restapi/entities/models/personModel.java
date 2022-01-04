@@ -6,13 +6,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Data;
 
 @Data
-@Document(collation ="person" )
+@Document(value ="person" )
 public class personModel {
     @Id
-    private int idperson;
-    private String firtname;
-    private String secondname;
-    private String email;
-    private String phone;
-
+    private String personid;
+    private String firstname_person;
+    private String secondname_person;
+    private String email_person;
+    private String phone_person;
+    
 }

@@ -11,14 +11,16 @@ import lombok.Data;
 public class ProvincesModel {
     
     @Id
-    private int id;
-    private String name;
-    private String englishName;
-    private String flag;
-    private String capitalProvinces;
-    private String [] coordinates;
-    private String CallCode;
-    private char state_province;
-    private int idcountries;;
+    private Long provinceid;
+    private Long countryid;
+    private String name_province;
+    private String capital_province;
+    private String flag_province;
+    private String callcode_province;
+    private String coordinate_alt;
+    private String coordinate_lat;
+    private String state_province;
+
+
 
 }

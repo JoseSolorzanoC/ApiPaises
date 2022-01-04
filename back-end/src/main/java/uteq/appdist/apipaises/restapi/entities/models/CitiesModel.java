@@ -7,17 +7,18 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Data;
 
 @Data
-@Document(collation ="Cities" )
+@Document(value ="cities" )
 public class CitiesModel {
     @Id
-    private int id;
-    private String name;
-    private String englishName;
-    private String flag;
-    private String [] coordinates;
-    private String CallCode;
-    private char state_city;
-    private int idprovinces;
+    private Long cityid;
+    private Long provinceid;
+    private String name_city;
+    private String cabecera_city;
+    private String flag_city;
+    private String callcode_city;
+    private String coordinate_alt;
+    private String coordinate_lat;
+    private String state_city;
 
 
 
