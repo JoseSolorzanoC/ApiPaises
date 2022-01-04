@@ -4,6 +4,7 @@ import java.util.List;
 
 import uteq.appdist.apipaises.restapi.entities.models.countriesModel;
 
+import org.bson.conversions.Bson;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;

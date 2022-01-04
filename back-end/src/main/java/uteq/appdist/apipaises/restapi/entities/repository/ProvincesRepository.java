@@ -9,7 +9,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 
 @RepositoryRestResource (collectionResourceRel = "Reproprovinces", path = "Reproprovinces")
-public interface ProvincesRepository extends MongoRepository<ProvincesModel,String>{
+public interface ProvincesRepository extends MongoRepository<ProvincesModel,Long>{
     
-      String findByname(@Param("name") String name);
+
 }

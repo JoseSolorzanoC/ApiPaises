@@ -21,7 +21,8 @@ public class CountriesApi {
     
     @Autowired
     CountriesService Servi;
-    @GetMapping ("/findAll") 
+
+    @GetMapping
     public ResponseEntity<List<countriesModel>> findAll() {
           List<countriesModel> P=Servi.findAll();
           if (P != null) {

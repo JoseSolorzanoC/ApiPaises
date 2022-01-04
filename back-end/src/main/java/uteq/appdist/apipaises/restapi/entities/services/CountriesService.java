@@ -3,6 +3,8 @@ package uteq.appdist.apipaises.restapi.entities.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.swing.text.html.parser.Entity;
+
 import uteq.appdist.apipaises.restapi.entities.models.countriesModel;
 import uteq.appdist.apipaises.restapi.entities.repository.CountriesRepository;
 
@@ -19,7 +21,8 @@ public class CountriesService {
     countriesModel    Model;
 
     public List<countriesModel> findAll(){
-
+          
+        
         return R.findAll();
     }
     
