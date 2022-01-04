@@ -6,11 +6,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Data;
 
 @Data
-@Document(collation ="usertype" )
+@Document(value ="usertype" )
 public class UserType {
     @Id
-    private int idusertype;
+    private String usertypeid;
     private String usertype;
-    private int userid;
+    private String createby_userid;
     
 }
