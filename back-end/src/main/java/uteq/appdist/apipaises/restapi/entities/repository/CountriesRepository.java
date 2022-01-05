@@ -1,5 +1,6 @@
 package uteq.appdist.apipaises.restapi.entities.repository;
 
+import java.io.Serializable;
 import java.util.List;
 
 import uteq.appdist.apipaises.restapi.entities.models.countriesModel;
@@ -11,9 +12,9 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.http.ResponseEntity;
 
 @RepositoryRestResource(collectionResourceRel = "CountriesRepository", path = "CountriesRepository")
-public interface CountriesRepository  extends MongoRepository<countriesModel,Long>{
+public interface CountriesRepository  extends MongoRepository<countriesModel,Serializable>{
 
-    String findByname(@Param("name") String name);
+    countriesModel findByname(@Param("name") String name);
     String findByenglishName(@Param("englishName") String englishName);
     String findBycapital(@Param("capital") String capital);
     String findBylatitude(@Param("latitude") Double latitude);
