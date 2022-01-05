@@ -26,7 +26,7 @@ public class CountriesService {
         return R.findAll();
     }
     
-    public String findByname(String name){
+    public countriesModel findByname(String name){
         return R.findByname(name);
     }
 

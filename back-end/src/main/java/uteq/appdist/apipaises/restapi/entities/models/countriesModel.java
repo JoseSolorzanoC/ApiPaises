@@ -17,7 +17,7 @@ import lombok.Data;
 
 @Data 
 @Document(value ="countries")
-public class countriesModel {
+public class countriesModel implements Serializable {
     @Id
     @NotNull
     private Long id;
