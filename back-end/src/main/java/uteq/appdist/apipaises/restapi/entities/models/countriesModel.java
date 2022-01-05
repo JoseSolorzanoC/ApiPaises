@@ -4,6 +4,8 @@ import java.security.cert.Extension;
 import java.sql.Array;
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -17,6 +19,7 @@ import lombok.Data;
 @Document(value ="countries")
 public class countriesModel {
     @Id
+    @NotNull
     private Long id;
     private String name;
     private String englishName;
