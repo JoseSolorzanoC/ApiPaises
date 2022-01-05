@@ -1,0 +1,74 @@
+@mixin display()
+  display: flex
+  align-items: center
+  justify-content: center
+  box-sizing: border-box
+
+
+
+.direction
+  display: flex
+
+.title
+  @include display()
+  width: 100%
+  height: auto
+  margin-top: 25px
+
+.title
+  h1
+
+
+.div-general
+  margin-top: 100px
+  margin-left: 5%
+  width: 90%
+
+
+
+form
+  @include display()
+
+
+.container-sm
+  .form-floating
+    @include display()
+    width: 50%
+    margin-right: auto
+    margin-left: auto
+
+
+
+.mb-3
+   .btn-success
+     margin-left: 10px
+
+
+.div-table
+  width: 100%
+
+
+
+@media screen and (max-width: 1030px)
+  .container-sm
+    .form-floating
+      display: block
+      margin-left: auto
+      margin-right: auto
+
+  .mb-3
+   .btn-success
+     margin-left: auto
+     width: 100%
+     margin-top: 10px
+
+  .table-dark
+    tr
+      th
+        display: grid
+        grid-template-columns: 50px
+        grid-template-rows: 50px
+      &:nth-last-child(1)
+        grid-column-start: 1
+        grid-column-end: 4
+

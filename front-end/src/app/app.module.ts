@@ -26,7 +26,7 @@ import { RegcountriesComponent } from './components/regcountries/regcountries.co
 import { NavhorizontalComponent } from './components/navhorizontal/navhorizontal.component';
 import { NavverticalComponent } from './components/navvertical/navvertical.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
-
+import { ListcountriesComponent } from './components/listcountries/listcountries.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,8 @@ import { HomepageComponent } from './components/homepage/homepage.component';
     RegcountriesComponent,
     NavhorizontalComponent,
     NavverticalComponent,
-    HomepageComponent],
+    HomepageComponent,
+    ListcountriesComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

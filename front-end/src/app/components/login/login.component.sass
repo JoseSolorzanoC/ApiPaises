@@ -27,6 +27,10 @@ $widthmat-form-inp: 50%
 
 
 body
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+
+
+body
   .gradient
     position: fixed
     width: 100%
@@ -51,12 +55,17 @@ body
 
   span
     border: $border
-    width: 45px
-    height: 45px
+    width: 75px
+    height: 75px
     border-radius: 50%
-    background-color: #168AAD
+    background-color: transparent
     border: 0 solid #168AAD
     @include contents()
+
+  span
+    img
+      width: 70px
+      height: 70px
 
   .div-name
     @include contents()
@@ -78,7 +87,7 @@ body
   font-weight: 300
   letter-spacing: -0.5px
   color: #000000
-  font-weight: 500
+  font-weight: bold
 
 
 
@@ -120,12 +129,12 @@ body
   .user
     @include labels()
     color: #000000
-    font-weight: 500
+    font-weight: bold
 
   .usermail
     margin-top: 5px
     margin-bottom: 15px
-    width: 250px
+    width: 275px
     border-radius: 6px
     font-size: 14px
     line-height: 20px
@@ -133,7 +142,7 @@ body
     background-repeat: no-repeat
     background-position: right 8px center
     outline: none
-    height: 19px
+    height: 32px
     color: #000000
     padding: 5px 12px
     border: 1px solid #c9d1d9
@@ -149,12 +158,12 @@ body
   a
     @include links()
     color: #1E6091
-    font-weight: 500
+    font-weight: bold
 
   .passw
     margin-top: 5px
     margin-bottom: 15px
-    width: 250px
+    width: 275px
     border-radius: 6px
     font-size: 14px
     line-height: 20px
@@ -162,14 +171,14 @@ body
     background-repeat: no-repeat
     background-position: right 8px center
     outline: none
-    height: 19px
+    height: 32px
     color: #000000
     padding: 5px 12px
     border: 1px solid #c9d1d9
     background-color: #c9d1d9
 
   .pass
-    font-weight: 500
+    font-weight: bold
     color: #000000
 
 .div-create
@@ -190,11 +199,11 @@ body
   a
     @include links()
     color: #184E77
-    font-weight: 500
+    font-weight: bold
 
   li
     list-style: none
     color: #000000
-    font-weight: 500
+    font-weight: bold
 
 
