@@ -9,7 +9,18 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import lombok.Data;
 
-@Data
+import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Document(value ="cities" )
 public class CitiesModel {
     @Id

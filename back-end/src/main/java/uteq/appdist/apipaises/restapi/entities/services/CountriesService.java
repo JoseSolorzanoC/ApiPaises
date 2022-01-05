@@ -26,7 +26,7 @@ public class CountriesService {
         return R.findAll();
     }
     
-    public countriesModel findByname(String name){
+    public String findByname(String name){
         return R.findByname(name);
     }
 
@@ -39,14 +39,13 @@ public class CountriesService {
         return R.findByenglishName(englishName);
     }
     
-
-    
-
     public String findlatudeandlongitude(Double latitude, Double longitude){
         String Rlatitude=R.findBylatitude(latitude);
         String Rlongitude=R.findBylongitude(longitude);
         
+        
         return Rlatitude+ "\n" +Rlongitude;
+        
     }
     
     public countriesModel save(countriesModel entity){

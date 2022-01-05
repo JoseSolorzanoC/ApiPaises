@@ -1,12 +1,15 @@
 package uteq.appdist.apipaises.restapi.entities.apis;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import uteq.appdist.apipaises.restapi.entities.models.countriesModel;
+import uteq.appdist.apipaises.restapi.entities.repository.CountriesRepository;
 import uteq.appdist.apipaises.restapi.entities.services.*;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +26,7 @@ public class CountriesApi {
     
     @Autowired
     CountriesService Servi;
-
+    CountriesRepository R;
 
    @RequestMapping(value = "/findAll",method = RequestMethod.GET, produces = "application/json") 
    ResponseEntity<List<countriesModel>> findAll() {
@@ -33,12 +36,15 @@ public class CountriesApi {
         } else {
             return ResponseEntity.notFound().build();
         }
-           
+       
+       
+
 	}
 
 
+
     @RequestMapping(value = "/findByname",method = RequestMethod.GET, produces = "application/json")
-    @ResponseBody countriesModel findname(@RequestParam(value= "name", defaultValue = "usuario") String name) {
+    @ResponseBody String findname(@RequestParam(value= "name", defaultValue = "usuario") String name) {
         //String r=Servi.findByid("61cb5671b01c99996e71bb92");
         
         return Servi.findByname(name);
