@@ -35,27 +35,27 @@ public class ProvincesModel {
 
     
     @Field(name="capital_province")
-    String capital_province;
+    String capitalprovince;
 
     
     @Field(name="flag_province")
-    String flag_province;
+    String flagprovince;
 
     
     @Field(name="callcode_province")
-    String callcode_province;
+    String callcodeprovince;
     
     
     @Field(name="coordinate_alt")
-    String coordinate_alt;
+    String coordinatealt;
 
   
     @Field(name="coordinate_lat")
-    String coordinate_lat;
+    String coordinatelat;
 
     
     @Field(name="state_province")
-    String state_province;
+    String stateprovince;
 
 
 

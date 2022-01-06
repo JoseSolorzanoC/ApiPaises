@@ -28,15 +28,15 @@ public class personModel {
     private String personid;
 
     @Field(name="firstname_person")
-    private String firstname_person;
+    private String firstnameperson;
 
     @Field(name="secondname_person")
-    private String secondname_person;
+    private String secondnameperson;
 
     @Field(name="email_person")
-    private String email_person;
+    private String emailperson;
 
     @Field(name="phone_person")
-    private String phone_person;
+    private String phoneperson;
     
 }

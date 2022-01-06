@@ -32,25 +32,25 @@ public class CitiesModel {
     private Long provinceid;
 
     @Field(name="name_city")
-    private String name_city;
+    private String namecity;
 
     @Field(name="cabecera_city")
-    private String cabecera_city;
+    private String cabeceracity;
 
     @Field(name="flag_city")
-    private String flag_city;
+    private String flagcity;
 
     @Field(name="callcode_city")
-    private String callcode_city;
+    private String callcodecity;
 
     @Field(name="coordinate_alt")
-    private String coordinate_alt;
+    private String coordinatealt;
 
     @Field(name="coordinate_lat")
-    private String coordinate_lat;
+    private String coordinatelat;
 
     @Field(name="state_city")
-    private String state_city;
+    private String statecity;
 
 
 
