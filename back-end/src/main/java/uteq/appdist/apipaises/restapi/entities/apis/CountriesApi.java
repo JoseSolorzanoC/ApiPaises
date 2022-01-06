@@ -57,23 +57,9 @@ public class CountriesApi {
 
 
     @RequestMapping(value = "/findByname",method = RequestMethod.GET, produces = "application/json")
-    @ResponseBody ResponseEntity<List<countriesModel>> findname(@RequestParam(value= "name", defaultValue = "usuario") String name) {
+    ResponseEntity<String> findname(@RequestParam(value= "name", defaultValue = "usuario") String name) {
         //String r=Servi.findByid("61cb5671b01c99996e71bb92");
-        try {
-            List<countriesModel> userTyps = new ArrayList<countriesModel>();
-
-            R.findByname(name).forEach(userTyps::add);
-
-            if (userTyps.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
-
-            return new ResponseEntity<>(userTyps, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-        
-       // return Servi.findByname(name);
+          return ResponseEntity.ok(R.findByname(name));
     }
 
     //@GetMapping("/findByenglishName")

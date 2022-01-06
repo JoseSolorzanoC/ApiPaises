@@ -9,6 +9,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
    
@@ -27,17 +28,13 @@ public class ProvincesApi {
             return R.;
 	}*/
 
-    @GetMapping ("/porNombre") 
+    
+    @RequestMapping(value ="/findBynameprovince",method = RequestMethod.GET, produces = "application/json")
     public String province( @RequestParam(value= "Province", defaultValue = "usuario") String Province) {
             return R.findBynameprovince(Province);
 	}
 
-    @GetMapping ("/flagProvince") 
-    public String flag( @RequestParam(value= "flagName", defaultValue = "usuario") String flagName) {
-            return flagName;
-	}
-
-    @GetMapping ("/listCDProvinces") 
+    @RequestMapping(value ="/listCDProvinces",method = RequestMethod.GET, produces = "application/json")
     public String CallCodesProvi( @RequestParam(value= "codesProvin", defaultValue = "usuario") String codesProvin) {
             return codesProvin;
 	}

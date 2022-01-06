@@ -14,7 +14,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(collectionResourceRel = "CountriesRepository", path = "CountriesRepository")
 public interface CountriesRepository  extends MongoRepository<countriesModel,String>{
  
-    List<countriesModel> findByname(@Param("name") String name);
+    String findByname(@Param("name") String name);
     String findByenglishName(@Param("englishName") String englishName);
     String findBycapital(@Param("capital") String capital);
     String findBylatitude(@Param("latitude") Double latitude);
