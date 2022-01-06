@@ -6,12 +6,14 @@ import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
+import org.bson.conversions.Bson;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import lombok.Data;
+import lombok.Generated;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -22,12 +24,14 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(value ="countries")
-public class countriesModel implements Serializable {
+@Document(value ="countries1")
+public class countriesModel{
+ 
+
+
     @Id
-    @NotNull
-    @Field(name="id")
-    private Long id;
+    @Field(name="countryId")
+    private Long countryId;
 
     @Field(name="name")
     private String name;
@@ -51,20 +55,9 @@ public class countriesModel implements Serializable {
     private JSONObject countryCodes;
 
     @Field(name="callCode")
-    private Array CallCode;
+     private Array CallCode;
 
-    @Override
-  public String toString() {
-    return "{" + "id=" + this.id + ", name='" + this.name + '\'' + ", capital='" + this.capital + '\'' + '}';
-  }
-  public String ListToString(List<countriesModel> Model){
-    String ModelString="";
-    for(int i=0; i<Model.size();i++){
-        countriesModel M=Model.get(i);
-        ModelString+= M.toString();
-    }
+    
 
-    return ModelString;
-  }
 
 }

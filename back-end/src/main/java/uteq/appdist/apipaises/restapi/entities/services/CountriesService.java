@@ -26,13 +26,13 @@ public class CountriesService {
         return R.findAll();
     }
     
-    public String findByname(String name){
+    public List<countriesModel> findByname(String name){
         return R.findByname(name);
     }
 
-    public String findByid(String id){
+    /*public String findByid(String id){
         return R.findByid(id);
-    }
+    }*/
 
     public String findByenglishName(String englishName){
         
@@ -48,17 +48,17 @@ public class CountriesService {
         
     }
     
-    public countriesModel save(countriesModel entity){
+  /*  public countriesModel save(countriesModel entity){
         
         return R.save(entity);
     }
-    
-    public countriesModel insert(countriesModel entity){
+    */
+   /* public countriesModel insert(countriesModel entity){
         return R.insert(entity);
     }
 
     public void delete(countriesModel entity){
         R.delete(entity);
     }
-    
+    */
 }

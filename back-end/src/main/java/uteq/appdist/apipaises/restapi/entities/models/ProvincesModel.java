@@ -13,14 +13,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Document(collation ="provinces")
+@Document(value ="provinces")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProvincesModel {
     
-    @Id
+    
     @NotNull
     @Field(name="provinceid")
     Long provinceid;
@@ -31,7 +31,7 @@ public class ProvincesModel {
 
     
     @Field(name="name_province")
-    String name_province;
+    String nameprovince;
 
     
     @Field(name="capital_province")

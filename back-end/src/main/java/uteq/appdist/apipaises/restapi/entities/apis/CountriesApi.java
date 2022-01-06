@@ -28,26 +28,52 @@ public class CountriesApi {
     CountriesService Servi;
     CountriesRepository R;
 
-   @RequestMapping(value = "/findAll",method = RequestMethod.GET, produces = "application/json") 
-   ResponseEntity<List<countriesModel>> findAll() {
-          List<countriesModel> P=Servi.findAll();
+  // @RequestMapping(value = "/findAll",method = RequestMethod.GET, produces = "application/json")
+  @GetMapping()
+   public ResponseEntity<List<countriesModel>> findAll() {
+        /*  List<countriesModel> P=Servi.findAll();
           if (P != null) {
             return ResponseEntity.ok(P);
         } else {
             return ResponseEntity.notFound().build();
+        }*/
+       
+        try {
+            List<countriesModel> userTyps = new ArrayList<countriesModel>();
+
+            R.findAll().forEach(userTyps::add);
+
+            if (userTyps.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+
+            return new ResponseEntity<>(userTyps, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-       
-       
 
 	}
 
 
 
     @RequestMapping(value = "/findByname",method = RequestMethod.GET, produces = "application/json")
-    @ResponseBody String findname(@RequestParam(value= "name", defaultValue = "usuario") String name) {
+    @ResponseBody ResponseEntity<List<countriesModel>> findname(@RequestParam(value= "name", defaultValue = "usuario") String name) {
         //String r=Servi.findByid("61cb5671b01c99996e71bb92");
+        try {
+            List<countriesModel> userTyps = new ArrayList<countriesModel>();
+
+            R.findByname(name).forEach(userTyps::add);
+
+            if (userTyps.isEmpty()) {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+
+            return new ResponseEntity<>(userTyps, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
         
-        return Servi.findByname(name);
+       // return Servi.findByname(name);
     }
 
     //@GetMapping("/findByenglishName")

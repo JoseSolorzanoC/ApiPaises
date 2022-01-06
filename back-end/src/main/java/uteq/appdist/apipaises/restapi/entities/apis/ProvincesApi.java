@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProvincesApi {
     
     @Autowired
-    ProvincesApi R ;
+    ProvincesRepository R ;
 
 
     /*@GetMapping ("/listProvinces") 
@@ -27,9 +27,9 @@ public class ProvincesApi {
             return R.;
 	}*/
 
-    @GetMapping ("/capitalProvince") 
+    @GetMapping ("/porNombre") 
     public String province( @RequestParam(value= "Province", defaultValue = "usuario") String Province) {
-            return Province;
+            return R.findBynameprovince(Province);
 	}
 
     @GetMapping ("/flagProvince") 

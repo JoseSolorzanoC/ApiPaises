@@ -21,7 +21,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Document(value ="usertype" )
 public class UserType {
-    @Id
+
     @NotNull
     @Field(name="usertypeid")
     private String usertypeid;
