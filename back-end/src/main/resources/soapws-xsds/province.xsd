@@ -2,13 +2,48 @@
 
     <xs:complexType name="provinceRequest">
         <xs:sequence>
-            <xs:element name="provinceName" type="xs:string" />
-            <xs:element name="provinceFlag" type="xs:string" />
-            <xs:element name="provinceCapital" type="xs:string" />
+            <xs:element name="provinceName" >
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="150"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="provinceFlag" >
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="250"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="provinceCapital" >
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="70"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
             <xs:element name="provinceAlt" type="xs:float" />
             <xs:element name="provinceLat" type="xs:float" />
-            <xs:element name="provinceState" type="xs:string" />
-            <xs:element name="provinceCallCode" type="xs:string" />
+            <xs:element name="provinceState" >
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="provinceCallCode" >
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="5"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
             <xs:element name="iso2" type="xs:string" />
         </xs:sequence>
     </xs:complexType>
@@ -16,13 +51,48 @@
     <xs:complexType name="provinceUpdateRequest">
         <xs:sequence>
             <xs:element name="provinceId" type="xs:int" />
-            <xs:element name="provinceName" type="xs:string" />
-            <xs:element name="provinceFlag" type="xs:string" />
-            <xs:element name="provinceCapital" type="xs:string" />
+            <xs:element name="provinceName" >
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="150"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="provinceFlag" >
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="250"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="provinceCapital" >
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="70"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
             <xs:element name="provinceAlt" type="xs:float" />
             <xs:element name="provinceLat" type="xs:float" />
-            <xs:element name="provinceState" type="xs:string" />
-            <xs:element name="provinceCallCode" type="xs:string" />
+            <xs:element name="provinceState" >
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="provinceCallCode" >
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="5"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
             <xs:element name="iso2" type="xs:string" />
         </xs:sequence>
     </xs:complexType>

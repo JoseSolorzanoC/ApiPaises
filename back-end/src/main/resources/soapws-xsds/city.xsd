@@ -2,13 +2,48 @@
     <xs:complexType name="city">
         <xs:sequence>
             <xs:element name="cityId" type="xs:int" nillable="true" />
-            <xs:element name="cityName" type="xs:string" />
-            <xs:element name="cityFlag" type="xs:string" />
-            <xs:element name="cityCabecera" type="xs:string" />
+            <xs:element name="cityName" >
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="70"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="cityFlag" >
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="150"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="cityCabecera" >
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="70"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
             <xs:element name="cityAlt" type="xs:float" nillable="true" />
             <xs:element name="cityLat" type="xs:float" nillable="true" />
-            <xs:element name="cityCallCode" type="xs:string" />
-            <xs:element name="cityState" type="xs:string" />
+            <xs:element name="cityCallCode" >
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="5"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="cityState" >
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="1"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
             <xs:element name="cityProvinceId" type="xs:int" nillable="true" />
         </xs:sequence>
     </xs:complexType>

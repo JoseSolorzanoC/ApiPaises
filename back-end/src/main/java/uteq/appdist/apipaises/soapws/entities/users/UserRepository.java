@@ -34,6 +34,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
             @Param("pss") String password);
 
     @Query(value = "select * from fnlogin(:usn, :pss)", nativeQuery = true)
-    public LoginDBResponse loginUser(@Param(":usn") String userName, @Param("pss") String password);
+    public LoginDBResponse loginUser(String usn, String pss);
 
 }

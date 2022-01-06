@@ -57,6 +57,22 @@ public class WebServiceConfiguration extends WsConfigurerAdapter {
         return new SimpleXsdSchema(new ClassPathResource("./soapws-xsds/province.xsd"));
     }
 
+    //Ciudades
+    @Bean(name = "cities")
+    public DefaultWsdl11Definition defaulCitytWsdl11Definition(XsdSchema citySchema) {
+        DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
+        wsdl11Definition.setPortTypeName("citiesPort");
+        wsdl11Definition.setLocationUri("/ws/city");
+        wsdl11Definition.setTargetNamespace("http://city.interfaces.generated.soapws.apipaises.appdist.uteq");
+        wsdl11Definition.setSchema(citySchema);
+        return wsdl11Definition;
+    }
+
+    @Bean
+    public XsdSchema citySchema() {
+        return new SimpleXsdSchema(new ClassPathResource("./soapws-xsds/city.xsd"));
+    }
+
 
     //Usuarios
     @Bean(name = "users")
