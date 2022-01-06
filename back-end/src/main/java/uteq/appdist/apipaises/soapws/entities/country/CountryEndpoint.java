@@ -7,6 +7,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
@@ -25,6 +26,7 @@ import uteq.appdist.apipaises.soapws.generated.interfaces.country.UpdateCountryR
 import uteq.appdist.apipaises.soapws.shared.ServiceResponse;
 
 @Endpoint
+@CrossOrigin("*")
 public class CountryEndpoint {
     private static final String NAMESPACE_URI = "http://country.interfaces.generated.soapws.apipaises.appdist.uteq";
 

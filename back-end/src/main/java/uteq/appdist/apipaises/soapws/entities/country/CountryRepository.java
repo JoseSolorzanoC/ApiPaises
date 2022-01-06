@@ -41,7 +41,7 @@ public interface CountryRepository extends JpaRepository<Country, Integer> {
     @Query(value = "select * from tbcountries where name_country = :name and (:cid = 0 or countryid != :cid)", nativeQuery = true)
     public Optional<Country> getCountryByName(String name, int cid);
 
-    @Query(value = "select count(*) from tbcountries where tld_country = :tld or iso3_country = :iso3 or iso2_country = :iso2 or fips_country = :fips or ison_country = :ison and (:cid = 0 or countryid != :cid)", nativeQuery = true)
+    @Query(value = "select count(*) from tbcountries where (tld_country = :tld or iso3_country = :iso3 or iso2_country = :iso2 or fips_country = :fips or ison_country = :ison) and (:cid = 0 or countryid != :cid)", nativeQuery = true)
     public int getCountryByCodes(String tld, String iso3, String iso2, String fips, String ison, int cid);
 
     @Query(value = "select * from tbcountries where callcode_country = :callCode and (:cid = 0 or countryid != :cid)", nativeQuery = true)

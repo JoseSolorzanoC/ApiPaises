@@ -1,15 +1,12 @@
 package uteq.appdist.apipaises.soapws.entities.province;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import uteq.appdist.apipaises.soapws.generated.interfaces.province.ServiceStatus;
 import uteq.appdist.apipaises.soapws.shared.DBResponse;
 
 @Repository

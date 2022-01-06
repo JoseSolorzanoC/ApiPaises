@@ -1,25 +1,20 @@
 
 package uteq.appdist.apipaises.soapws.entities.province;
 
-import java.lang.annotation.Target;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
-import com.fasterxml.jackson.core.sym.Name;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
-import uteq.appdist.apipaises.soapws.shared.DBResponse;
 import uteq.appdist.apipaises.soapws.shared.ServiceResponse;
 import uteq.appdist.apipaises.soapws.generated.interfaces.province.ServiceStatus;
 import uteq.appdist.apipaises.soapws.generated.interfaces.province.UpdateProvinceRequest;
@@ -28,11 +23,11 @@ import uteq.appdist.apipaises.soapws.generated.interfaces.province.AddProvinceRe
 import uteq.appdist.apipaises.soapws.generated.interfaces.province.AddProvinceResponse;
 import uteq.appdist.apipaises.soapws.generated.interfaces.province.GetAllProvincesResponse;
 import uteq.appdist.apipaises.soapws.generated.interfaces.province.GetCountryByIso2Request;
-import uteq.appdist.apipaises.soapws.generated.interfaces.province.GetProvinceByIdRequest;
 import uteq.appdist.apipaises.soapws.generated.interfaces.province.ProvinceResponse;
 import uteq.appdist.apipaises.soapws.generated.interfaces.province.Provinces;
 
 @Endpoint
+@CrossOrigin("*")
 public class ProvinceEndpoint {
     private static final String NAMESPACE_URI = "http://province.interfaces.generated.soapws.apipaises.appdist.uteq";
 

@@ -2,18 +2,22 @@ package uteq.appdist.apipaises.soapws.entities.users;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import uteq.appdist.apipaises.soapws.generated.interfaces.user.ServiceStatus;
+import uteq.appdist.apipaises.soapws.generated.interfaces.user.LoginUserRequest;
+import uteq.appdist.apipaises.soapws.generated.interfaces.user.LoginUserResponse;
 import uteq.appdist.apipaises.soapws.generated.interfaces.user.RegisterUserRequest;
 import uteq.appdist.apipaises.soapws.generated.interfaces.user.RegisterUserResponse;
 import uteq.appdist.apipaises.soapws.generated.interfaces.user.UserResponse;
 import uteq.appdist.apipaises.soapws.shared.ServiceResponse;
 
 @Endpoint
+@CrossOrigin("*")
 public class UserEndpoint {
     
     private static final String NAMESPACE_URI = "http://user.interfaces.generated.soapws.apipaises.appdist.uteq";
@@ -57,5 +61,26 @@ public class UserEndpoint {
         return response;
     }
 
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "loginUserRequest")
+    @ResponsePayload
+    public LoginUserResponse saveUser(@RequestPayload LoginUserRequest request) {
+        LoginUserResponse response = new LoginUserResponse();
+        ServiceResponse serviceResponse;
 
+        ServiceStatus serviceStatus = new ServiceStatus();
+
+        serviceResponse = userService.loginUser(request.getUserName(), request.getPassword());
+
+        if (serviceResponse.getStatus() == -1) {
+            serviceStatus.setStatus("ERROR");
+        } else {
+            serviceStatus.setStatus("SUCCESS");
+        }
+
+        serviceStatus.setMessage(serviceResponse.getAdditionalMessage());
+
+        response.setServiceStatus(serviceStatus);
+
+        return response;
+    }
 }

@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import uteq.appdist.apipaises.soapws.generated.interfaces.user.RegisterUserRequest;
-import uteq.appdist.apipaises.soapws.generated.interfaces.user.UserRequest;
 import uteq.appdist.apipaises.soapws.shared.DBResponse;
+import uteq.appdist.apipaises.soapws.shared.LoginDBResponse;
 import uteq.appdist.apipaises.soapws.shared.ServiceResponse;
 
 @Service
@@ -58,6 +58,36 @@ public class UserService {
         serviceResponse.setIdentif(dbResponse.getIdentif());
         serviceResponse.setStatus(0);
         serviceResponse.setAdditionalMessage("Registro exitoso");
+
+        return serviceResponse;
+    }
+
+    public ServiceResponse loginUser(String userName, String password){
+        ServiceResponse serviceResponse = new ServiceResponse();
+        serviceResponse.setStatus(-1);
+
+        LoginDBResponse loginDBResponse;
+
+        try {
+            loginDBResponse = userRepository.loginUser(userName, password);
+
+        } catch (Exception e) {
+            serviceResponse
+                    .setAdditionalMessage(
+                            String.format("Error al intentar iniciar sesión. Error Message => %s", e.getMessage()));
+            return serviceResponse;
+        }
+
+        if (loginDBResponse.getIdentif() <= 0 || loginDBResponse.getStatus() != "Accessed"){
+            serviceResponse
+            .setAdditionalMessage(
+                    "Ocurrió un error inesperado al intentar iniciar sesión. Posibles credenciales incorrectas.");
+            return serviceResponse;
+        }
+
+        serviceResponse.setIdentif(loginDBResponse.getIdentif());
+        serviceResponse.setStatus(0);
+        serviceResponse.setAdditionalMessage("Inicio de sesión exitoso.");
 
         return serviceResponse;
     }

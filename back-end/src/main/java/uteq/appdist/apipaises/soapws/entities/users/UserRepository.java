@@ -8,18 +8,19 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import uteq.appdist.apipaises.soapws.shared.DBResponse;
+import uteq.appdist.apipaises.soapws.shared.LoginDBResponse;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
     
 
-    @Query(value = "select*from tbperson where email_person=:email", nativeQuery = true)
+    @Query(value = "select * from tbperson where email_person=:email", nativeQuery = true)
     public List<User> getUserByEmail(String email);
 
-    @Query(value = "select*from tbperson where phone_person=:phone", nativeQuery = true)
+    @Query(value = "select * from tbperson where phone_person=:phone", nativeQuery = true)
     public List<User> getUserByPhone(String phone);
 
-    @Query(value = "select*from tbusers where user_name=:userName", nativeQuery = true)
+    @Query(value = "select * from tbusers where user_name=:userName", nativeQuery = true)
     public List<User> getUserByUserName(String userName);
 
     // Insert Province
@@ -32,8 +33,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
             @Param("usn") String userName,
             @Param("pss") String password);
 
-
-    
-
+    @Query(value = "select * from fnlogin(:usn, :pss)", nativeQuery = true)
+    public LoginDBResponse loginUser(@Param(":usn") String userName, @Param("pss") String password);
 
 }

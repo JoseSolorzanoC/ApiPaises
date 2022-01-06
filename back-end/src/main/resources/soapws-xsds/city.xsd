@@ -1,0 +1,110 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://city.interfaces.generated.soapws.apipaises.appdist.uteq" targetNamespace="http://city.interfaces.generated.soapws.apipaises.appdist.uteq" elementFormDefault="qualified">
+    <xs:complexType name="city">
+        <xs:sequence>
+            <xs:element name="cityId" type="xs:int" nillable="true" />
+            <xs:element name="cityName" type="xs:string" />
+            <xs:element name="cityFlag" type="xs:string" />
+            <xs:element name="cityCabecera" type="xs:string" />
+            <xs:element name="cityAlt" type="xs:float" nillable="true" />
+            <xs:element name="cityLat" type="xs:float" nillable="true" />
+            <xs:element name="cityCallCode" type="xs:string" />
+            <xs:element name="cityState" type="xs:string" />
+            <xs:element name="cityProvinceId" type="xs:int" nillable="true" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="serviceStatus">
+        <xs:sequence>
+            <xs:element name="status" type="xs:string" />
+            <xs:element name="message" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="cities">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="city" type="tns:city" />
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name="getCityByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cityId" type="xs:int" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCityByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="1" name="city" type="tns:city" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCitiesByProvinceIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="provinceId" type="xs:int" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getCitiesByProvinceIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cities" type="tns:cities" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addCityRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="city" type="tns:city" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addCityResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus" />
+                <xs:element name="city" type="tns:city" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateCityRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="city" type="tns:city" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="updateCityResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus" />
+                <xs:element name="city" type="tns:city" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteCityRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cityId" type="xs:int" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteCityResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus" />
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
