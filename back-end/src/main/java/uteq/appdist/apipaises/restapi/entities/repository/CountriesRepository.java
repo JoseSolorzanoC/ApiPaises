@@ -20,9 +20,9 @@ public interface CountriesRepository  extends MongoRepository<countriesModel,Str
     String findBylatitude(@Param("latitude") Double latitude);
     String findBylongitude(@Param("longitude") Double longitude);
    // String findByid(@Param("id") Long id);
- //   countriesModel save(@Param("entity") countriesModel entity);
-   
-    countriesModel insert(countriesModel entity);
+   //countriesModel save(@Param("entity") countriesModel entity);
+     
+     countriesModel save(countriesModel entity);
     
     void delete(@Param("entity") countriesModel entity);
    // String findByid(@Param("id") String id);
