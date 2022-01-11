@@ -1,13 +1,13 @@
 package uteq.appdist.apipaises.restapi.entities.models;
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.security.cert.Extension;
-import java.sql.Array;
 import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
 import org.bson.conversions.Bson;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
+import org.json.JSONObject;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -24,12 +24,15 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(value ="countries1")
+@Document(value="countries1")
 public class countriesModel{
  
 
 
     @Id
+    @Field(name="Id")
+    private String id; 
+
     @Field(name="countryId")
     private Long countryId;
 
