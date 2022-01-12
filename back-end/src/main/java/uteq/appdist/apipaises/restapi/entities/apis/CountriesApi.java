@@ -1,13 +1,16 @@
 package uteq.appdist.apipaises.restapi.entities.apis;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.mongodb.BasicDBObject;
 
 import uteq.appdist.apipaises.restapi.entities.models.countriesModel;
 import uteq.appdist.apipaises.restapi.entities.repository.CountriesRepository;
 import uteq.appdist.apipaises.restapi.entities.services.*;
 
-
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,9 +21,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import lombok.RequiredArgsConstructor;
+
 
 @RestController
 @RequestMapping("/CountriesApi")
+@RequiredArgsConstructor
 public class CountriesApi {
 
     
@@ -57,23 +64,9 @@ public class CountriesApi {
 
 
     @RequestMapping(value = "/findByname",method = RequestMethod.GET, produces = "application/json")
-    @ResponseBody ResponseEntity<List<countriesModel>> findname(@RequestParam(value= "name", defaultValue = "usuario") String name) {
+    public String findname(@RequestParam(value= "name", defaultValue = "usuario") String name) {
         //String r=Servi.findByid("61cb5671b01c99996e71bb92");
-        try {
-            List<countriesModel> userTyps = new ArrayList<countriesModel>();
-
-            R.findByname(name).forEach(userTyps::add);
-
-            if (userTyps.isEmpty()) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-            }
-
-            return new ResponseEntity<>(userTyps, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-        
-       // return Servi.findByname(name);
+          return R.findByname(name);
     }
 
     //@GetMapping("/findByenglishName")
@@ -90,4 +83,11 @@ public class CountriesApi {
         return Servi.findlatudeandlongitude(latitude, longitude);
     }
 
-}
+    @RequestMapping(value = "/Insert",method = RequestMethod.POST, produces = "application/json")
+    public countriesModel insert(@RequestBody countriesModel entity){
+
+        return R.save(entity);
+    }
+    
+    }
+    

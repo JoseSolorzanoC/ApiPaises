@@ -1,7 +1,7 @@
 package uteq.appdist.apipaises.restapi.entities.models;
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.security.cert.Extension;
-import java.sql.Array;
 import java.util.List;
 
 import javax.validation.constraints.NotNull;
@@ -9,8 +9,10 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.bson.conversions.Bson;
+
 import org.hibernate.validator.constraints.URL;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -27,11 +29,15 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(value ="countries")
+@Document(value="countries1")
 public class countriesModel{
  
     @Id
     @NotNull
+    @Field(name="Id")
+    private String id; 
+
+
     @Field(name="countryId")
     private Long countryId;
 
