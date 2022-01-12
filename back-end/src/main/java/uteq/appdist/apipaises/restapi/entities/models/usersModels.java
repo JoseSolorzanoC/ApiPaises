@@ -1,6 +1,8 @@
 package uteq.appdist.apipaises.restapi.entities.models;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -26,6 +28,8 @@ public class usersModels {
     @Field(name="userid")
     private String userid;
 
+    @Size (min = 4, max = 20)
+    @Pattern (regexp = "^[a-zA-Z]+$")
     @Field(name="user_name")
     private String user_name;
 
