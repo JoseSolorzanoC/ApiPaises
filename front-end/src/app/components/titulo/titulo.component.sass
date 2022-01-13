@@ -1,0 +1,73 @@
+@mixin display()
+  display: flex
+  align-items: center
+  justify-content: center
+  box-sizing: border-box
+
+@mixin animate($animation,$duration,$method,$times)
+    animation: $animation $duration $method $times
+
+
+@mixin keyframes($name)
+    @keyframes #{$name}
+        @content
+
+
+@mixin animateH($animationH,$durationH,$methodH,$timesH)
+    animation: $animationH $durationH $methodH $timesH
+
+
+@mixin keyframesH($nameH)
+    @keyframes #{$nameH}
+        @content
+
+.div-title-api
+  border-left: 1px solid #FFFFFF
+  width: 100%
+  height: 40%
+  margin-left: 50px
+  @include display()
+  justify-content: left
+  overflow: hidden
+  @include keyframesH($nameH: fade)
+      0%
+        height: 0
+      25%
+        height: 10%
+      50%
+        height: 20%
+      75%
+        height: 30%
+      100%
+        height: 40%
+
+  @include animateH(fade, 1.3s, linear, 1)
+
+
+
+.div-title-api
+  .transparent
+    -moz-text-stroke-width: 2px
+    -webkit-text-stroke-width: 2px
+    -moz-text-stroke-color: #000000
+    -webkit-text-stroke-color: #ffffff
+    color: transparent
+    font-size: 5em
+    padding-left: 20px
+    @include keyframes($name: bounce)
+      0%
+        transform: translateX(-100%)
+      25%
+        transform: translateX(-75%)
+      50%
+        transform: translateX(-50%)
+      75%
+        transform: translateX(-25%)
+      100%
+        transform: translateX(0%)
+
+    @include animate(bounce,1.6s, linear, 1)
+
+
+  .shadowh
+    text-shadow: 4px 4px #FFFFFF

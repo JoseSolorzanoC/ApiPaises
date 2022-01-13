@@ -2,12 +2,17 @@
   <h1>List countries</h1>
 </div>
 <div class="div-general">
-  <form>
+  <form (ngSubmit)="consultarDatos()">
     <div class="container-sm">
       <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="countryname" placeholder="Type a name country">
+        <select name="seleccion" [(ngModel)]="seleccion">
+          <option [value]="categoria.value" *ngFor="let categoria of categorias">{{categoria.nombre}}</option>
+        </select>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" #search id="countryname" placeholder="Type a name country">
         <label for="floatingInput">Type a country name</label>
-        <button class="btn btn-success" id="btn-register" (click)="OnClick1()">Search</button>
+        <button class="btn btn-success" id="btn-register" (click)="getValue(search.value)" type="submit">Search</button>
       </div>
     </div>
   </form>
@@ -27,8 +32,22 @@
           <th scope="col">FIPS</th>
           <th scope="col">isoN</th>
         </tr>
+
       </thead>
       <tbody>
+        <tr *ngFor="let datos of lista">
+          <td>{{datos.name}}</td>
+          <td>{{datos.englishName}}</td>
+          <td>{{datos.flag}}</td>
+          <td>{{datos.capital}}</td>
+          <td>{{datos.latitude}}</td>
+          <td>{{datos.longitude}}</td>
+          <td>{{datos.countryCodes.tld}}</td>
+          <td>{{datos.countryCodes.iso3}}</td>
+          <td>{{datos.countryCodes.iso2}}</td>
+          <td>{{datos.countryCodes.fips}}</td>
+          <td>{{datos.countryCodes.isoN}}</td>
+        </tr>
       </tbody>
     </table>
   </div>

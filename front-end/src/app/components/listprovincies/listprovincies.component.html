@@ -1,0 +1,47 @@
+<div class="title">
+  <h1>List provincies</h1>
+</div>
+<div class="div-general">
+  <form >
+    <div class="container-sm">
+      <div class="form-floating mb-3">
+        <select name="seleccion">
+          <!--<option [value]="categoria.value" *ngFor="let categoria of categorias">{{categoria.nombre}}</option>-->
+        </select>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" #search id="countryname" placeholder="Type a name country">
+        <label for="floatingInput">Type a province name</label>
+        <!--<button class="btn btn-success" id="btn-register" (click)="getValue(search.value)" type="submit">Search</button>-->
+      </div>
+    </div>
+  </form>
+  <div class="div-table">
+    <table class="table">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Province name</th>
+          <th scope="col">Capital name</th>
+          <th scope="col">Flag</th>
+          <th scope="col">Province code</th>
+          <th scope="col">Longitude</th>
+          <th scope="col">Latitude</th>
+          <th scope="col">State province</th>
+        </tr>
+
+      </thead>
+      <tbody>
+        <tr *ngFor="let datos of lista">
+          <td>{{datos.nameprovince}}</td>
+          <td>{{datos.capitalprovince}}</td>
+          <td>{{datos.flagprovince}}</td>
+          <td>{{datos.callcodeprovince}}</td>
+          <td>{{datos.coordinatealt}}</td>
+          <td>{{datos.coordinatelat}}</td>
+          <td>{{datos.stateprovince}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

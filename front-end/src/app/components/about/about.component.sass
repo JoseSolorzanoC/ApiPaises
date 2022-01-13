@@ -1,0 +1,182 @@
+$border:1px solid red
+
+@mixin display()
+  display: flex
+  align-items: center
+  justify-content: center
+  box-sizing: border-box
+
+
+@mixin animate($animation,$duration,$method,$times)
+    animation: $animation $duration $method $times
+
+
+@mixin keyframes($name)
+    @keyframes #{$name}
+        @content
+
+
+.gradient
+    position: absolute
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+    width: 100%
+    height: 90vh
+    background: #0D0C1F
+
+
+.gradient
+  .bubbles
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    overflow: hidden
+
+
+.bubbles
+  li
+    position: absolute
+    list-style: none
+    display: block
+    width: 40px
+    height: 40px
+    background-image: linear-gradient(#1F1D49,#161534, #0D0C1F)
+    bottom: -160px
+    @include animate(square, 25s, linear, infinite)
+    // -webkit-animation: square 25s infinite
+    // animation: square 25s infinite
+    // -webkit-transition-timing-function: linear
+    // transition-timing-function: linear
+    &:nth-child(1)
+      top: 100%
+      width: 800px
+      height: 600px
+    &:nth-child(2)
+      right: 40%
+      width: 500px
+      height: 500px
+      animation-duration: infinite
+      animation-iteration-count: infinite
+      background-color: fade(white, 30%)
+    &:nth-child(3)
+      left: 60%
+      width: 360px
+      height: 560px
+    @include keyframes($name: square)
+      0%
+        transform: translate(50%, -60vh)
+      25%
+        transform: translate(40%, -70vh)
+      50%
+        transform: translate(30%, -80vh)
+      75%
+        transform: translate(40%,-70vh)
+      100%
+        transform: translate(50%, -60vh)
+
+
+.cont-img-main
+  width: 100%
+  height: 90vh
+  position: relative
+
+.cont-img-main
+  .nav-menu
+    width: 100%
+    height: 10%
+  .cont-title
+    width: 100%
+    height: 90%
+    @include display()
+    justify-content: left
+
+.cont-title
+  .transparent
+
+    color: transparent
+    font-size: 4.3em
+    padding-left: 20px
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+    font-weight: 500
+  .shadowh
+    text-shadow: 4px 4px #FFFFFF
+
+.first-manager
+  width: 100%
+  height: auto
+  padding-bottom: 50px
+  margin-top: -170px
+  @include display()
+  align-items: flex-start
+
+.first-manager
+  .manager-one, .manager-two, .manager-three
+    width: 350px
+    height: 425px
+    margin-left: 10px
+    margin-right: 10px
+    box-shadow: 0 15px 40px -10px rgb(0 0 0 / 30%)
+    background-color: #FFFFFF
+    position: relative
+  .manager-one, .manager-three
+    margin-top: 90px
+
+
+.manager-one,.manager-two, .manager-three
+  .cont-photo
+    width: 100%
+    height: 150px
+    @include display()
+  .cont-name
+    width: 100%
+    height: auto
+    margin-top: 20px
+    @include display()
+  .cont-level-ac
+    width: 100%
+    height: auto
+    margin-top: 20px
+    @include display()
+  .cont-bottom
+    position: absolute
+    bottom: 0
+    width: 100%
+    height: 100px
+    background-color: #0D0C1F
+    @include display()
+
+.photo
+  width: 150px
+  height: 150px
+  border-radius: 100%
+
+.name
+  font-size: 1em
+  font-weight: bold
+
+.level-ac
+  font-size: 1em
+
+.bottom
+  font-size: 1.35em
+  color: #FFFFFF
+
+.first-collaborators
+  margin-top: 50px
+  width: 100%
+  height: 500px
+  position: relative
+  @include display()
+  border: $border
+
+  .coll-one, .coll-two
+    width: 350px
+    height: 425px
+    margin-left: 10px
+    margin-right: 10px
+    box-shadow: 0 15px 40px -10px rgb(0 0 0 / 30%)
+    background-color: #FFFFFF
+    border: $border

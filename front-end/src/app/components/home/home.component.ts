@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CAROUSEL_DATA_ITEMS } from '../slider/constans';
+import { ICarouselItem } from '../slider/Icarousel.item.metadata';
 
 @Component({
   selector: 'app-home',
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.sass']
 })
 export class HomeComponent implements OnInit {
+
+  public carouselData: ICarouselItem[] = CAROUSEL_DATA_ITEMS;
 
   constructor() { }
 

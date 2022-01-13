@@ -2,14 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ApiRestService } from 'src/app/servicios/api/api-rest.service';
 import { Router } from '@angular/router';
 
-declare var run:any;
-
 @Component({
-  selector: 'app-listcountries',
-  templateUrl: './listcountries.component.html',
-  styleUrls: ['./listcountries.component.sass']
+  selector: 'app-listprovincies',
+  templateUrl: './listprovincies.component.html',
+  styleUrls: ['./listprovincies.component.sass']
 })
-export class ListcountriesComponent implements OnInit{
+export class ListprovinciesComponent implements OnInit {
 
   public dato = 'Ecuador';
   public seleccion = 'Nombre del país';
@@ -31,7 +29,7 @@ export class ListcountriesComponent implements OnInit{
   }
 
   public cargarData(){
-    this.RestService.get('http://localhost:8080/CountriesApi/findAll')
+    this.RestService.get('http://localhost:8080/ProvincesApi/findAllProvinces')
     .subscribe(respuesta => {
       this.lista = respuesta;
       console.log(this.lista = respuesta);
@@ -49,5 +47,4 @@ export class ListcountriesComponent implements OnInit{
   public getValue(value:string){
     this.dato = value
   }
-
 }

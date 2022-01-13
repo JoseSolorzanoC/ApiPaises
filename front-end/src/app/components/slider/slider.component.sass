@@ -1,0 +1,150 @@
+$border:1px solid red
+
+
+@mixin display()
+  display: flex
+  align-items: center
+  justify-content: center
+  box-sizing: border-box
+
+
+.div-title-fe
+  @include display()
+  width: 100%
+  height: 50px
+
+.div-title-fe
+  .div-features
+    @include display()
+    width: 20%
+    height: 50px
+  div
+    @include display()
+    justify-content: left
+    width: 80%
+    height: 50px
+    letter-spacing: 2px
+    color: #2D2B6A
+
+
+.div-subtitle-fe
+  @include display()
+  margin-top: 5px
+  width: 100%
+  height: 175px
+
+
+.div-subtitle-fe
+  .div-features
+    @include display()
+    width: 20%
+    height: 175px
+
+  div
+    justify-content: left
+    width: 80%
+    height: 175px
+
+.div-subtitle-fe
+  margin-top: 25px
+
+.div-subtitle-fe
+  div
+    h3
+      letter-spacing: 4px
+      font-weight: 500
+      font-size: 40px
+    p
+      margin-top: 25px
+      letter-spacing: 1.5px
+      font-size: 18px
+      font-weight: 400
+
+
+.div-img-info-fe
+  @include display()
+  width: 100%
+  height: auto
+  margin-top: 10px
+
+.div-img-info-fe
+  .div-img
+    width: 20%
+    height: 500px
+    @include display()
+
+  .div-info-img
+    width: 80%
+    height: 450px
+    @include display()
+
+.div-main
+  width: 450px
+  height: 375px
+  border-radius: 25px
+  overflow: hidden
+
+
+.div-main
+  .div-img-true
+    img
+      width: 100%
+      height: 375px
+      border-radius: 25px
+      background-position: center
+      background-repeat: no-repeat
+      background-size: cover
+
+  .div-info-img-true
+    width: calc( 100% - 475px )
+    height: auto
+    padding-left: 15px
+
+
+.div-info-img-true
+  .tt-consume
+    height: 150px
+    overflow: hidden
+    padding-left: 10px
+
+.div-info-img-true
+  .tt-consume
+    .div-one
+      height: 150px
+.div-info-img-true
+  .tt-consume
+    .div-one
+      h4
+        font-size: 30px
+        color: #1F1D49
+        letter-spacing: 2px
+        padding-bottom: 20px
+      p
+        font-size: 16px
+        line-height: 26px
+        color: #161534
+
+.div-arrows
+  margin-top: 30px
+  height: auto
+  padding-left: 10px
+
+.div-arrows
+  .next
+    background-image: url('../../../assets/images/arrow.png')
+    transform: rotate(180deg)
+
+  .prev
+    background-image: url('../../../assets/images/arrow.png')
+    margin-top: 10px
+
+.div-arrows
+  div
+    width: 60px
+    height: 24px
+    background: no-repeat center  center/60px auto
+    cursor: pointer
+    opacity: .4
+    transition: all 300ms
+    &:hover
+      opacity: 1

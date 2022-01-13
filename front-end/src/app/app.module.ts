@@ -21,12 +21,19 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RegcountriesComponent } from './components/regcountries/regcountries.component';
 import { NavhorizontalComponent } from './components/navhorizontal/navhorizontal.component';
 import { NavverticalComponent } from './components/navvertical/navvertical.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { ListcountriesComponent } from './components/listcountries/listcountries.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AboutComponent } from './components/about/about.component';
+import { WorkComponent } from './components/work/work.component';
+import { SliderComponent } from './components/slider/slider.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ListprovinciesComponent } from './components/listprovincies/listprovincies.component';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +45,12 @@ import { ListcountriesComponent } from './components/listcountries/listcountries
     NavhorizontalComponent,
     NavverticalComponent,
     HomepageComponent,
-    ListcountriesComponent],
+    ListcountriesComponent,
+    AboutComponent,
+    WorkComponent,
+    SliderComponent,
+    ListprovinciesComponent,
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -51,7 +63,10 @@ import { ListcountriesComponent } from './components/listcountries/listcountries
     MatCardModule,
     MatToolbarModule,
     app_routing,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

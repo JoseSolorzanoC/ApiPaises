@@ -1,20 +1,366 @@
+
+$border:1px solid red
+
+@mixin display()
+  display: flex
+  align-items: center
+  justify-content: center
+  box-sizing: border-box
+
+
+@mixin animate($animation,$duration,$method,$times)
+    animation: $animation $duration $method $times
+
+
+@mixin keyframes($name)
+    @keyframes #{$name}
+        @content
+
+
+@mixin animateH($animationH,$durationH,$methodH,$timesH)
+    animation: $animationH $durationH $methodH $timesH
+
+
+@mixin keyframesH($nameH)
+    @keyframes #{$nameH}
+        @content
+
+
+
+
 body
   font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
 
 
 body
   .gradient
-    position: fixed
+    position: absolute
+    padding: 0
+    margin: 0
+    box-sizing: border-box
     width: 100%
     height: 100vh
+    background: #0D0C1F
     //background-image: linear-gradient(#CCFF33, #9EF01A, #70E000, #38B000, #008000, #007200, #006400, #004B23)
-    background-image: url('../../../assets/images/Home.PNG')
-    background-repeat: no-repeat
-    background-size: cover
-    filter: blur(6px)
-    border: none
+    //background-image: url('../../../assets/images/Home.PNG')
+
+.gradient
+  .bubbles
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    overflow: hidden
+
+.bubbles
+  li
+    position: absolute
+    list-style: none
+    display: block
+    width: 40px
+    height: 40px
+    background-image: linear-gradient(#0D0C1F, #161534, #1F1D49, #2D2B6A,  #3E3B8E)
+    bottom: -160px
+    @include animate(square, 25s, linear, infinite)
+    // -webkit-animation: square 25s infinite
+    // animation: square 25s infinite
+    // -webkit-transition-timing-function: linear
+    // transition-timing-function: linear
+    &:nth-child(1)
+      left: 10%
+    &:nth-child(2)
+      left: 20%
+      width: 80px
+      height: 80px
+      animation-delay: 2s
+      animation-duration: 17s
+    &:nth-child(3)
+      left: 25%
+      animation-delay: 4s
+    &:nth-child(4)
+      left: 40%
+      width: 60px
+      height: 60px
+      animation-duration: 22s
+      background-color: fade(white, 25%)
+    &:nth-child(5)
+      left: 70%
+    &:nth-child(6)
+      left: 80%
+      width: 120px
+      height: 120px
+      animation-delay: 3s
+      background-color: fade(white,20%)
+    &:nth-child(7)
+      left: 32%
+      width: 160px
+      height: 160px
+      animation-delay: 7s
+    &:nth-child(8)
+      left: 55%
+      width: 20px
+      height: 20px
+      animation-delay: 15s
+      animation-duration: 40s
+    &:nth-child(9)
+      left: 25%
+      width: 10px
+      height: 10px
+      animation-delay: 2s
+      animation-duration: 40s
+      background-color: fade(white, 30%)
+    &:nth-child(10)
+      left: 90%
+      width: 160px
+      height: 160px
+      animation-delay: 11s
+    @include keyframes($name: square)
+      0%
+        transform: translateY(0)
+      100%
+        transform: translateY(-150vh) rotate(600deg)
+
 
 
 .div-general
-  height: 100vh
+  height: 85vh
   position: relative
+  @include display()
+
+
+.menu-right-v
+  height: 85vh
+  position: relative
+  width: 5%
+  margin-left: auto
+  z-index: 101
+
+
+.menu-right-v
+  a
+    h3
+      color: #FFFFFF
+      font-size: .85em
+      font-weight: 600
+      letter-spacing: 5px
+      transform: rotate(90deg)
+      margin-top: 85px
+      font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
+
+
+.menu-right-v
+  a
+      text-decoration: none
+
+
+.div-call-components
+  width: 95%
+  height: 85vh
+  position: relative
+  @include display()
+
+
+.div-title-api
+  border-left: 1px solid #FFFFFF
+  border-bottom: 1px solid #FFFFFF
+  width: auto
+  height: 40%
+  margin-left: 50px
+  @include display()
+  overflow: hidden
+  @include keyframesH($nameH: fade)
+      0%
+        height: 0
+        border-left: 1px solid #FFFFFF
+        border-bottom: 1px solid #FFFFFF
+      25%
+        height: 10%
+        border-left: 1px solid #FFFFFF
+        border-bottom: 1px solid #FFFFFF
+      50%
+        height: 20%
+        border-left: 1px solid #FFFFFF
+        border-bottom: 1px solid #FFFFFF
+      75%
+        height: 30%
+        border-left: 1px solid #FFFFFF
+        border-bottom: 1px solid #FFFFFF
+      100%
+        height: 40%
+        border-left: 1px solid #FFFFFF
+        border-bottom: 1px solid #FFFFFF
+
+  @include animateH(fade, 1.3s, linear, 1)
+
+
+
+.div-title-api
+  .transparent
+    -moz-text-stroke-width: 2px
+    -webkit-text-stroke-width: 2px
+    -moz-text-stroke-color: #000000
+    -webkit-text-stroke-color: #ffffff
+    color: transparent
+    font-size: 5em
+    padding-left: 20px
+    @include keyframes($name: bounce)
+      0%
+        transform: translateX(-100%)
+      25%
+        transform: translateX(-75%)
+      50%
+        transform: translateX(-50%)
+      75%
+        transform: translateX(-25%)
+      100%
+        transform: translateX(0%)
+
+    @include animate(bounce,1.6s, linear, 1)
+
+
+  .shadowh
+    text-shadow: 4px 4px #FFFFFF
+
+
+
+.div-view
+  position: relative
+  width: 100%
+  height: 15vh
+  box-sizing: border-box
+  @include display()
+
+.div-view
+  .cont-div-view
+    background-color: transparent
+    color: #FFFFFF
+    width: 150px
+    height: 45px
+    border: 1px solid #FFFFFF
+    font-size: 12px
+    letter-spacing: 2.5px
+    cursor: pointer
+    @include display()
+    position: absolute
+    z-index: 102
+    top: 50%
+    left: 50%
+    transform: translate(-50%,-50%)
+    &::before
+        background: #000000
+        content: ""
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%,-50%)
+        z-index: -1
+        transition: all 1s ease
+
+.div-view
+  .cont-div-view
+    .inp-view
+      text-decoration: none
+      color: #FFFFFF
+      font-size: 12px
+      letter-spacing: 2.5px
+
+
+
+.inp-a
+    position: relative
+    display: block
+    color: white
+    font-size: 14px
+    overflow: hidden
+    transition: .6s all ease
+    &::before
+        width: 100%
+        height: 0%
+        transform: translate(-50%,-50%) rotate(-45deg)
+    &:hover::before
+        height: 380%
+
+
+.info-all-countries
+  width: 100%
+  height: auto
+  margin-top: 50px
+  @include display()
+
+
+
+.info-all-countries
+  .div-cuadros
+    width: 30%
+    height: 325px
+    background-image: url('../../../assets/images/Home-Registros.svg')
+    background-repeat: no-repeat
+    background-attachment: contain
+    background-size: cover
+    background-position: center
+  .div-info
+    width: 70%
+    height: 300px
+    @include display()
+
+.div-info
+  .div-details
+    width: 100%
+    height: 200px
+    margin-bottom: 100px
+    @include display()
+
+
+.div-details
+  ul
+    @include display()
+    padding: 0
+    margin: 0
+    width: 100%
+
+
+.div-details
+  ul
+    li
+      list-style: none
+      width: 35%
+      height: auto
+      justify-content: left
+
+
+.div-details
+  ul
+    li
+      .number
+        font-size: 56px
+        font-weight: bold
+        color: #2D2B6A
+      p
+        font-size: 1em
+        font-weight: bold
+
+
+.div-characteristics
+  width: 100%
+  height: auto
+  @include display()
+  align-items: flex-start
+  padding-bottom: 50px
+
+.div-characteristics
+  .div-info-ch
+    width: 70%
+    height: 800px
+
+
+  .div-cuadro-ch
+    width: 30%
+    height: 800px
+    background-image: url('../../../assets/images/Home-Registros.svg')
+    background-repeat: no-repeat
+    background-attachment: contain
+    background-size: cover
+    background-position: center
+    transform: rotate(180deg)
+    @include display()
