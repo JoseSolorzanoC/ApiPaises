@@ -1,13 +1,11 @@
+import {CountryCodesI} from './countryCodes.interface';
 export interface CountryI{
-  id:string;
   name:string;
   englishName:string;
   flag:string;
   capital:string;
-  coordinates:string[];
-  tld:string;
-  iso3:string;
-  iso2:string;
-  fips:string;
-  isoN:string;
+  latitude: number;
+  longitude: number;
+  countryCodes: CountryCodesI[];
+	callCode: string[];
 }

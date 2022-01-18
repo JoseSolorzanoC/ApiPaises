@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiRestService } from 'src/app/servicios/api/api-rest.service';
 import { Router } from '@angular/router';
+import {PageEvent} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-listprovincies',
@@ -47,4 +48,14 @@ export class ListprovinciesComponent implements OnInit {
   public getValue(value:string){
     this.dato = value
   }
+
+  handlePage(e: PageEvent){
+    this.page_size = e.pageSize
+    this.page_number = e.pageIndex + 1
+  }
+
+
+  page_size: number = 10
+  page_number: number = 1
+  pageSizeOptions = [10, 20, 50, 100, 150];
 }

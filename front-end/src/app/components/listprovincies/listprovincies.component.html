@@ -17,6 +17,9 @@
     </div>
   </form>
   <div class="div-table">
+    <div class="div-paginator">
+      <mat-paginator [length]="lista.length" [pageSize]="page_size" [pageSizeOptions]="pageSizeOptions" (page)="handlePage($event)"></mat-paginator>
+    </div>
     <table class="table">
       <thead class="table-dark">
         <tr>
@@ -31,7 +34,7 @@
 
       </thead>
       <tbody>
-        <tr *ngFor="let datos of lista">
+        <tr *ngFor="let datos of lista | paginate:page_size:page_number">
           <td>{{datos.nameprovince}}</td>
           <td>{{datos.capitalprovince}}</td>
           <td>{{datos.flagprovince}}</td>

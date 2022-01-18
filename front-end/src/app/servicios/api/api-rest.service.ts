@@ -10,7 +10,7 @@ import { Observable} from 'rxjs';
 })
 export class ApiRestService {
 
-  url:string = "";
+  dir: string = ''
 
   constructor(private http:HttpClient) { }
 
@@ -20,6 +20,11 @@ export class ApiRestService {
 
   public getWParam(url:string): Observable<any>{
     return this.http.get(url);
+  }
+
+  postCountry(form:CountryI): Observable<ResponseI>{
+    let dir = 'http://localhost:8080/CountriesApi/Insert'
+    return this.http.post<ResponseI>(dir, form);
   }
 
 }

@@ -16,6 +16,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 //Components
 import { LoginComponent } from './components/login/login.component';
@@ -33,6 +34,7 @@ import { WorkComponent } from './components/work/work.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ListprovinciesComponent } from './components/listprovincies/listprovincies.component';
+import { PaginatePipe } from './pipes/paginate.pipe';
 
 
 @NgModule({
@@ -50,6 +52,7 @@ import { ListprovinciesComponent } from './components/listprovincies/listprovinc
     WorkComponent,
     SliderComponent,
     ListprovinciesComponent,
+    PaginatePipe,
     ],
   imports: [
     BrowserModule,
@@ -66,7 +69,8 @@ import { ListprovinciesComponent } from './components/listprovincies/listprovinc
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,24 +4,24 @@
       <h1>Register a country</h1>
     </div>
     <div class="div-general">
-      <form [formGroup]="form" (submit)="send()">
+      <form [formGroup]="newForm" (ngSubmit)="postForm(newForm.value)">
         <fieldset>
           <legend>Country</legend>
           <div class="container-sm">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="countryname" placeholder="Italia">
+              <input type="text" formControlName="name" class="form-control" id="countryname" placeholder="Italia">
               <label for="floatingInput">Country name</label>
             </div>
             <div class="form-floating space">
-              <input type="text" class="form-control" id="englishname" placeholder="Italy">
+              <input type="text" formControlName="englishName" class="form-control" id="englishname" placeholder="Italy">
               <label for="floatingInput">English name</label>
             </div>
             <div class="form-floating space">
-              <input type="text" class="form-control" id="flag" placeholder="URL">
+              <input type="text" formControlName="flag" class="form-control" id="flag" placeholder="URL">
               <label for="floatingInput">Flag (URL)</label>
             </div>
             <div class="form-floating space">
-              <input type="text" class="form-control" id="capital" placeholder="Roma">
+              <input type="text" formControlName="capital" class="form-control" id="capital" placeholder="Roma">
               <label for="floatingInput">Capital</label>
             </div>
           </div>
@@ -31,11 +31,11 @@
           <legend>Coordinates</legend>
           <div class="container-sm">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="latitude" placeholder="Italia">
+              <input type="text" formControlName="latitude" class="form-control" id="latitude" placeholder="Italia">
               <label for="floatingInput">Latitude</label>
             </div>
             <div class="form-floating space">
-              <input type="text" class="form-control" id="longitude" placeholder="Italy">
+              <input type="text" formControlName="longitude" class="form-control" id="longitude" placeholder="Italy">
               <label for="floatingInput">Longitude</label>
             </div>
           </div>
@@ -45,29 +45,29 @@
           <legend>Country codes</legend>
           <div class="container-sm">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="tld" placeholder="Italia">
+              <input type="text" formControlName="tld" class="form-control" id="tld" placeholder="Italia">
               <label for="floatingInput">TLD</label>
             </div>
             <div class="form-floating space">
-              <input type="text" class="form-control" id="iso3" placeholder="Italy">
+              <input type="text" formControlName="iso3" class="form-control" id="iso3" placeholder="Italy">
               <label for="floatingInput">ISO 3</label>
             </div>
             <div class="form-floating space">
-              <input type="text" class="form-control" id="iso2" placeholder="Italy">
+              <input type="text" formControlName="iso2" class="form-control" id="iso2" placeholder="Italy">
               <label for="floatingInput">ISO 2</label>
             </div>
             <div class="form-floating space">
-              <input type="text" class="form-control" id="fips" placeholder="Italy">
+              <input type="text" formControlName="fips" class="form-control" id="fips" placeholder="Italy">
               <label for="floatingInput">fips</label>
             </div>
             <div class="form-floating space">
-              <input type="text" class="form-control" id="ison" placeholder="Italy">
+              <input type="text" formControlName="ison" class="form-control" id="ison" placeholder="Italy">
               <label for="floatingInput">isoN</label>
             </div>
           </div>
         </fieldset>
         <div class="d-grid gap-1 d-md-block btn-position">
-          <input class="btn btn-success" value="Register" id="btn-register" />
+          <button class="btn btn-success" type="submit" id="btn-register">Register</button>
         </div>
       </form>
     </div>

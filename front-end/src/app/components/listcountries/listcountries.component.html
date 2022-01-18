@@ -4,8 +4,8 @@
 <div class="div-general">
   <form (ngSubmit)="consultarDatos()">
     <div class="container-sm">
-      <div class="form-floating mb-3">
-        <select name="seleccion" [(ngModel)]="seleccion">
+      <div class="form-floating mb-3"><h4 class="choose">Choose an option:</h4>
+        <select class="seleccion" name="seleccion" [(ngModel)]="seleccion">
           <option [value]="categoria.value" *ngFor="let categoria of categorias">{{categoria.nombre}}</option>
         </select>
       </div>
@@ -17,11 +17,15 @@
     </div>
   </form>
   <div class="div-table">
+    <div class="div-paginator">
+      <mat-paginator [length]="lista.length" [pageSize]="page_size" [pageSizeOptions]="pageSizeOptions" (page)="handlePage($event)"></mat-paginator>
+    </div>
     <table class="table">
       <thead class="table-dark">
         <tr>
           <th scope="col">Country name</th>
           <th scope="col">English name</th>
+          <th scope="col">Image Flag</th>
           <th scope="col">Flag</th>
           <th scope="col">Capital</th>
           <th scope="col">Latitude</th>
@@ -35,9 +39,10 @@
 
       </thead>
       <tbody>
-        <tr *ngFor="let datos of lista">
+        <tr *ngFor="let datos of lista | paginate:page_size:page_number">
           <td>{{datos.name}}</td>
           <td>{{datos.englishName}}</td>
+          <td><img src="{{datos.flag}}" alt=""></td>
           <td>{{datos.flag}}</td>
           <td>{{datos.capital}}</td>
           <td>{{datos.latitude}}</td>
