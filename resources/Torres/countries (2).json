@@ -148,7 +148,7 @@
 			"iso2": "AN",
 			"fips": "NT",
 			"isoN": 530
-		}
+		},
 		"callCode": [
 				"599"
 			]
@@ -1135,7 +1135,7 @@
 			"iso2": "FO",
 			"fips": "FO",
 			"isoN": 234
-		}
+		},
 		"callCode": [
 				"298"
 			]
@@ -1306,7 +1306,7 @@
 			"iso2": "GD",
 			"fips": "GJ",
 			"isoN": 308
-		}
+		},
 		"callCode": [
 				"958"
 			]
@@ -1698,7 +1698,7 @@
 			"iso2": "VI",
 			"fips": "VIQ",
 			"isoN": 850
-		}
+		},
 		"callCode": [
 				"1"
 			]
@@ -1852,7 +1852,7 @@
 			"iso2": "KG",
 			"fips": "KG",
 			"isoN": 417
-		}
+		},
 		"callCode": [
 				"996"
 			]
@@ -2890,7 +2890,7 @@
 			"iso2": "KN",
 			"fips": "SC",
 			"isoN": 659
-		}
+		},
 		"callCode": [
 				"1"
 			]
