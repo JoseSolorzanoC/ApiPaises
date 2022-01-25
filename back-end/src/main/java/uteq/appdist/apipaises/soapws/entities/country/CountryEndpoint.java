@@ -17,6 +17,8 @@ import uteq.appdist.apipaises.soapws.generated.interfaces.country.AddCountryRequ
 import uteq.appdist.apipaises.soapws.generated.interfaces.country.AddCountryResponse;
 import uteq.appdist.apipaises.soapws.generated.interfaces.country.Countries;
 import uteq.appdist.apipaises.soapws.generated.interfaces.country.Country;
+import uteq.appdist.apipaises.soapws.generated.interfaces.country.DeleteCountryRequest;
+import uteq.appdist.apipaises.soapws.generated.interfaces.country.DeleteCountryResponse;
 import uteq.appdist.apipaises.soapws.generated.interfaces.country.GetAllCountriesResponse;
 import uteq.appdist.apipaises.soapws.generated.interfaces.country.GetCountryByIdRequest;
 import uteq.appdist.apipaises.soapws.generated.interfaces.country.GetCountryByIdResponse;
@@ -129,6 +131,29 @@ public class CountryEndpoint {
         serviceStatus.setMessage(serviceResponse.getAdditionalMessage());
 
         response.setCountry(target);
+        response.setServiceStatus(serviceStatus);
+
+        return response;
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "deleteCountryRequest")
+    @ResponsePayload
+    public DeleteCountryResponse changeStatusProvince(@RequestPayload DeleteCountryRequest request) {
+        DeleteCountryResponse response = new DeleteCountryResponse();
+        ServiceResponse serviceResponse;
+
+        ServiceStatus serviceStatus = new ServiceStatus();
+
+        serviceResponse = countryService.changeStatusCountry(request.getCountryIso2(), request.getCountryState());
+
+        if (serviceResponse.getStatus() == -1) {
+            serviceStatus.setStatus("ERROR");
+        } else {
+            serviceStatus.setStatus("SUCCESS");
+        }
+
+        serviceStatus.setMessage(serviceResponse.getAdditionalMessage());
+
         response.setServiceStatus(serviceStatus);
 
         return response;

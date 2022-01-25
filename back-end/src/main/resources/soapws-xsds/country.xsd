@@ -171,7 +171,8 @@
     <xs:element name="deleteCountryRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="countryId" type="xs:long" />
+                <xs:element name="countryIso2" type="xs:string" />
+                <xs:element name="countryState" type="xs:string" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>

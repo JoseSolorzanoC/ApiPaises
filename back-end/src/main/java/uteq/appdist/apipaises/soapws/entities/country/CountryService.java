@@ -134,4 +134,48 @@ public class CountryService {
 
         return serviceResponse;
     }
+
+    public ServiceResponse changeStatusCountry(String countryIso2, String state) {
+        ServiceResponse serviceResponse = new ServiceResponse();
+        serviceResponse.setStatus(-1);
+
+        DBResponse dbResponse;
+
+        // Get one Country
+        Optional<Country> country = countryRepository.getCountryByIso2(countryIso2);
+        // Validación de que el pais a actualizar exista.
+        if (!country.isPresent()) {
+            serviceResponse.setAdditionalMessage("El codigo ISO2 ingresado no corresponde a ningún país.");
+            return serviceResponse;
+        }
+
+        try {
+
+            dbResponse = countryRepository.updateCountry(country.get().getCountryId(),
+                    country.get().getCountryName(), country.get().getCountryFlag(), country.get().getCountryCapital(),
+                    country.get().getCountryAlt(),
+                    country.get().getCountryLat(), state, country.get().getCountryCallCode(),
+                    country.get().getCountryTld(),
+                    country.get().getCountryIso3(), country.get().getCountryIso2(), country.get().getCountryFips(),
+                    country.get().getCountryIson(), country.get().getCountryEnglishName());
+        } catch (Exception e) {
+            serviceResponse
+                    .setAdditionalMessage(
+                            String.format("Error al realizar el cambio. Error Message => %s", e.getMessage()));
+            return serviceResponse;
+        }
+
+        if (dbResponse.getStatus() != 2) {
+            serviceResponse
+                    .setAdditionalMessage(
+                            "Ocurrió un error inesperado al intentar cambiar el estado del país. Inténtelo nuevamente más tarde.");
+            return serviceResponse;
+        }
+
+        serviceResponse.setIdentif(dbResponse.getIdentif());
+        serviceResponse.setStatus(0);
+        serviceResponse.setAdditionalMessage("Actualización del estado del país exitoso.");
+
+        return serviceResponse;
+    }
 }

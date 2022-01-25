@@ -17,6 +17,8 @@ import uteq.appdist.apipaises.soapws.generated.interfaces.city.AddCityRequest;
 import uteq.appdist.apipaises.soapws.generated.interfaces.city.AddCityResponse;
 import uteq.appdist.apipaises.soapws.generated.interfaces.city.Cities;
 import uteq.appdist.apipaises.soapws.generated.interfaces.city.City;
+import uteq.appdist.apipaises.soapws.generated.interfaces.city.DeleteCityRequest;
+import uteq.appdist.apipaises.soapws.generated.interfaces.city.DeleteCityResponse;
 import uteq.appdist.apipaises.soapws.generated.interfaces.city.GetCitiesByProvinceIdRequest;
 import uteq.appdist.apipaises.soapws.generated.interfaces.city.GetCitiesByProvinceIdResponse;
 import uteq.appdist.apipaises.soapws.generated.interfaces.city.GetCityByIdRequest;
@@ -44,7 +46,8 @@ public class CityEndpoint {
         GetCitiesByProvinceIdResponse response = new GetCitiesByProvinceIdResponse();
         response.setCities(new Cities());
 
-        for (uteq.appdist.apipaises.soapws.entities.city.City source : cityService.getAllCitiesFromProvince(request.getProvinceId())) {
+        for (uteq.appdist.apipaises.soapws.entities.city.City source : cityService
+                .getAllCitiesFromProvince(request.getProvinceId())) {
             City target = new City();
             BeanUtils.copyProperties(source, target);
 
@@ -130,6 +133,29 @@ public class CityEndpoint {
         serviceStatus.setMessage(serviceResponse.getAdditionalMessage());
 
         response.setCity(target);
+        response.setServiceStatus(serviceStatus);
+
+        return response;
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "deleteCityRequest")
+    @ResponsePayload
+    public DeleteCityResponse changeStatusProvince(@RequestPayload DeleteCityRequest request) {
+        DeleteCityResponse response = new DeleteCityResponse();
+        ServiceResponse serviceResponse;
+
+        ServiceStatus serviceStatus = new ServiceStatus();
+
+        serviceResponse = cityService.changeStatusCity(request.getCityId(), request.getCityState());
+
+        if (serviceResponse.getStatus() == -1) {
+            serviceStatus.setStatus("ERROR");
+        } else {
+            serviceStatus.setStatus("SUCCESS");
+        }
+
+        serviceStatus.setMessage(serviceResponse.getAdditionalMessage());
+
         response.setServiceStatus(serviceStatus);
 
         return response;
