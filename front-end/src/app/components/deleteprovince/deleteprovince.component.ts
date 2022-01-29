@@ -4,34 +4,23 @@ import { Router } from '@angular/router';
 import {PageEvent} from '@angular/material/paginator';
 
 @Component({
-  selector: 'app-listprovincies',
-  templateUrl: './listprovincies.component.html',
-  styleUrls: ['./listprovincies.component.sass']
+  selector: 'app-deleteprovince',
+  templateUrl: './deleteprovince.component.html',
+  styleUrls: ['./deleteprovince.component.sass']
 })
-export class ListprovinciesComponent implements OnInit {
+export class DeleteprovinceComponent implements OnInit {
 
   public dato = 'Ecuador';
   public seleccion = 'Nombre del país';
   public lista:any = [];
   public dat: string = '';
   public categorias:any = [
-    { value: 'http://localhost:8080/Rest/ProvincesApi/findBynameProvince?nameProvince=', nombre:'Province name'},
-    { value: 'http://localhost:8080/Rest/ProvincesApi/findBycapitalProvince?capitalProvince=', nombre:'Province capital'}
+    { value: 'http://localhost:8080/Rest/ProvincesApi/findBynameProvince?nameProvince=', nombre:'Province name'}
   ];
-
 
   constructor(private RestService:ApiRestService, private router:Router) { }
 
   ngOnInit(): void {
-    this.cargarData();
-  }
-
-  public cargarData(){
-    this.RestService.get('http://localhost:8080/Rest/ProvincesApi/findAllProvinces')
-    .subscribe(respuesta => {
-      this.lista = respuesta;
-      console.log(this.lista = respuesta);
-    })
   }
 
   public consultarDatos(){
@@ -51,8 +40,16 @@ export class ListprovinciesComponent implements OnInit {
     this.page_number = e.pageIndex + 1
   }
 
+  deleteProvince(name: string):void{
+    console.log("Delete");
+    this.RestService.deleteProvince(name).subscribe(
+    );
+  }
+
 
   page_size: number = 10
   page_number: number = 1
-  pageSizeOptions = [10, 20, 50, 100, 150];
+  pageSizeOptions = [10, 20, 30, 40, 50]
+
+
 }

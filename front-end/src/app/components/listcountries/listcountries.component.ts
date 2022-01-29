@@ -17,11 +17,11 @@ export class ListcountriesComponent implements OnInit{
   public lista:any = [];
   public dat: string = '';
   public categorias:any = [
-    { value: 'http://localhost:8080/CountriesApi/findByname?name=', nombre:'Nombre del país'},
-    { value: 'http://localhost:8080/CountriesApi/findByenglishName?englishName=', nombre:'Nombre en inglés'},
-    { value: 'http://localhost:8080/CountriesApi/findBycapital?capital=', nombre:'Capital'},
-    { value: 'http://localhost:8080/CountriesApi/findBylatitude?latitude=', nombre:'Latitud'},
-    { value: 'http://localhost:8080/CountriesApi/findBylongitude?longitude=', nombre:'Longitud'}
+    { value: 'http://localhost:8080/Rest/CountriesApi/findByname?name=', nombre:'Country name'},
+    { value: 'http://localhost:8080/Rest/CountriesApi/findByenglishName?englishName=', nombre:'English name'},
+    { value: 'http://localhost:8080/Rest/CountriesApi/findBycapital?capital=', nombre:'Capital'},
+    { value: 'http://localhost:8080/Rest/CountriesApi/findBylatitude?latitude=', nombre:'Latitude'},
+    { value: 'http://localhost:8080/Rest/CountriesApi/findBylongitude?longitude=', nombre:'Longitude'}
   ];
 
 
@@ -32,7 +32,7 @@ export class ListcountriesComponent implements OnInit{
   }
 
   public cargarData(){
-    this.RestService.get('http://localhost:8080/CountriesApi/findAll')
+    this.RestService.get('http://localhost:8080/Rest/CountriesApi/findAll')
     .subscribe(respuesta => {
       this.lista = respuesta;
       console.log(this.lista = respuesta);
@@ -59,7 +59,7 @@ export class ListcountriesComponent implements OnInit{
 
   page_size: number = 10
   page_number: number = 1
-  pageSizeOptions = [10, 20, 50, 100, 150]
+  pageSizeOptions = [10, 20, 30, 40, 50]
 
 
 }

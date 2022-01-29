@@ -4,21 +4,20 @@ import { Router } from '@angular/router';
 import {PageEvent} from '@angular/material/paginator';
 
 @Component({
-  selector: 'app-listprovincies',
-  templateUrl: './listprovincies.component.html',
-  styleUrls: ['./listprovincies.component.sass']
+  selector: 'app-listcities',
+  templateUrl: './listcities.component.html',
+  styleUrls: ['./listcities.component.sass']
 })
-export class ListprovinciesComponent implements OnInit {
+export class ListcitiesComponent implements OnInit {
 
   public dato = 'Ecuador';
   public seleccion = 'Nombre del país';
   public lista:any = [];
   public dat: string = '';
   public categorias:any = [
-    { value: 'http://localhost:8080/Rest/ProvincesApi/findBynameProvince?nameProvince=', nombre:'Province name'},
-    { value: 'http://localhost:8080/Rest/ProvincesApi/findBycapitalProvince?capitalProvince=', nombre:'Province capital'}
+    { value: 'http://localhost:8080/Rest/CitiesApi/findBynamecity?namecity=', nombre:'City name'},
+    { value: 'http://localhost:8080/Rest/CitiesApi/findBycabeceracity?cabeceracity=', nombre:'City cabecera'}
   ];
-
 
   constructor(private RestService:ApiRestService, private router:Router) { }
 
@@ -27,7 +26,7 @@ export class ListprovinciesComponent implements OnInit {
   }
 
   public cargarData(){
-    this.RestService.get('http://localhost:8080/Rest/ProvincesApi/findAllProvinces')
+    this.RestService.get('http://localhost:8080/Rest/CitiesApi/findAllCities')
     .subscribe(respuesta => {
       this.lista = respuesta;
       console.log(this.lista = respuesta);
@@ -54,5 +53,5 @@ export class ListprovinciesComponent implements OnInit {
 
   page_size: number = 10
   page_number: number = 1
-  pageSizeOptions = [10, 20, 50, 100, 150];
+  pageSizeOptions = [10, 20, 30, 40, 50];
 }

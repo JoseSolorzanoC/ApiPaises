@@ -19,12 +19,7 @@ export class RegcountriesComponent implements OnInit {
     capital: new FormControl(''),
     latitude: new FormControl(''),
     longitude: new FormControl(''),
-    countryCodes: this.formBuilder.group({
-    tld: new FormControl(''),
-    iso3: new FormControl(''),
-    iso2: new FormControl(''),
-    fips: new FormControl(''),
-    ison: new FormControl('')})
+    countryCodes: new FormControl('')
   })
   constructor(private RestService:ApiRestService, private router:Router,private formBuilder: FormBuilder) { }
 
@@ -36,31 +31,12 @@ export class RegcountriesComponent implements OnInit {
       capital: ['', [Validators.required]],
       latitude: ['', [Validators.required]],
       longitude: ['', [Validators.required]],
-      countryCodes: this.formBuilder.group({
-      tld: ['', [Validators.required]],
-      iso3: ['', [Validators.required]],
-      iso2: ['', [Validators.required]],
-      fips: ['', [Validators.required]],
-      ison: ['', [Validators.required]]})
+      countryCodes: ['', [Validators.required]]
     });
   }
 
   postForm(form: CountryI){
     this.RestService.postCountry(form).subscribe( data =>{
-      this.newForm.reset({
-        'name': '',
-        'englishName': '',
-        'flag': '',
-        'capital': '',
-        'latitude': '',
-        'longitude': '',
-        'countryCodes':{
-        'tld': '',
-        'iso3': '',
-        'iso2': '',
-        'fips': '',
-        'ison': ''}
-       });
       console.log(data);
     })
     console.log(form);

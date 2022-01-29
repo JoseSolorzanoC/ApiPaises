@@ -1,16 +1,16 @@
 <div class="title">
-  <h1>List provincies</h1>
+  <h1>Delete provinces</h1>
 </div>
 <div class="div-general">
   <form (ngSubmit)="consultarDatos()">
     <div class="container-sm">
       <div class="form-floating mb-3"><h4 class="choose">Choose an option:</h4>
-        <select class="seleccion" name="seleccion" [(ngModel)]="seleccion">
+        <select class="form-select" name="seleccion" [(ngModel)]="seleccion">
           <option [value]="categoria.value" *ngFor="let categoria of categorias">{{categoria.nombre}}</option>
         </select>
       </div>
       <div class="form-floating mb-3">
-        <input type="text" class="form-control" #search id="countryname" placeholder="Type a name">
+        <input type="text" class="form-control" #search id="countryname" placeholder="Type a name country">
         <label for="floatingInput">Type a name</label>
         <button class="btn btn-success" id="btn-register" (click)="getValue(search.value)" type="submit">Search</button>
       </div>
@@ -25,13 +25,12 @@
         <tr>
           <th scope="col">Flag</th>
           <th scope="col">Province name</th>
-          <th scope="col">Capital name</th>
-          <th scope="col">Province code</th>
-          <th scope="col">Longitude</th>
+          <th scope="col">Province capital</th>
+          <th scope="col">Code</th>
           <th scope="col">Latitude</th>
-          <th scope="col">State province</th>
+          <th scope="col">Longitude</th>
+          <th scope="col">State</th>
         </tr>
-
       </thead>
       <tbody>
         <tr *ngFor="let datos of lista | paginate:page_size:page_number">
@@ -46,5 +45,10 @@
       </tbody>
     </table>
   </div>
+  <div class="cont-button">
+    <button class="btn btn-danger" id="btn-delete" *ngFor="let datos of lista" (click)="deleteProvince(datos.id)" type="submit">Delete</button>
+  </div>
 </div>
+
+
 

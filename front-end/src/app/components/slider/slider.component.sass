@@ -78,6 +78,7 @@ $border:1px solid red
     height: 450px
     @include display()
 
+
 .div-main
   width: 450px
   height: 375px
@@ -87,13 +88,17 @@ $border:1px solid red
 
 .div-main
   .div-img-true
+    overflow: hidden
+
+.div-main
+  .div-img-true
     img
       width: 100%
       height: 375px
       border-radius: 25px
-      background-position: center
-      background-repeat: no-repeat
       background-size: cover
+      background-position: center
+
 
   .div-info-img-true
     width: calc( 100% - 475px )
@@ -148,3 +153,15 @@ $border:1px solid red
     transition: all 300ms
     &:hover
       opacity: 1
+
+
+@media screen and (max-width: 802px)
+  .div-main
+    .div-img-true
+      img
+        width: 80%
+        height: 275px
+        border-radius: 25px
+        background-position: center
+        background-repeat: no-repeat
+        background-size: cover

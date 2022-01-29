@@ -1,0 +1,57 @@
+<div class="direction">
+  <div>
+    <div class="title">
+      <h1>Register a city</h1>
+    </div>
+    <div class="div-general">
+      <form [formGroup]="newForm" (ngSubmit)="postForm(newForm.value)">
+        <fieldset>
+          <legend>Province</legend>
+            <div class="form-floating mb-3 space">
+              <select class="form-select" formControlName="idprovince">
+                <option  id="idprovince" [value]="datos.idprovince" *ngFor="let datos of lista">{{datos.nameprovince}}</option>
+              </select>
+            </div>
+        </fieldset>
+        <br>
+        <fieldset>
+          <legend>City</legend>
+            <div class="form-floating mb-3 space">
+              <input type="text" formControlName="namecity" class="form-control" id="namecity" placeholder="name">
+              <label for="floatingInput">City name</label>
+            </div>
+            <div class="form-floating space">
+              <input type="text" formControlName="cabeceracity" class="form-control" id="cabeceracity" placeholder="name">
+              <label for="floatingInput">City cabecera</label>
+            </div>
+            <div class="form-floating space">
+              <input type="text" formControlName="flagcity" class="form-control" id="flagcity" placeholder="name">
+              <label for="floatingInput">City flag</label>
+            </div>
+        </fieldset>
+        <br>
+        <fieldset>
+          <legend>City codes</legend>
+            <div class="form-floating mb-3 space">
+              <input type="text" formControlName="callcodecity" class="form-control" id="callcodecity" placeholder="Italia">
+              <label for="floatingInput">Call Code</label>
+            </div>
+            <div class="form-floating space">
+              <input type="text" formControlName="coordinatealt" class="form-control" id="coordinatealt" placeholder="Italy">
+              <label for="floatingInput">Longitud</label>
+            </div>
+            <div class="form-floating space">
+              <input type="text" formControlName="coordinatelat" class="form-control" id="coordinatelat" placeholder="Italy">
+              <label for="floatingInput">Latitud</label>
+            </div>
+        </fieldset>
+        <div class="d-grid gap-1 d-md-block btn-position">
+          <button class="btn btn-success" type="submit" id="btn-register" [disabled]="newForm.invalid">Register</button>
+          <button class="btn btn-danger" type="submit" id="btn-register">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+

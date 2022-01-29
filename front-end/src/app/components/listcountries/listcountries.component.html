@@ -5,13 +5,13 @@
   <form (ngSubmit)="consultarDatos()">
     <div class="container-sm">
       <div class="form-floating mb-3"><h4 class="choose">Choose an option:</h4>
-        <select class="seleccion" name="seleccion" [(ngModel)]="seleccion">
+        <select class="form-select" name="seleccion" [(ngModel)]="seleccion">
           <option [value]="categoria.value" *ngFor="let categoria of categorias">{{categoria.nombre}}</option>
         </select>
       </div>
       <div class="form-floating mb-3">
         <input type="text" class="form-control" #search id="countryname" placeholder="Type a name country">
-        <label for="floatingInput">Type a country name</label>
+        <label for="floatingInput">Type a name</label>
         <button class="btn btn-success" id="btn-register" (click)="getValue(search.value)" type="submit">Search</button>
       </div>
     </div>
@@ -20,41 +20,41 @@
     <div class="div-paginator">
       <mat-paginator [length]="lista.length" [pageSize]="page_size" [pageSizeOptions]="pageSizeOptions" (page)="handlePage($event)"></mat-paginator>
     </div>
-    <table class="table">
-      <thead class="table-dark">
-        <tr>
-          <th scope="col">Country name</th>
-          <th scope="col">English name</th>
-          <th scope="col">Image Flag</th>
-          <th scope="col">Flag</th>
-          <th scope="col">Capital</th>
-          <th scope="col">Latitude</th>
-          <th scope="col">Longitude</th>
-          <th scope="col">TLD</th>
-          <th scope="col">ISO 3</th>
-          <th scope="col">ISO 2</th>
-          <th scope="col">FIPS</th>
-          <th scope="col">isoN</th>
-        </tr>
+    <div class="scroll-table">
+      <table class="table">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Flag</th>
+            <th scope="col">Country name</th>
+            <th scope="col">English name</th>
+            <th scope="col">Capital</th>
+            <th scope="col">Latitude</th>
+            <th scope="col">Longitude</th>
+            <th scope="col">TLD</th>
+            <th scope="col">ISO 3</th>
+            <th scope="col">ISO 2</th>
+            <th scope="col">FIPS</th>
+            <th scope="col">isoN</th>
+          </tr>
 
-      </thead>
-      <tbody>
-        <tr *ngFor="let datos of lista | paginate:page_size:page_number">
-          <td>{{datos.name}}</td>
-          <td>{{datos.englishName}}</td>
-          <td><img src="{{datos.flag}}" alt=""></td>
-          <td>{{datos.flag}}</td>
-          <td>{{datos.capital}}</td>
-          <td>{{datos.latitude}}</td>
-          <td>{{datos.longitude}}</td>
-          <td>{{datos.countryCodes.tld}}</td>
-          <td>{{datos.countryCodes.iso3}}</td>
-          <td>{{datos.countryCodes.iso2}}</td>
-          <td>{{datos.countryCodes.fips}}</td>
-          <td>{{datos.countryCodes.isoN}}</td>
-        </tr>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <tr *ngFor="let datos of lista | paginate:page_size:page_number">
+            <td><img src="{{datos.flag}}" alt=""></td>
+            <td>{{datos.name}}</td>
+            <td>{{datos.englishName}}</td>
+            <td>{{datos.capital}}</td>
+            <td>{{datos.latitude}}</td>
+            <td>{{datos.longitude}}</td>
+            <td>{{datos.countryCodes.tld}}</td>
+            <td>{{datos.countryCodes.iso3}}</td>
+            <td>{{datos.countryCodes.iso2}}</td>
+            <td>{{datos.countryCodes.fips}}</td>
+            <td>{{datos.countryCodes.isoN}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 

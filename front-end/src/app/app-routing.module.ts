@@ -12,6 +12,12 @@ import { TituloComponent } from './components/titulo/titulo.component';
 import { AboutComponent } from './components/about/about.component';
 import { WorkComponent } from './components/work/work.component';
 import {ListprovinciesComponent} from './components/listprovincies/listprovincies.component';
+import {RegprovinciesComponent} from './components/regprovincies/regprovincies.component';
+import {ListcitiesComponent} from './components/listcities/listcities.component';
+import {RegcitiesComponent} from './components/regcities/regcities.component';
+import {DeletecountryComponent} from './components/deletecountry/deletecountry.component';
+import {DeleteprovinceComponent} from './components/deleteprovince/deleteprovince.component';
+import {DeletecityComponent} from './components/deletecity/deletecity.component';
 
 
 const routes: Routes = [
@@ -22,7 +28,13 @@ const routes: Routes = [
       children: [
         {path : 'RegisterCountries', component:RegcountriesComponent},
         {path : 'ListCountries', component:ListcountriesComponent},
-        {path : 'ListProvincies', component:ListprovinciesComponent}
+        {path : 'ListProvincies', component:ListprovinciesComponent},
+        {path : 'RegisterProvincies', component:RegprovinciesComponent},
+        {path : 'ListCities', component:ListcitiesComponent},
+        {path : 'RegisterCity', component:RegcitiesComponent},
+        {path : 'DeleteCountrys', component:DeletecountryComponent},
+        {path : 'DeleteProvinces', component:DeleteprovinceComponent},
+        {path : 'DeleteCitites', component:DeletecityComponent}
       ]
     },
     { path : 'ApiPaises/Home', component: HomeComponent},
