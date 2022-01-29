@@ -1,0 +1,268 @@
+body {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+body .gradient {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(45deg, #0D47A1, #90CAF9);
+  opacity: 0.7;
+}
+
+.div-general {
+  height: 100vh;
+  position: relative;
+}
+
+.div-general .div-logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 75px;
+}
+
+.div-general span {
+  border: 1px solid #FFFFFF;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 0 solid #168AAD;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.div-general span img {
+  width: 70px;
+  height: 70px;
+}
+
+.div-general .div-name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 75px;
+}
+
+.div-general .div-cont-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-align: center;
+  width: 100%;
+}
+
+.div-logo .icon {
+  width: 100%;
+  height: 100%;
+}
+
+.div-name h1 {
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: -0.5px;
+  color: #000000;
+  font-weight: bold;
+}
+
+.sig-in {
+  background-color: #168AAD;
+  border-color: rgba(240, 246, 252, 0.1);
+  color: #FFFFFF;
+  width: 275px;
+  margin-top: 15px;
+}
+
+.sig-in:hover {
+  background-color: #1A759F;
+}
+
+.card {
+  width: auto;
+  background-color: transparent;
+  border: 0 solid #21262d;
+  padding-bottom: 30px;
+}
+
+.width {
+  width: 50%;
+}
+
+.div-inputs {
+  width: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: auto;
+}
+
+.cont-user, .cont-pass {
+  width: 275px;
+  height: auto;
+}
+
+.cont-user .user {
+  color: #FFFFFF;
+  width: 100%;
+  font-weight: 400;
+  text-align: left;
+  float: left;
+  font-size: 14px;
+  color: #c9d1d9;
+  color: #000000;
+  font-weight: bold;
+}
+
+.cont-user .usermail {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  width: 275px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 20px;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  outline: none;
+  height: 32px;
+  color: #000000;
+  padding: 5px 12px;
+  border: 1px solid #c9d1d9;
+  background-color: #c9d1d9;
+}
+
+.lbl-forgot {
+  color: #FFFFFF;
+  width: 100%;
+  font-weight: 400;
+  text-align: left;
+  float: left;
+  font-size: 14px;
+  color: #c9d1d9;
+}
+
+.lbl-forgot a {
+  float: right;
+  text-decoration: none;
+  font-size: 12px;
+  color: #58a6ff;
+  background-color: transparent;
+  color: #1E6091;
+  font-weight: bold;
+}
+
+.lbl-forgot a:hover, .lbl-forgot a:active {
+  outline-width: 0;
+}
+
+.lbl-forgot .passw {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  width: 275px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 20px;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  outline: none;
+  height: 32px;
+  color: #000000;
+  padding: 5px 12px;
+  border: 1px solid #c9d1d9;
+  background-color: #c9d1d9;
+}
+
+.lbl-forgot .pass {
+  font-weight: bold;
+  color: #000000;
+}
+
+.div-create {
+  width: 100%;
+  height: 100px;
+  margin-top: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.cont-account {
+  width: 300px;
+  height: 55px;
+  border-radius: 6px;
+  color: #c9d1d9;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.cont-account a {
+  float: right;
+  text-decoration: none;
+  font-size: 12px;
+  color: #58a6ff;
+  background-color: transparent;
+  color: #184E77;
+  font-weight: bold;
+}
+
+.cont-account a:hover, .cont-account a:active {
+  outline-width: 0;
+}
+
+.cont-account li {
+  list-style: none;
+  color: #000000;
+  font-weight: bold;
+}
+/*# sourceMappingURL=login.component.css.map */

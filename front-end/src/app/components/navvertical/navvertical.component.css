@@ -1,0 +1,81 @@
+.direction {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.routings {
+  width: calc( 100% - 300px);
+  height: auto;
+}
+
+.nav-vertical {
+  width: 300px;
+  height: auto;
+}
+
+.title-api {
+  width: 300px;
+  height: 55px;
+  border: 1px solid #c9d1d9;
+  background-color: #0D0C1F;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.title-api h1 {
+  font-size: 24px;
+  color: #FFFFFF;
+}
+
+.accordion {
+  height: 362px;
+  overflow-y: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.accordion::-webkit-scrollbar {
+  width: 5px;
+  background-color: rgba(13, 12, 31, 0.5);
+  border-radius: 5px;
+}
+
+.accordion::-webkit-scrollbar-thumb {
+  background-color: #0D0C1F;
+  border-radius: 5px;
+}
+
+.accordion-body .accordion-body:hover {
+  cursor: pointer;
+  background-color: #BBDEFB;
+}
+
+.accordion-body .accordion-body a {
+  text-decoration: none;
+  color: #000000;
+}
+
+@media screen and (max-width: 700px) {
+  .direction {
+    display: block;
+    width: 100%;
+  }
+  .nav-vertical {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .routings {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=navvertical.component.css.map */

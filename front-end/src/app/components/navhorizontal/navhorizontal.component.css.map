@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AACE,uBADqB,CACrB,OAAO,CAAC;EACN,WAAW,EAAE,IAAI;CAAG;;AAMxB,AACE,uBADqB,CACrB,MAAM,CAAC;EACL,WAAW,EAAE,IAAI;CAAG;;AAExB,AAAA,uBAAuB,CAAC;EACtB,gBAAgB,EAAE,OAAO;CAAG;;AAE9B,AAAA,IAAI,CAAC;EACH,gBAAgB,EAAE,OAAO;CAAG",
+    "sources": [
+        "navhorizontal.component.sass"
+    ],
+    "names": [],
+    "file": "navhorizontal.component.css"
+}
