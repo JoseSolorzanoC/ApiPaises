@@ -49,6 +49,7 @@ export class ListcountriesComponent implements OnInit{
 
   public getValue(value:string){
     this.dato = value
+    console.log(this.dato)
   }
 
   handlePage(e: PageEvent){

@@ -1,0 +1,110 @@
+<div class="direction">
+  <div class="dir-div">
+    <div class="title">
+      <h1>Update a country</h1>
+    </div>
+    <div class="div-general">
+      <form (ngSubmit)="consultarDatos()">
+        <div class="container-sm">
+          <div class="form-floating mb-3"><h4 class="choose">Choose an option:</h4>
+            <select class="form-select" name="seleccion" [(ngModel)]="seleccion">
+              <option [value]="categoria.value" *ngFor="let categoria of categorias">{{categoria.nombre}}</option>
+            </select>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" #search id="countryname" placeholder="Type a name country">
+            <label for="floatingInput">Type a name</label>
+            <button class="btn btn-success" id="btn-register" (click)="getValue(search.value)" type="submit">Search</button>
+          </div>
+        </div>
+        <div [formGroup]="newFormA" *ngFor="let datos of lista">
+          <fieldset>
+            <legend>ID</legend>
+              <div class="form-floating mb-3 space">
+                <input  type="text" formControlName="id" class="form-control" id="id" placeholder="Italia" value="{{datos.id}}" readonly>
+                <label for="floatingInput">ID</label>
+              </div>
+          </fieldset>
+          <fieldset>
+            <legend>Country</legend>
+              <div class="form-floating mb-3 space">
+                <input  type="text" formControlName="countryId" class="form-control" id="countryId" placeholder="Italia" value="{{datos.countryId}}" readonly>
+                <label for="floatingInput">Country ID</label>
+              </div>
+              <div class="form-floating mb-3 space">
+                <input  type="text" formControlName="name" class="form-control" id="name" placeholder="Italia" value="{{datos.name}}">
+                <label for="floatingInput">Country name</label>
+              </div>
+              <div class="form-floating space">
+                <input type="text" formControlName="englishName" class="form-control" id="englishName" placeholder="Italy" value="{{datos.englishName}}">
+                <label for="floatingInput">English name</label>
+              </div>
+            <div class="form-floating space">
+              <input type="text" formControlName="flag" class="form-control" id="flag" placeholder="URL" value="{{datos.flag}}">
+              <label for="floatingInput">Flag (URL)</label>
+            </div>
+            <div class="form-floating space">
+              <input type="text" formControlName="capital" class="form-control" id="capital" placeholder="Roma" value="{{datos.capital}}">
+              <label for="floatingInput">Capital</label>
+            </div>
+          </fieldset>
+          <br>
+          <fieldset>
+            <legend>Coordinates</legend>
+              <div class="form-floating mb-3 space">
+                <input type="text" formControlName="latitude" class="form-control" id="latitude" placeholder="Italia" value="{{datos.latitude}}">
+                <label for="floatingInput">Latitude</label>
+              </div>
+              <div class="form-floating space">
+                <input type="text" formControlName="longitude" class="form-control" id="longitude" placeholder="Italy" value="{{datos.longitude}}">
+                <label for="floatingInput">Longitude</label>
+              </div>
+          </fieldset>
+          <br>
+          <fieldset>
+            <legend>Country codes</legend>
+              <div class="form-floating space">
+                <input type="text" formControlName="fips" class="form-control" id="fips" placeholder="Italy" value="{{datos.countryCodes.fips}}">
+                <label for="floatingInput">fips</label>
+              </div>
+              <div class="form-floating space">
+                <input type="text" formControlName="iso2" class="form-control" id="iso2" placeholder="Italy" value="{{datos.countryCodes.iso2}}">
+                <label for="floatingInput">ISO 2</label>
+              </div>
+              <div class="form-floating space">
+                <input type="text" formControlName="iso3" class="form-control" id="iso3" placeholder="Italy" value="{{datos.countryCodes.iso3}}">
+                <label for="floatingInput">ISO 3</label>
+              </div>
+              <div class="form-floating space">
+                <input type="text" formControlName="isoN" class="form-control" id="isoN" placeholder="Italy" value="{{datos.countryCodes.isoN}}">
+                <label for="floatingInput">isoN</label>
+              </div>
+              <div class="form-floating mb-3 space">
+                <input type="text" formControlName="tld" class="form-control" id="tld" placeholder="Italia" value="{{datos.countryCodes.tld}}">
+                <label for="floatingInput">TLD</label>
+              </div>
+          </fieldset>
+          <fieldset>
+            <legend>CallCode</legend>
+            <div class="form-floating mb-3 space">
+              <input type="text" formControlName="callCode" class="form-control" id="callCode" placeholder="Italia" value="{{datos.callCode}}">
+              <label for="floatingInput">Call Code</label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>State</legend>
+            <div class="form-floating mb-3 space">
+              <input type="text" formControlName="statecountry" class="form-control" id="statecountry" placeholder="Italia" value="{{datos.statecountry}}">
+              <label for="floatingInput">Country State</label>
+            </div>
+          </fieldset>
+      </div>
+        <div class="d-grid gap-1 d-md-block btn-position">
+          <button class="btn btn-success" type="submit" id="btn-register" (click)="updateData(newFormA.value)" [disabled]="newFormA.invalid">Update</button>
+          <button class="btn btn-danger" type="submit" id="btn-cancel" [routerLink]="['/ApiPaises/MainMenu/ListCountries']">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

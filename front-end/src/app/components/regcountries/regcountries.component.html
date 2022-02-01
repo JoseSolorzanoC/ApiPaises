@@ -39,30 +39,30 @@
         <br>
         <fieldset>
           <legend>Country codes</legend>
-            <div class="form-floating mb-3 space">
-              <input type="text" formControlName="countryCodes" class="form-control" id="tld" placeholder="Italia">
-              <label for="floatingInput">TLD</label>
-            </div>
             <div class="form-floating space">
-              <input type="text" formControlName="countryCodes" class="form-control" id="iso3" placeholder="Italy">
-              <label for="floatingInput">ISO 3</label>
-            </div>
-            <div class="form-floating space">
-              <input type="text" formControlName="countryCodes" class="form-control" id="iso2" placeholder="Italy">
-              <label for="floatingInput">ISO 2</label>
-            </div>
-            <div class="form-floating space">
-              <input type="text" formControlName="countryCodes" class="form-control" id="fips" placeholder="Italy">
+              <input type="text" formControlName="fips" class="form-control" id="fips" placeholder="Italy">
               <label for="floatingInput">fips</label>
             </div>
             <div class="form-floating space">
-              <input type="text" formControlName="countryCodes" class="form-control" id="ison" placeholder="Italy">
+              <input type="text" formControlName="iso2" class="form-control" id="iso2" placeholder="Italy">
+              <label for="floatingInput">ISO 2</label>
+            </div>
+            <div class="form-floating space">
+              <input type="text" formControlName="iso3" class="form-control" id="iso3" placeholder="Italy">
+              <label for="floatingInput">ISO 3</label>
+            </div>
+            <div class="form-floating space">
+              <input type="text" formControlName="isoN" class="form-control" id="ison" placeholder="Italy">
               <label for="floatingInput">isoN</label>
+            </div>
+            <div class="form-floating mb-3 space">
+              <input type="text" formControlName="tld" class="form-control" id="tld" placeholder="Italia">
+              <label for="floatingInput">TLD</label>
             </div>
         </fieldset>
         <div class="d-grid gap-1 d-md-block btn-position">
           <button class="btn btn-success" type="submit" id="btn-register" [disabled]="newForm.invalid">Register</button>
-          <button class="btn btn-danger" type="submit" id="btn-cancel">Cancel</button>
+          <button class="btn btn-danger" type="submit" id="btn-cancel" [routerLink]="['/ApiPaises/MainMenu/ListCountries']">Cancel</button>
         </div>
       </form>
     </div>

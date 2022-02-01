@@ -2,232 +2,300 @@ $border: 1px solid #FFFFFF
 $widthmat-form-inp: 50%
 
 @mixin contents()
-  display: flex
-  justify-content: center
-  align-items: center
-  box-sizing: border-box
+    display: flex
+    justify-content: center
+    align-items: center
+    box-sizing: border-box
+
+@mixin labels()
+    color: #FFFFFF
+    width: 100%
+    font-weight: 400
+    text-align: left
+    float: left
+    font-size: 14px
+    color: #c9d1d9
+
+@mixin links()
+    float: right
+    text-decoration: none
+    font-size: 12px
+    color: #58a6ff
+    background-color: transparent
+    &:hover, &:active
+      outline-width: 0
 
 
-@mixin top-lr()
-  width: 50%
-  height: 25px
-  box-sizing: border-box
+@mixin animate($animation,$duration,$method,$times)
+    animation: $animation $duration $method $times
 
 
-@mixin h3()
-  font-weight: 300
-  letter-spacing: -0.5px
-  color: #000000
-  font-weight: 500
-  font-size: 18px
+@mixin keyframes($name)
+    @keyframes #{$name}
+        @content
 
 
-body
+.body
   font-family: "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
 
-body
+
+.body
   .gradient
     position: fixed
     width: 100%
     height: 100vh
-    //background-image: linear-gradient(#CCFF33, #9EF01A, #70E000, #38B000, #008000, #007200, #006400, #004B23)
-    background-image: linear-gradient(300deg, #0D47A1, #90CAF9)
-    opacity: 0.7
+    background-image: linear-gradient(135deg, #0D0C1F, #161534, #1F1D49, #2D2B6A,  #3E3B8E)
+
+
+.gradient
+  .bubbles
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    overflow: hidden
+
+
+.bubbles
+  li
+    position: absolute
+    list-style: none
+    display: block
+    &:nth-child(1)
+      right: -75px
+      width: 494px
+      height: 494px
+      transform: rotate(45deg)
+      -webkit-transform: rotate(45deg)
+      background-image: linear-gradient(135deg, #2D2B6A,  #3E3B8E 250%)
+    &:nth-child(2)
+      left: 180px
+      bottom: 20px
+      width: 350px
+      height: 350px
+      transform: rotate(45deg)
+      -webkit-transform: rotate(45deg)
+      background-image: linear-gradient(135deg, #2D2B6A,  #3E3B8E 250%)
+
+
 
 .div-general
   height: 100vh
   position: relative
 
+
 .div-general
   .div-logo
     @include contents()
     height: 75px
+    width: auto
 
-  .spanL
-    margin-top: 5px
-    border: $border
-    width: 75px
-    height: 75px
-    border-radius: 50%
-    background-color: transparent
-    border: 0 solid #168AAD
+
+  .div-logo
+    span
+      cursor: pointer
+      width: 200px
+      height: 75px
+      background-color: transparent
+      color: #FFFFFF
+      font-weight: 600
+      @include contents()
+
+  .div-logo
+    span
+      img
+        width: 70px
+        height: 70px
+        margin-right: 10px
+
+  .div-logo
+    .account
+      width: calc( 100% - 200px )
+      height: 75px
+      @include contents()
+      justify-content: flex-end
+
+  .account
+    .ctn-ul
+      @include contents()
+
+  .ctn-ul
+    ul
+      width: auto
+      height: auto
+      color: #FFFFFF
+      list-style: none
+      @include contents()
+      margin-top: auto
+      margin-bottom: auto
+
+  ul
+    li
+      &:nth-last-child(2)
+        margin-right: 25px
+      &:nth-last-child(1)
+        margin-right: 50px
+
+  ul
+    li
+      a
+        text-decoration: none
+        color: #FFFFFF
+        width: auto
+        padding: 5px 30px
+        font-size: .9em
+        border-radius: 5px
+        border: $border
+        transition: all 300ms
+        &:hover
+          color: #000000
+          background-color: #FFFFFF
+
+  .info-form
     @include contents()
+    margin-top: 105px
+    margin-left: 6.5%
+    width: 87%
+    padding-bottom: 25px
+
+
 
   .div-name
     @include contents()
-    height: 75px
+    height: auto
+    width: 500px
 
   .div-cont-form
     @include contents()
+    justify-content: flex-start
+    padding-left: 50px
     text-align: center
-    width: 100%
-    height: auto
-    padding-bottom: 50px
+    width: calc( 1150px - 400px )
+    height: 295px
+    background-color: #FFFFFF
+    border: $border
+    margin-left: 100px
+    box-sizing: border-box
 
-.div-logo
-  .spanL
-    img
-      width: 70px
-      height: 70px
-
+.div-name h1
+  color: #FFFFFF
+  font-size: 50px
 
 .div-name
   h1
-    font-size: 24px
-    letter-spacing: -0.5px
-    color: #000000
-    font-weight: bold
+    p
+      padding-top: 25px
+      font-size: 18px
+      font-weight: 300
 
-.cardF
-  width: auto
-  height: auto
-  box-sizing: border-box
-  padding-left: 10px
-  padding-right: 15px
-  padding-bottom: 15px
-  padding-top: 5px
-  //background-color: rgba(255, 255, 255, .8 )
-  //-webkit-box-shadow: 0px 0px 5px 2px rgba(255,255,255,1)
-  //-moz-box-shadow: 0px 0px 5px 2px rgba(255,255,255,1)
-  //box-shadow: 0px 0px 5px 2px rgba(255,255,255,1)
+.sig-in
+  background-color: #168AAD
+  border-color: rgba(240,246,252, .1)
+  color: #FFFFFF
+  width: 275px
+  &:hover
+    background-color: #1A759F
 
 
-.cardF
-  .div-main-card, .div-main-email
+.card
+  width: calc( 100% - 50px )
+  background-color: transparent
+  border: none
+  padding-bottom: 25px
+
+.card
+  .div-inputs
+    width: 100%
+    box-sizing: border-box
+    height: 250px
+
+.cont-user
+  width: 100%
+  height: 250px
+
+.cont-user
+  .form
+    height: 250px
+
+
+.cont-user
+  .mat-form-field
     width: 100%
     height: auto
-    box-sizing: border-box
 
-.div-main-card
-  .div-top
-    width: 100%
-    height: 25px
-    @include contents()
-    text-align: left
-    margin-left: 5px
-
-  .div-bottom
-    width: 100%
-    height: 39px
-    @include contents()
-
-span
-   background-color: #168AAD
-   color: #000000
-   font-weight: bold
-   border: none
-   width: 160px
-   justify-content: center
-
-.div-top
-  .div-top-left
-    @include top-lr()
+.mat-user
+  margin-top: 15px
 
 
-  .div-top-right
-    @include top-lr()
+.mb-3
+    border-bottom: 2px solid #ced4da
+    height: 60px
+
+.mb-3
+  .inp-email, .inp-password
+    padding: 0
+    padding-left: 10px
+    border: none
+
+.mb-3
+  .inp-email
+    &:focus
+      padding-left: 12px
+      padding-top: 0
+      padding-bottom: 0
+      box-shadow: 0 10px 21px -6px rgb(13 110 253 / 25%)
+
+  .inp-password
+    &:focus
+      padding-left: 12px
+      padding-top: 0
+      padding-bottom: 0
+      box-shadow: 0 10px 21px -6px rgb(13 110 253 / 25%)
 
 
-.div-top-left, .div-top-right
-  h3
-    @include h3()
+.mb-3
+  .inp-email
+    &:focus ~ label
+      transform: scale(.80) translateY(-1rem) translateX(1rem)
 
-.div-bottom
-  .div-bottom-left
-    width: 50%
-    height: 39px
-    box-sizing: border-box
-    text-align: left
+.mb-3
+  .inp-password
+    &:focus ~ label
+      transform: scale(.80) translateY(-1rem) translateX(1rem)
 
-  .div-bottom-right
-    width: 50%
-    height: 39px
-    box-sizing: border-box
-    text-align: left
+.cont-pass
+  .lbl-forgot
+    .example-full-width
+      .mb-3
+          .lbl-password
+            color: #000000
 
+.example-full-width
+  .hidden
+    top: 10px
 
-.div-bottom-left, .div-bottom-right
-  .inp-data
-    margin-top: 5px
-    margin-left: 5px
-    width: 172px
-    border-radius: 6px
-    font-size: 14px
-    line-height: 20px
-    vertical-align: middle
-    background-repeat: no-repeat
-    background-position: right 8px center
-    outline: none
-    height: 30px
-    color: #000000
-    padding: 5px 12px
-    border: 1px solid #c9d1d9
-    background-color: #ffffff
+.mat-error
+  color: red
+  margin-top: -6px
+  font-size: 14px
 
-.form-control
-  background-color: #c9d1d9
-
-.div-main-email, .div-main-phone, .div-main-user, .div-main-pass, .div-main-buttons
-  .div-top-ep
-    width: 100%
-    height: 25px
-    @include contents()
-    text-align: left
-    margin-left: 5px
+.lbl-forgot
+  @include labels()
+  margin-top: 20px
 
 
-.div-top-ep
-  .div-top-all-ep
-    width: 100%
-    height: 39px
-    box-sizing: border-box
-    text-align: left
 
-.div-top-all-ep
-  h3
-    @include h3()
+.lbl-forgot
+  a
+    @include links()
+    color: #1E6091
+    font-weight: bold
 
+@media screen and (max-width: 588px)
+  .ctn-ul
+    ul
+      li
+        &:nth-last-child(2)
+          display: none
 
-.div-bottom-ep
-  .div-bottom-all-ep
-    width: 100%
-    height: 39px
-    box-sizing: border-box
-    text-align: left
-
-.div-bottom-all-ep
-  .inp-ep
-    margin-top: 5px
-    margin-left: 5px
-    width: 350px
-    border-radius: 6px
-    font-size: 14px
-    line-height: 20px
-    vertical-align: middle
-    background-repeat: no-repeat
-    background-position: right 8px center
-    outline: none
-    height: 30px
-    color: #000000
-    padding: 5px 12px
-    border: 1px solid #c9d1d9
-    background-color: #ffffff
-
-
-.div-bottom-all-ep
-  @include contents()
-
-
-.div-bottom-all-ep
-  .inp-submit
-    background-color: #168AAD
-    border-color: rgba(240,246,252, .1)
-    color: #FFFFFF
-    width: 75%
-    height: 35px
-    margin-top: 15px
-    border-radius: 4px
-    cursor: pointer
-    letter-spacing: 1px
-    &:hover
-      background-color: #1A759F

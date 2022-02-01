@@ -41,9 +41,9 @@ export class DeleteprovinceComponent implements OnInit {
   }
 
   deleteProvince(name: string):void{
-    console.log("Delete");
     this.RestService.deleteProvince(name).subscribe(
     );
+    window.location.reload();
   }
 
 

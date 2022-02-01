@@ -1,45 +1,64 @@
-<body>
-  <div class="gradient"></div>
+<div class="body">
+  <div class="gradient">
+    <ul class="bubbles">
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
 
   <div class="div-general">
-    <div class="div-logo"><span>
+    <div class="div-logo">
+      <span>
         <img src="../../../assets/images/Logo.svg"/>
-      </span></div>
-    <br>
-    <div class="div-name">
-      <h1>Sig in to API Paises</h1>
+         API PAISES
+      </span>
+      <div class="account">
+        <div class="ctn-ul">
+          <ul>
+            <li>Don’t have an account?</li>
+            <li><a [routerLink]="['/ApiPaises/sign/up']">SIGN UP</a></li>
+          </ul>
+      </div>
+      </div>
     </div>
-    <br>
-    <div class="div-cont-form">
-      <div class="card">
-        <div>
-          <br>
-          <div class="div-inputs">
-            <div class="cont-user">
-              <label for="usermail" class="user">Username or email</label><br>
-              <input type="text" class="usermail" />
-            </div>
-            <br>
-            <div class="cont-pass">
-              <div class="lbl-forgot">
-                <label class="pass" for="pass">Password</label>
-                <a href="#">Forgort password?</a>
-                <input type="password" class="passw" />
+    <div class="info-form">
+      <div class="div-name">
+        <h1>Sign in <br>to <strong>API Paises</strong>
+        <p>Enter your details to sign in.</p></h1>
+      </div>
+      <div class="div-cont-form">
+        <div class="card">
+            <div class="div-inputs">
+              <div class="cont-user">
+                <form class="form-floating form">
+                  <mat-form-field class="example-full-width mat-user" appearance="fill">
+                    <div class="form-floating mb-3">
+                      <input type="email" matInput placeholder=" " [formControl]="email" required class="form-control inp-email" id="floatingInput">
+                      <label for="floatingInput">Email address</label>
+                    </div>
+                    <mat-error class="mat-error" *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                  </mat-form-field>
+                  <div class="cont-pass">
+                    <div class="lbl-forgot">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                          <div class="form-floating mb-3">
+                            <input type="password" [formControl]="password" matInput [type]="hide ? 'password' : 'text'" placeholder=" " class="form-control inp-password" id="floatingInput">
+                            <label for="floatingInput" class="lbl-password">Password</label>
+                          </div>
+                          <mat-error class="mat-error" *ngIf="password.invalid">{{getErrorMessage()}}</mat-error>
+                          <a class="hidden" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                          </a>
+                        </mat-form-field>
+                    </div>
+                  </div>
+                  <button class="sig-in" [routerLink]="['/ApiPaises/MainMenu/ListCountries']">SIGN IN</button>
+                </form>
               </div>
             </div>
           </div>
-          <br>
-          <button mat-raised-button class="sig-in" [routerLink]="['/','NavVertical']">Sig in</button>
         </div>
-      </div>
-    </div>
-    <div class="div-create">
-      <div class="cont-account">
-        <li>Don't have an account? &nbsp;</li>
-        <a [routerLink]="['/','Register']"> Create an account</a>
-      </div>
     </div>
   </div>
-
-</body>
+</div>
 

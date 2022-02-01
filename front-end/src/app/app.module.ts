@@ -45,6 +45,9 @@ import { RegcitiesComponent } from './components/regcities/regcities.component';
 import { DeletecountryComponent } from './components/deletecountry/deletecountry.component';
 import { DeleteprovinceComponent } from './components/deleteprovince/deleteprovince.component';
 import { DeletecityComponent } from './components/deletecity/deletecity.component';
+import { UpdatecountryComponent } from './components/updatecountry/updatecountry.component';
+import { UpdateprovinceComponent } from './components/updateprovince/updateprovince.component';
+import { UpdatecitiesComponent } from './components/updatecities/updatecities.component';
 
 
 @NgModule({
@@ -69,6 +72,9 @@ import { DeletecityComponent } from './components/deletecity/deletecity.componen
     DeletecountryComponent,
     DeleteprovinceComponent,
     DeletecityComponent,
+    UpdatecountryComponent,
+    UpdateprovinceComponent,
+    UpdatecitiesComponent,
     ],
   imports: [
     BrowserModule,
