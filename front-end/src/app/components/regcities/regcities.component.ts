@@ -45,6 +45,7 @@ export class RegcitiesComponent implements OnInit {
   postForm(form: CityI){
     this.RestService.postCity(form).subscribe( data =>{
       console.log(data);
+      window.location.reload();
     })
     console.log(form);
   }

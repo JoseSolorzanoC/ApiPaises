@@ -1,0 +1,93 @@
+<div class="direction">
+  <div class="dir-div">
+    <div class="title">
+      <h1>Update a city</h1>
+    </div>
+    <div class="div-general">
+      <form (ngSubmit)="consultarDatos()" >
+        <div class="container-sm">
+          <div class="form-floating mb-3"><h4 class="choose">Choose an option:</h4>
+            <select class="form-select" name="seleccion" [(ngModel)]="seleccion">
+              <option [value]="categoria.value" *ngFor="let categoria of categorias">{{categoria.nombre}}</option>
+            </select>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" #search id="countryname" placeholder="Type a name country">
+            <label for="floatingInput">Type a name</label>
+            <button class="btn btn-success" id="btn-register" (click)="getValue(search.value)" type="submit">Search</button>
+          </div>
+        </div>
+      <div [formGroup]="newFormA" *ngFor="let datos of lista">
+          <fieldset>
+            <legend>ID</legend>
+              <div class="form-floating mb-3 space">
+                <input formControlName="id" type="text" class="form-control" id="id" placeholder="Italia" readonly>
+                <label for="floatingInput">ID</label>
+              </div>
+          </fieldset>
+          <br>
+          <fieldset>
+            <legend>Province</legend>
+              <div class="form-floating mb-3 space">
+                <input formControlName="idprovince" type="text" class="form-control" id="idprovince" placeholder="Italia" readonly>
+                <label for="floatingInput">City id</label>
+              </div>
+          </fieldset>
+          <br>
+          <fieldset>
+            <legend>City</legend>
+              <div class="form-floating mb-3 space">
+                <input type="text" formControlName="idcity" class="form-control" id="idcity" placeholder="Italia" readonly>
+                <label for="floatingInput">City id</label>
+              </div>
+              <div  class="form-floating mb-3 space">
+                <input type="text" formControlName="namecity" class="form-control" id="namecity" placeholder="Italia">
+                <label for="floatingInput">City name</label>
+              </div>
+              <div class="form-floating mb-3 space">
+                <input type="text" formControlName="cabeceracity" class="form-control" id="cabeceracity" placeholder="Italia">
+                <label for="floatingInput">City cabecera</label>
+              </div>
+              <div class="form-floating mb-3 space">
+                <input  type="text" formControlName="flagcity" class="form-control" id="flagcity" placeholder="Italia" >
+                <label for="floatingInput">City flag</label>
+              </div>
+          </fieldset>
+          <fieldset>
+            <legend>Coordinates</legend>
+              <div class="form-floating mb-3 space">
+                <input type="text" formControlName="coordinatelat" class="form-control" id="coordinatelat" placeholder="Italia">
+                <label for="floatingInput">Latitude</label>
+              </div>
+              <div class="form-floating space">
+                <input type="text" formControlName="coordinatealt" class="form-control" id="coordinatealt" placeholder="Italy">
+                <label for="floatingInput">Longitude</label>
+              </div>
+          </fieldset>
+          <br>
+          <fieldset>
+            <legend>City codes</legend>
+              <div class="form-floating space">
+                <input type="text" formControlName="callcodecity" class="form-control" id="callcodecity" placeholder="Italy">
+                <label for="floatingInput">Call code</label>
+              </div>
+          </fieldset>
+          <fieldset>
+            <legend>State</legend>
+            <div class="form-floating mb-3 space">
+              <input type="text" formControlName="statecity" class="form-control" id="statecity" placeholder="Italia">
+              <label for="floatingInput">City State</label>
+            </div>
+          </fieldset>
+        </div>
+          <div class="d-grid gap-1 d-md-block btn-position">
+            <button class="btn btn-success" type="submit" id="btn-register" (click)="updateData(newFormA.value)" [disabled]="newFormA.invalid">Update</button>
+            <button class="btn btn-danger" type="submit" id="btn-cancel" [routerLink]="['/ApiPaises/MainMenu/ListCities']" >Cancel</button>
+          </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+
+

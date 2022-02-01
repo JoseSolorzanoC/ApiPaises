@@ -15,15 +15,9 @@
         </h2>
         <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
           aria-labelledby="panelsStayOpen-headingOne">
-          <div class="accordion-body">
+          <div class="accordion-body" #asOpc>
             <div class="accordion-body">
-              <a [routerLink]="['/NavVertical/RegisterCountries']">Add countries</a>
-            </div>
-            <div class="accordion-body">
-              <a [routerLink]="['/NavVertical/ListCountries']">List countries</a>
-            </div>
-            <div class="accordion-body">
-              <a [routerLink]="['/NavVertical/DeleteCountrys']">Delete countries</a>
+              <a [routerLink]="['ListCountries']">List countries</a>
             </div>
           </div>
         </div>
@@ -40,13 +34,16 @@
           aria-labelledby="panelsStayOpen-headingThree">
           <div class="accordion-body">
             <div class="accordion-body">
-              <a [routerLink]="['/NavVertical/RegisterProvincies']">Add provinces</a>
+              <a [routerLink]="['RegisterProvincies']">Add provinces</a>
             </div>
             <div class="accordion-body">
-              <a [routerLink]="['/NavVertical/ListProvincies']">List provinces</a>
+              <a [routerLink]="['ListProvincies']">List provinces</a>
             </div>
             <div class="accordion-body">
-              <a [routerLink]="['/NavVertical/DeleteProvinces']">Delete provinces</a>
+              <a [routerLink]="['DeleteProvinces']">Delete provinces</a>
+            </div>
+            <div class="accordion-body">
+              <a [routerLink]="['UpdateProvinces']">Update provinces</a>
             </div>
           </div>
         </div>
@@ -63,13 +60,16 @@
           aria-labelledby="panelsStayOpen-headingTwo">
           <div class="accordion-body">
             <div class="accordion-body">
-              <a [routerLink]="['/NavVertical/RegisterCity']">Add cities</a>
+              <a [routerLink]="['RegisterCity']">Add cities</a>
             </div>
             <div class="accordion-body">
-              <a [routerLink]="['/NavVertical/ListCities']">List cities</a>
+              <a [routerLink]="['ListCities']">List cities</a>
             </div>
             <div class="accordion-body">
-              <a [routerLink]="['/NavVertical/DeleteCitites']">Delete cities</a>
+              <a [routerLink]="['DeleteCitites']">Delete cities</a>
+            </div>
+            <div class="accordion-body">
+              <a [routerLink]="['UpdateCities']">Update cities</a>
             </div>
           </div>
         </div>

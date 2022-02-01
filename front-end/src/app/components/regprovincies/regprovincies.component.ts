@@ -37,7 +37,6 @@ export class RegprovinciesComponent implements OnInit {
       callcodeprovince: ['', [Validators.required]],
       coordinatealt: ['', [Validators.required]],
       coordinatelat: ['', [Validators.required]]})
-
       this.cargarData();
   }
 
@@ -45,6 +44,7 @@ export class RegprovinciesComponent implements OnInit {
   postForm(form: ProvinceI){
     this.RestService.postProvince(form).subscribe( data =>{
       console.log(data);
+      window.location.reload();
     })
     console.log(form);
   }
@@ -57,7 +57,6 @@ export class RegprovinciesComponent implements OnInit {
     this.RestService.get('http://localhost:8080/Rest/CountriesApi/findAll')
     .subscribe(respuesta => {
       this.lista = respuesta;
-      console.log(this.lista = respuesta);
     })
   }
 

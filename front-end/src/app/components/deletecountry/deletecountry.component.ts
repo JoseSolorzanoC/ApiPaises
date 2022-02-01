@@ -41,9 +41,9 @@ export class DeletecountryComponent implements OnInit {
   }
 
   deletecountry(name: string):void{
-    console.log("Delete");
     this.RestService.deleteCountry(name).subscribe(
     );
+    window.location.reload();
   }
 
 

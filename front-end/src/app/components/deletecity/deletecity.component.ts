@@ -43,6 +43,7 @@ export class DeletecityComponent implements OnInit {
   deleteCity(name: string):void{
     this.RestService.deleteCity(name).subscribe(
     );
+    window.location.reload();
   }
 
   page_size: number = 10

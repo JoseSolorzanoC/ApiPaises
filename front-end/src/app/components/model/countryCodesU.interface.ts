@@ -1,12 +1,12 @@
-import {CountryCodesI} from './countryCodes.interface';
-export interface CountryI{
+export interface CountryCodeU{
+  id: string;
+  countryId: number;
   name:string;
   englishName:string;
   flag:string;
   capital:string;
   latitude: number;
   longitude: number;
-  statecountry: "1";
   countryCodes: {
     fips: string;
     iso2: string;
@@ -14,5 +14,6 @@ export interface CountryI{
     ison: number;
     tld: string;
   },
+  statecountry: string;
 	callCode: string[];
 }

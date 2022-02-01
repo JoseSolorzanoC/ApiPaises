@@ -5,12 +5,12 @@
   <form (ngSubmit)="consultarDatos()">
     <div class="container-sm">
       <div class="form-floating mb-3"><h4 class="choose">Choose an option:</h4>
-        <select class="seleccion" name="seleccion" [(ngModel)]="seleccion">
+        <select class="form-select" name="seleccion" [(ngModel)]="seleccion">
           <option [value]="categoria.value" *ngFor="let categoria of categorias">{{categoria.nombre}}</option>
         </select>
       </div>
       <div class="form-floating mb-3">
-        <input type="text" class="form-control" #search id="countryname" placeholder="Type a name">
+        <input type="text" class="form-control inp-type" #search id="countryname" placeholder="Type a name">
         <label for="floatingInput">Type a name</label>
         <button class="btn btn-success" id="btn-register" (click)="getValue(search.value)" type="submit">Search</button>
       </div>

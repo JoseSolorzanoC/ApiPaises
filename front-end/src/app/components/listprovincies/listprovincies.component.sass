@@ -15,8 +15,11 @@
   height: auto
   margin-top: 25px
 
-.title
-  h1
+
+.div-general
+  margin-top: 100px
+  margin-left: 5%
+  width: 90%
 
 
 .choose
@@ -28,17 +31,17 @@
   border-radius: 5px
   cursor: pointer
 
-
 .div-general
-  margin-top: 100px
-  margin-left: 5%
+  form
+    .container-sm
+      @include display()
+      width: 95%
+      margin-left: 0
+
+.form-select
+  cursor: pointer
   width: 90%
-
-
-
-form
-  @include display()
-
+  margin-right: 10px
 
 .container-sm
   .form-floating
@@ -46,8 +49,6 @@ form
     width: 50%
     margin-right: auto
     margin-left: auto
-
-
 
 .mb-3
    .btn-success
